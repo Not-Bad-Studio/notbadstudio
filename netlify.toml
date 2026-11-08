@@ -1,0 +1,4 @@
+# Plain static site built from the published Webflow pages: no build step, Netlify publishes the repo as it is.
+# /studio style URLs work because Netlify serves studio.html for /studio. Redirects live in _redirects.
+[build]
+  publish = "."

@@ -1,0 +1,58 @@
+# Redirects carried over from Webflow (69 rules, 2026-11-08) plus pages dropped in the move to Netlify.
+# Query strings are ignored, so the many /search/portal.php?... spam rules collapse into one line.
+
+/archive/old-home  /  301
+/archive/our-work-old  /our-work  301
+/archive/sections/cms  /  301
+/archive/sections/cta  /  301
+/archive/sections/footers  /  301
+/archive/sections/icons  /  301
+/archive/sections/navigation-bars  /  301
+/archive/sections/quotes  /  301
+/archive/sections/sliders  /  301
+/archive/sections/tabs-accordions  /  301
+/archive/template/changelog  /  301
+/archive/template/getting-started  /  301
+/archive/template/style-guide  /  301
+/caf  /  301
+/home-copy  /  301
+/home-copy-2  /  301
+/journal  /  301
+/keep-your-business-moving-during-life-events  /  301
+/notbadai  /services  301
+/parking.php  /  301
+/post/an-ai-playground-navigating-technology-and-motherhood-  /  301
+/post/an-interview-with-business-owner-joe-brian  /  301
+/post/get-ready-for-the-new-business-etiquette  /  301
+/post/launching-a-brand-in-the-current-climate  /  301
+/post/our-preferred-set-up-for-digital-design  /  301
+/post/preparing-your-team-for-remote-work  /  301
+/post/rounding-up-our-favourite-office-interiors  /  301
+/post/the-power-of-  /  301
+/post/the-power-of-storytelling-in-advertising  /  301
+/post/the-power-of-storytelling-in-advertising-2  /  301
+/post/top-10-design-trends-in-2023  /  301
+/ru/shop/crazy_duck  /  301
+/ru/shop/flowers  /  301
+/ru/shop/kitchen_accessories  /  301
+/ru/shop/sheep_happens  /  301
+/ru/shop/vanilla  /  301
+/ru/shop/yogi  /  301
+/search  /  301
+/search/cc.php  /  301
+/search/portal.php  /  301
+/search/tsc.php  /  301
+/services-ai  /services  301
+/team/sian  /studio  301
+/team/vinny  /studio  301
+/work-2  /our-work  301
+/work/ballyseedy  /our-work  301
+/work/el-tab  /case-studies/el-tab  301
+/work/ldn-cbd  /case-studies/ldn-cbd  301
+/work/pulpex  /case-studies/pulpex  301
+/work/setsappeal  /our-work  301
+
+# Old template pages (hidden links still point here) and anything else under these paths.
+/archive/*  /  301
+/search/*  /  301
+/ru/*  /  301
