@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo2Motion · Your professional photos, in motion</title>
+<meta name="description" content="Cinematic short films made from the photography you already have, for property, charters and stays. Directed and checked by people, delivered in 24 hours. Your first clip is free.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Photo2Motion · Your professional photos, in motion">
+<meta property="og:description" content="Cinematic short films made from the photography you already have, for property, charters and stays. Directed and checked by people, delivered in 24 hours. Your first clip is free.">
+<meta property="og:image" content="https://www.notbadstudio.com/images/motion-real-estate.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F3F1EC">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 104'><rect x='4' y='4' width='132' height='96' rx='8' fill='%23F3F1EC' stroke='%2316263F' stroke-width='8'/><circle cx='104' cy='32' r='11' fill='%23E4572E'/><path d='M14 72 L44 46 L66 64 L80 54 L126 82' fill='none' stroke='%2316263F' stroke-width='8' stroke-linejoin='round' stroke-linecap='round'/></svg>">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Built by ~/Sites/motion-demos/tools/build_p2m_home.py from design/p2m-home; edit there, not here. -->
+<style>
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/p2m-inter-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/p2m-inter-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/p2m-inter-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/p2m-space-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/p2m-space-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/p2m-space-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/p2m-space-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---- */
+
+body{margin:0}
+a{color:#16263F}a:hover{color:#E4572E}
+.dd summary::-webkit-details-marker{display:none}
+.dd-panel a:hover{background:#F3F1EC}
+@media (max-width: 860px){
+.nav{grid-template-columns:1fr !important;justify-items:center;row-gap:8px}
+.nav-l,.nav-r{justify-content:center !important;flex-wrap:wrap}
+.nav-logo{order:-1}
+.two{grid-template-columns:1fr !important;gap:32px !important}
+.hero h1{font-size:44px !important}
+}
+
+/* ---- */
+
+
+/* Added by build_p2m_home.py: films, photos, form states and phone layout. The design's own styles are inline. */
+html { scroll-behavior: smooth; }
+/* Nothing should let a phone pan the page sideways; clip (not hidden) keeps the sticky header working. */
+html, body { overflow-x: clip; }
+section[id], #top { scroll-margin-top: 88px; }
+.p2m-film { overflow: hidden; isolation: isolate; }
+.p2m-film .p2m-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.p2m-film::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(22,38,63,.55) 0%, rgba(22,38,63,0) 30%, rgba(22,38,63,0) 70%, rgba(22,38,63,.55) 100%); }
+.p2m-film .p2m-tag { color: #F3F1EC !important; }
+.p2m-film button { transition: transform .15s ease, opacity .2s ease; }
+.p2m-film button:hover { transform: scale(1.06); }
+.p2m-film.is-playing button { opacity: 0; }
+.p2m-film.is-playing:hover button, .p2m-film.is-playing button:focus-visible { opacity: 1; }
+.p2m-film [data-bar] { transition: width .25s linear; }
+#p2m-form input::placeholder { color: rgba(243,241,236,.45); }
+#p2m-form input:focus, #p2m-form select:focus { outline: 2px solid #E4572E; outline-offset: 1px; }
+#p2m-form select option { color: #16263F; }
+#p2m-form button[disabled] { opacity: .7; cursor: wait; }
+#p2m-form[hidden], .p2m-msg[hidden] { display: none !important; }  /* the form's inline display: grid beats [hidden] */
+.dd[open] > summary svg { transform: rotate(180deg); }
+@media (max-width: 860px) {
+  /* The design stacks the nav into three rows on phones; pinned, that covers a quarter of the screen. */
+  header[style*="position: sticky"] { position: static !important; }
+  section[id], #top { scroll-margin-top: 16px; }
+  [style*="repeat(4, 1fr)"]:not(.p2m-photos), [style*="repeat(3, 1fr)"]:not(.p2m-photos) { grid-template-columns: 1fr 1fr !important; }
+  #why-now h2, #when h2, #how h2, #why h2, #pricing h2, #questions h2, #free-clip h2, #developed h2 { font-size: 38px !important; }
+  section[style*="padding: 112px 0"], section[style*="padding-top: 112px"] { padding-top: 72px !important; padding-bottom: 72px !important; }
+  .p2m-photos { gap: 6px !important; }
+}
+@media (max-width: 520px) {
+  [style*="repeat(4, 1fr)"]:not(.p2m-photos), [style*="repeat(3, 1fr)"]:not(.p2m-photos) { grid-template-columns: 1fr !important; }
+  .p2m-film button { width: 56px !important; height: 56px !important; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+</style>
+</head>
+<body>
+<div style="background: #F3F1EC; color: #16263F; font-family: Inter, system-ui, sans-serif">
+
+<header style="position: sticky; top: 0; z-index: 20; background: #F3F1EC; border-bottom: 1px solid rgba(22,38,63,0.1)">
+<nav aria-label="Photo2Motion" class="nav" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; max-width: 1280px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding-top: 14px; padding-bottom: 14px">
+<div class="nav-l" style="display: flex; align-items: center; gap: 20px">
+<details class="dd" style="position: relative">
+<summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">Sectors<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="#why-now" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Why now</a><a href="#property" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Property</a><a href="#charters" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Charters</a><a href="#stays" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Stays</a></div>
+</details>
+<details class="dd" style="position: relative">
+<summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">How it works<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="#how" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Three steps</a><a href="#when" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">When it’s right</a><a href="#why" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Why motion</a><a href="#questions" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Questions</a></div>
+</details>
+</div>
+<a href="#top" class="nav-logo" aria-label="Photo2Motion home" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #16263F">
+<svg width="44" height="33" viewBox="0 0 140 104" aria-hidden="true">
+<rect x="4" y="4" width="132" height="96" rx="8" fill="none" stroke="#16263F" stroke-width="8"></rect>
+<circle cx="104" cy="32" r="11" fill="#E4572E"></circle>
+<path d="M14 72 L44 46 L66 64 L80 54 L126 82" fill="none" stroke="#16263F" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"></path>
+<line x1="18" y1="88" x2="122" y2="88" stroke="#16263F" stroke-opacity="0.25" stroke-width="7" stroke-linecap="round"></line>
+<line x1="18" y1="88" x2="72" y2="88" stroke="#E4572E" stroke-width="7" stroke-linecap="round"></line>
+<circle cx="72" cy="88" r="9" fill="#E4572E"></circle>
+</svg>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: -0.03em">Photo2Motion</span>
+</a>
+<div class="nav-r" style="display: flex; align-items: center; justify-content: flex-end; gap: 20px">
+<details class="dd" style="position: relative">
+<summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">Pricing<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="#pricing" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Packs</a><a href="#monthly" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Monthly</a><a href="#addons" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Add-ons</a></div>
+</details>
+<a href="#developed" style="padding: 12px 8px; font-size: 15px; font-weight: 500; text-decoration: none">About</a>
+<a href="#free-clip" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 22px; background: #E4572E; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none">Get a free clip</a>
+</div>
+</nav>
+</header>
+
+<main>
+<section id="top" class="hero" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; padding-top: 96px; padding-bottom: 96px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">Property · Charters · Stays</p>
+<h1 style="margin: 0; max-width: 900px; font-family: 'Space Grotesk', sans-serif; font-size: 76px; font-weight: 600; letter-spacing: -0.035em; line-height: 1.02">Your professional photos, in motion.</h1>
+<p style="margin: 0; max-width: 640px; font-size: 20px; line-height: 1.55; color: #4F5A6B">Cinematic short films made from the photography you already have, for when filming isn’t practical. Directed and checked by people, delivered in 24 hours.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px">
+<a href="#free-clip" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 26px; background: #E4572E; color: #FFFFFF; font-weight: 600; text-decoration: none">Get a free clip</a>
+<a href="#pricing" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 26px; border: 1.5px solid #16263F; color: #16263F; font-weight: 600; text-decoration: none">See prices</a>
+</div>
+<div style="width: 100%; max-width: 1040px; margin-top: 32px"><div class="p2m-film" data-films="/videos/motion-real-estate.mp4~/images/motion-real-estate.jpg~Property|/videos/motion-marine.mp4~/images/motion-marine.jpg~Charters|/videos/motion-hospitality.mp4~/images/motion-hospitality.jpg~Stays" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-real-estate.mp4" poster="/images/motion-real-estate.jpg" muted playsinline preload="none" aria-label="Salterns Lane, a Manns &amp; Manns listing in Bursledon: a film made from the photos below it"></video>
+<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Property</span>
+<button type="button" aria-label="Play Showreel film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
+<div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 40%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>
+</div></div>
+</section>
+
+<section id="why-now" style="background: #FFFFFF; padding: 112px 0; margin-bottom: 120px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 56px">
+<div class="two" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #E4572E; font-weight: 600">Why now</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.02">Your market is already moving.</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B"><strong style="color: #16263F; font-weight: 600">91% of businesses now use video in their marketing.</strong> In feeds and on listing sites, your still photos sit next to ones that move, and movement gets seen first.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">Photo2Motion lets you keep up without a shoot, using photos you already own.</p>
+<span style="font-size: 13px; color: #4F5A6B">Source: Wyzowl, State of Video Marketing 2026.</span>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px">
+<a href="#property" style="display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 12px; background: #F3F1EC; text-decoration: none; color: #16263F">
+<span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Property</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15">Stand out on the portal and in the feed.</span>
+<span style="font-size: 16px; line-height: 1.55; color: #4F5A6B">When every listing has good photos, good photos stop being the difference. A film makes yours the one people stop on, and shows vendors you’re doing more to sell their home.</span>
+<span style="margin-top: auto; font-weight: 600">See property films →</span>
+</a>
+<a href="#charters" style="display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 12px; background: #F3F1EC; text-decoration: none; color: #16263F">
+<span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Charters</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15">Be the boat they remember.</span>
+<span style="font-size: 16px; line-height: 1.55; color: #4F5A6B">Guests compare boat after boat with similar photos. A short film, deck to cabin, gives them a feel for the day before they book, so yours is the one they come back to.</span>
+<span style="margin-top: auto; font-weight: 600">See charter films →</span>
+</a>
+<a href="#stays" style="display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 12px; background: #F3F1EC; text-decoration: none; color: #16263F">
+<span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Stays</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15">Sell the feeling, not just the room.</span>
+<span style="font-size: 16px; line-height: 1.55; color: #4F5A6B">Rooms that look alike get scrolled past. A few seconds of motion shows the light, the space and the view, on your website, your listings and your socials.</span>
+<span style="margin-top: auto; font-weight: 600">See stay films →</span>
+</a>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; padding: 32px 36px; border-radius: 12px; background: #16263F; color: #F3F1EC">
+<p style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 500; letter-spacing: -0.01em; max-width: 720px">Get ahead of competitors who are still posting stills.</p>
+<a href="#free-clip" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 26px; background: #E4572E; color: #FFFFFF; font-weight: 600; text-decoration: none">Get a free clip</a>
+</div>
+</div>
+</section>
+
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 120px; padding-bottom: 120px">
+<section id="property" class="two" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
+<div class="p2m-film" data-films="/videos/motion-real-estate.mp4~/images/motion-real-estate.jpg~Property" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-real-estate.mp4" poster="/images/motion-real-estate.jpg" muted playsinline preload="none" loop aria-label="Salterns Lane, a Manns &amp; Manns listing in Bursledon: a film made from the photos below it"></video>
+<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Property</span>
+<button type="button" aria-label="Play Property film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
+<div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 33%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Property</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">More views, more confident vendors.</h3>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">Your listing photos are already paid for. We turn them into a short film for your listing, website and social channels, so the property gets noticed first.</p>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #4F5A6B">Made from these 4 photos. Salterns Lane, a Manns &amp; Manns listing in Bursledon. Photos: Manns &amp; Manns.</span>
+<div class="p2m-photos" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px"><img src="/images/motion-real-estate-1.jpg" alt="The back of the house: a white gable with tall glass doors, a stone terrace and a wide lawn" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-real-estate-2.jpg" alt="The vaulted living room with roof windows, grey sofas and blue armchairs" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-real-estate-3.jpg" alt="The kitchen and dining area, with glass doors onto the garden" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-real-estate-4.jpg" alt="The stone terrace with outdoor sofas, the house and tall trees beyond" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
+</div>
+<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos →</a>
+</div>
+</section>
+<section id="charters" class="two" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Charters</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Your boat in motion, without a film shoot.</h3>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">Boats are rarely in one place long enough to film. Send the photos you have and we’ll make a film of the boat, inside and out, ready for your listings and ads.</p>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #4F5A6B">Made from these 4 photos, from deck to cabin. Mon Ami, a Fairview Sailing yacht. Photos: PKC Media and fairviewsailing.co.uk.</span>
+<div class="p2m-photos" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px"><img src="/images/motion-marine-1.jpg" alt="Drone photo of Mon Ami at anchor off a wooded shore, a paddleboard tied alongside" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-2.jpg" alt="Mon Ami&#x27;s saloon, laid for breakfast, looking forward to the cabin" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-3.jpg" alt="Mon Ami&#x27;s galley with a jug of orange juice, fruit bowl and champagne" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-4.jpg" alt="The forward cabin of an Oceanis 37, with an open book on the bed under the hatch" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
+</div>
+<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos →</a>
+</div>
+<div class="p2m-film" data-films="/videos/motion-marine.mp4~/images/motion-marine.jpg~Charters" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-marine.mp4" poster="/images/motion-marine.jpg" muted playsinline preload="none" loop aria-label="Mon Ami, a Fairview Sailing yacht: a film made from the photos below it"></video>
+<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Charters</span>
+<button type="button" aria-label="Play Charters film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
+<div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 66%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>
+</div>
+</section>
+<section id="stays" class="two" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
+<div class="p2m-film" data-films="/videos/motion-hospitality.mp4~/images/motion-hospitality.jpg~Stays" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-hospitality.mp4" poster="/images/motion-hospitality.jpg" muted playsinline preload="none" loop aria-label="Indulgent Room 1 at The Scarlet, Mawgan Porth: a film made from the photos below it"></video>
+<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Stays</span>
+<button type="button" aria-label="Play Stays film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
+<div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 100%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Stays</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Show how a room feels, not just how it looks.</h3>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">For hotels, holiday lets and glamping sites. One room or one property per film, made from the photography on your website.</p>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #4F5A6B">Made from these 3 photos, one room. Indulgent Room 1 at The Scarlet, Mawgan Porth. Photos: scarlethotel.co.uk.</span>
+<div class="p2m-photos" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px"><img src="/images/motion-hospitality-1.jpg" alt="Indulgent Room 1: the bed with a mustard throw, two armchairs and glass doors onto the sea" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-hospitality-2.jpg" alt="The same room in warm light, with a teal velvet sofa and a pendant lamp" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-hospitality-3.jpg" alt="The view from the bed at golden hour, through sheer curtains to the balcony and the surf" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
+</div>
+<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos →</a>
+</div>
+</section>
+</div>
+
+<section id="when" style="max-width: 1200px; margin: 0 auto; padding: 0 32px 120px; box-sizing: border-box; display: flex; flex-direction: column; gap: 56px">
+<div class="two" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #E4572E; font-weight: 600">When it’s right</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.02">Not a replacement for filming.</h2>
+</div>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #4F5A6B">Photo2Motion is a service for the <strong style="color: #16263F; font-weight: 600">professional photography you already have</strong>. When a film shoot is out of budget or simply can’t happen, we turn those images into motion. When filming is the right call, we’ll tell you.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 2px solid #16263F">
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600">When filming is out of budget</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">A crew for every listing, boat or room rarely adds up. A film from your existing photos starts at £110 in a pack.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 2px solid #16263F">
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600">When filming isn’t possible</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">The boat is out on charter, the house sells before a crew can be booked, the hotel is full all season. The photos are already there.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 2px solid #16263F">
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600">When photos could work harder</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">You’ve paid for great images. Motion gives them a second job across your listings, ads and social channels.</p>
+</div>
+</div>
+<div class="two" style="display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center; padding: 36px; border-radius: 12px; background: #FFFFFF">
+<svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="4" y="14" width="48" height="36" rx="6" fill="none" stroke="#16263F" stroke-width="3"></rect><path d="M18 14 L22 7 H34 L38 14" fill="none" stroke="#16263F" stroke-width="3" stroke-linejoin="round"></path><circle cx="28" cy="32" r="10" fill="none" stroke="#E4572E" stroke-width="3"></circle></svg>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">We work with photographers, not around them.</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Every film starts from professional photography, and the photographer is credited on every one. Photographers: talk to us about offering films to your clients from your shoots.</p>
+</div>
+<a href="#free-clip" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 24px; border: 1.5px solid #16263F; color: #16263F; font-weight: 600; text-decoration: none; white-space: nowrap">Talk to us</a>
+</div>
+</section>
+
+<section id="how" style="background: #FFFFFF; padding: 112px 0">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">How it works</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Three steps, and the first film is on us.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #E4572E">01</span>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">Send your photos</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Four to six photos of one boat, property or room. A link to your website works too.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #E4572E">02</span>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">We make your film</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Within 24 hours, checked by a person. Nothing added, and no one in your photos is animated.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #E4572E">03</span>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">Keep it</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Download it free with our end card, buy the clean film, or get a pack for everything you have.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="why" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; padding-top: 112px; padding-bottom: 112px; display: flex; flex-direction: column; gap: 56px">
+<div class="two" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">Why motion</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Movement gets seen first.</h2>
+</div>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">People notice what starts to move before anything else on screen (Psychological Science, 2003). Stills still lead on listings and booking pages, and they’re what every film is made from. Motion gives your best photos a second job.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 2px solid #E4572E">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.03em; line-height: 1">8 in 10</span>
+<span style="font-size: 16px; line-height: 1.5; color: #4F5A6B">people say watching a brand’s video has convinced them to buy.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 2px solid #E4572E">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.03em; line-height: 1">82%</span>
+<span style="font-size: 16px; line-height: 1.5; color: #4F5A6B">of businesses using video say it pays back what they put in.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 2px solid #E4572E">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.03em; line-height: 1">91%</span>
+<span style="font-size: 16px; line-height: 1.5; color: #4F5A6B">of businesses now use video in their marketing.</span>
+</div>
+</div>
+<p style="margin: 0; font-size: 13px; color: #4F5A6B">Source: Wyzowl, State of Video Marketing 2026.</p>
+</section>
+
+<section id="pricing" style="background: #E9E6DF; padding: 112px 0">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
+<div class="two" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">Pricing</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Simple prices, 24-hour delivery.</h2>
+</div>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #4F5A6B">Every film is 15 to 20 seconds from 4 to 6 photos, in 16:9 for your website, listings and ads, with music, your logo and your photographer credited. One round of tweaks, back within 24 hours.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 20px">
+<div style="border-radius: 12px; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 15px; font-weight: 600">Single film</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 44px; font-weight: 600; letter-spacing: -0.02em">£175</span>
+<span style="font-size: 15px; color: #4F5A6B">£175 a film</span>
+
+</div>
+<div style="border-radius: 12px; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 15px; font-weight: 600">3 films</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 44px; font-weight: 600; letter-spacing: -0.02em">£450</span>
+<span style="font-size: 15px; color: #4F5A6B">£150 a film</span>
+<span style="font-size: 13px; color: #4F5A6B">Includes vertical and square cuts</span>
+</div>
+<div style="border-radius: 12px; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 15px; font-weight: 600">5 films</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 44px; font-weight: 600; letter-spacing: -0.02em">£650</span>
+<span style="font-size: 15px; color: #4F5A6B">£130 a film</span>
+<span style="font-size: 13px; color: #4F5A6B">Includes vertical and square cuts</span>
+</div>
+<div style="border-radius: 12px; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 15px; font-weight: 600">10 films</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 44px; font-weight: 600; letter-spacing: -0.02em">£1,100</span>
+<span style="font-size: 15px; color: #4F5A6B">£110 a film</span>
+<span style="font-size: 13px; color: #4F5A6B">Includes vertical and square cuts</span>
+</div>
+</div>
+<div id="monthly" class="two" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+<div style="border-radius: 12px; background: #16263F; color: #F3F1EC; padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 15px; font-weight: 600">Monthly · 4 films</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600">£395<span style="font-size: 18px; font-weight: 400; color: #AEB8C7"> a month</span></span>
+</div>
+<div style="border-radius: 12px; background: #16263F; color: #F3F1EC; padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 15px; font-weight: 600">Monthly · 10 films</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600">£850<span style="font-size: 18px; font-weight: 400; color: #AEB8C7"> a month</span></span>
+</div>
+</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4F5A6B">For new listings every month. Unused films carry over one month; 3-month minimum. Packs are paid up front and used within 12 months. Prices exclude VAT where it applies.</p>
+<div id="addons" style="display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid rgba(22,38,63,0.15)">
+<span style="font-size: 15px; font-weight: 600">Add-ons</span>
+<p style="margin: 0; font-size: 15px; line-height: 1.7; color: #4F5A6B">Social cuts (9:16 and 1:1) for a single film +£25 · 30-second cut from 6 to 8 photos +£60 · Extra round of edits £35 · On-screen text or captions +£25</p>
+</div>
+</div>
+</section>
+
+<section id="questions" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; max-width: 960px; padding-top: 112px; padding-bottom: 112px; display: flex; flex-direction: column; gap: 32px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Why not just use an app?</h2>
+<div>
+<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0">
+<summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">Can’t I do this myself with an AI app?</summary>
+<p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">You can, and for a quick post it might do. An app turns one photo into one clip and gives you whatever comes out. We pick the right photos, direct each shot, check every frame and cut it into one film of one boat, property or room, with your brand on it.</p>
+</details>
+<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0">
+<summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">How do you make sure nothing is added?</summary>
+<p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">We check every shot frame by frame against the original photo. If anything appears, changes or moves that shouldn’t, we redo the shot or hold that part of the frame to the photo.</p>
+</details>
+<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0">
+<summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">What about people in my photos?</summary>
+<p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">We never animate people. We choose photos without them, and if someone is in frame we hold them still.</p>
+</details>
+<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0">
+<summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">Is it made with AI?</summary>
+<p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">The motion comes from the same kind of tools the apps use. What you’re paying for is everything around them: choosing the photos, directing each move, checking every frame and delivering a finished film in 24 hours.</p>
+</details>
+</div>
+</section>
+
+<section id="free-clip" style="background: #16263F; color: #F3F1EC; padding: 112px 0">
+<div class="two" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #AEB8C7">Free clip</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">See your own photos in motion.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #DCE2EA">Add four photos, or just your website. We’ll send back a short film within 24 hours, Monday to Friday, and a price for the rest if you want it. One free clip per business.</p>
+</div>
+<div class="p2m-form-wrap"><form id="p2m-form" novalidate style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 18px"><input type="hidden" name="source" value="photo2motion-home"><p hidden><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="fc-name" style="font-size: 14px; font-weight: 500; color: #F3F1EC">Your name</label>
+<input id="fc-name" name="name" autocomplete="name" maxlength="256" required type="text" style="height: 48px; border-radius: 8px; border: 1px solid rgba(243,241,236,0.3); background: rgba(243,241,236,0.06); color: #F3F1EC; padding: 0 14px; font: inherit">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="fc-email" style="font-size: 14px; font-weight: 500; color: #F3F1EC">Business email</label>
+<input id="fc-email" name="email" autocomplete="email" maxlength="256" required type="email" style="height: 48px; border-radius: 8px; border: 1px solid rgba(243,241,236,0.3); background: rgba(243,241,236,0.06); color: #F3F1EC; padding: 0 14px; font: inherit">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="fc-biz" style="font-size: 14px; font-weight: 500; color: #F3F1EC">Business name</label>
+<input id="fc-biz" name="business" autocomplete="organization" maxlength="256" required type="text" style="height: 48px; border-radius: 8px; border: 1px solid rgba(243,241,236,0.3); background: rgba(243,241,236,0.06); color: #F3F1EC; padding: 0 14px; font: inherit">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="fc-type" style="font-size: 14px; font-weight: 500; color: #F3F1EC">What kind of business?</label>
+<select id="fc-type" name="business-type" required style="height: 48px; border-radius: 8px; border: 1px solid rgba(243,241,236,0.3); background: #16263F; color: #F3F1EC; padding: 0 12px; font: inherit">
+<option value="">Choose one</option><option>Boats and charters</option><option>Holiday lets</option><option>Hotel or glamping</option><option>Property</option><option>Photographer</option><option>Something else</option>
+</select>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="fc-web" style="font-size: 14px; font-weight: 500; color: #F3F1EC">Your website</label>
+<input id="fc-web" name="website" inputmode="url" maxlength="512" placeholder="yourbusiness.co.uk" required type="text" style="height: 48px; border-radius: 8px; border: 1px solid rgba(243,241,236,0.3); background: rgba(243,241,236,0.06); color: #F3F1EC; padding: 0 14px; font: inherit">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="fc-photos" style="font-size: 14px; font-weight: 500; color: #F3F1EC">Your photos (up to 4, optional)</label>
+<input id="fc-photos" type="file" accept="image/*" multiple aria-describedby="fc-photo-status" style="height: 48px; padding: 10px 0; color: #AEB8C7; font: inherit">
+</div>
+<p id="fc-photo-status" class="p2m-note" aria-live="polite" style="grid-column: 1 / -1; margin: -8px 0 0; font-size: 14px; color: rgba(243,241,236,0.75)">Four photos of one boat, property or room, with no one in shot. No photos to hand? We’ll pick from your website.</p><button type="submit" data-wait="Sending…" style="grid-column: 1 / -1; height: 56px; border: 0; border-radius: 28px; background: #E4572E; color: #FFFFFF; font: inherit; font-weight: 600; font-size: 17px; cursor: pointer">Send my photos</button>
+<p style="grid-column: 1 / -1; margin: 0; font-size: 13px; color: rgba(243,241,236,0.65)">We’ll only use your details to make your clip and follow up about it. See our <a href="/privacy-policy" style="color: inherit">privacy policy</a>.</p></form><div id="fc-done" class="p2m-msg" role="status" hidden style="padding: 28px; border-radius: 12px; background: rgba(243,241,236,0.08); color: #F3F1EC; font-size: 18px; line-height: 1.55"><strong>Thank you, your photos are with us.</strong><br>We’ll send your clip within 24 hours, Monday to Friday. Keep an eye on your inbox.</div><div id="fc-fail" class="p2m-msg" role="alert" hidden style="margin-top: 16px; padding: 16px 20px; border-radius: 10px; background: rgba(228,87,46,0.18); color: #F3F1EC; font-size: 15px"></div></div>
+</div>
+</section>
+
+<section id="developed" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; padding-top: 112px; padding-bottom: 112px">
+<div class="two" style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">Developed by</p>
+<a href="https://www.notbadstudio.com/" aria-label="Not Bad Studio" style="display: inline-block; align-self: flex-start"><svg role="img" aria-label="Not Bad Studio" style="display: block; height: 64px; width: auto; color: #16263F" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 422.5 97.1"> <g> <g> <path fill="currentColor" d="M400.3,84.5H22.7v-71h377.7v71H400.3z M26.8,80.4h369.5V17.6H26.8V80.4z"/> </g> <g> <path fill="currentColor" d="M135.6,56.5V28.8h7.7c5.8,0,8.8,2.5,8.8,7.7c0,2.4-0.8,4.4-2.8,5.6v0.1c2.3,1.1,3.7,3.3,3.7,5.8 c0,4.7-2.8,8.5-9.6,8.5C143.4,56.5,135.6,56.5,135.6,56.5z M142.7,40.2c3.3,0,4.2-1.6,4.2-3.6c0-1.9-1-2.9-4.3-2.9h-1.9v6.5H142.7 z M143.8,51.6c3.3,0,4.2-1.7,4.2-3.6c0-1.9-1-3.3-4.3-3.3h-3.1v6.9C140.6,51.6,143.8,51.6,143.8,51.6z"/> <path fill="currentColor" d="M177,56.5l-0.9-4.4h-6.4l-0.9,4.4h-5.4l6.6-27.8h5.9l6.6,27.8H177z M173.3,38.5c-0.2-0.8-0.4-2.4-0.4-2.4 h-0.1c0,0-0.2,1.6-0.4,2.4l-1.9,9.1h4.6L173.3,38.5z"/> <path fill="currentColor" d="M193.9,56.5V28.8h7.2c7.7,0,10.2,6.7,10.2,13.9s-2.5,13.9-10.2,13.9L193.9,56.5L193.9,56.5z M201.1,51.6 c3.5,0,5-3.9,5-8.9s-1.5-8.9-5-8.9h-2v17.8C199.1,51.6,201.1,51.6,201.1,51.6z"/> </g> <g> <path fill="currentColor" d="M53.3,56.5L46.2,41c-0.3-0.8-0.7-1.9-0.7-1.9h-0.1c0,0,0,1.2,0,2.1v15.4h-4.6V28.8h4.9l7,15.2 c0.3,0.7,0.7,1.9,0.7,1.9h0.1c0-0.2,0-1.3,0-2v-15h4.6v27.8h-4.8V56.5z"/> <path fill="currentColor" d="M70.8,42.7c0-7.6,2.3-14.3,9.6-14.3c7.3,0,9.6,6.7,9.6,14.3S87.7,57,80.4,57C73.1,56.9,70.8,50.3,70.8,42.7z M84.7,42.7c0-5.8-1.2-9.3-4.4-9.3c-3.2,0-4.4,3.5-4.4,9.3s1.3,9.3,4.4,9.3C83.5,52,84.7,48.4,84.7,42.7z"/> <path fill="currentColor" d="M104.9,56.5V33.7H100v-5h15v5h-5v22.8H104.9z"/> </g> <g> <path fill="currentColor" d="M234.7,48.9c0.7,2.1,2.4,3.5,4.4,3.5c2.1,0,3.6-1,3.6-3.1c0-4.5-11.5-4.5-11.5-12.9c0-4.3,3.1-7.6,7.7-7.6 c4.5,0,7.1,2.5,8.4,6l-4.5,2.8c-0.7-2.3-1.9-3.8-4-3.8c-1.5,0-2.5,0.9-2.5,2.5c0,4.9,11.5,3.9,11.5,13.1c0,4.9-3.6,8.1-8.8,8.1 c-4.3,0-7.4-2.2-8.8-5.5L234.7,48.9z"/> <path fill="currentColor" d="M262.3,57V34.2h-4.9v-5h15v5h-4.9V57H262.3z"/> <path fill="currentColor" d="M296.5,29.2h5.2v18.5c0,6.7-3.6,9.6-8.4,9.6s-8.6-2.9-8.6-9.7V29.2h5.2V48c0,2.7,1,4.4,3.4,4.4 c2.5,0,3.4-1.8,3.4-4.5V29.2H296.5z"/> <path fill="currentColor" d="M316,57V29.2h7.2c7.7,0,10.2,6.7,10.2,13.9S330.8,57,323.1,57H316z M323.1,52c3.5,0,5-3.9,5-8.9 s-1.5-8.9-5-8.9h-2V52H323.1z"/> <path fill="currentColor" d="M346.2,57V29.2h5.2V57H346.2z"/> <path fill="currentColor" d="M364,43.1c0-7.6,2.3-14.3,9.6-14.3c7.3,0,9.6,6.7,9.6,14.3s-2.3,14.3-9.6,14.3C366.3,57.4,364,50.7,364,43.1z M378,43.1c0-5.8-1.2-9.3-4.4-9.3c-3.2,0-4.4,3.5-4.4,9.3s1.3,9.3,4.4,9.3C376.7,52.4,378,48.9,378,43.1z"/> </g> <rect x="39.4" y="65.5" fill="currentColor" width="344.7" height="4.2"/> <g> <path fill="currentColor" d="M404.1,17.1v-4.9h-1v-1.1h3.2v1.1h-1v4.9H404.1z"/> <path fill="currentColor" d="M410.8,17.1v-3.7c0-0.2,0-0.4,0-0.4l0,0c0,0-0.1,0.2-0.2,0.3l-1,1.7l0,0l-1-1.7c-0.1-0.1-0.2-0.4-0.2-0.4l0,0 c0,0,0,0.2,0,0.4V17h-1.1v-5.9h1.2l0.9,1.6c0.1,0.1,0.2,0.4,0.2,0.4l0,0c0,0,0.1-0.2,0.2-0.4l0.9-1.6h1.2V17L410.8,17.1 L410.8,17.1z"/> </g> </g> </svg></a>
+<p style="margin: 0; font-size: 15px; color: #4F5A6B">London &amp; Mallorca</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Why Photo2Motion exists.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">We kept seeing the same thing. Businesses pay for beautiful professional photography, then use it once. Meanwhile the places people actually look are filling up with video, and a film shoot isn’t always practical: the yacht is out on charter, the house sells before a crew can be booked, or the budget isn’t there.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">Photo2Motion is a Not Bad Studio service that gives those photos a second job. It was built by the same team, in London and Mallorca, for clients whose images deserve more than one use.</p>
+<a href="https://www.notbadstudio.com/" style="align-self: flex-start; font-weight: 600">Visit Not Bad Studio →</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer style="background: #16263F; color: #F3F1EC; padding: 64px 0 40px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px">
+<svg width="44" height="33" viewBox="0 0 140 104" aria-hidden="true">
+<rect x="4" y="4" width="132" height="96" rx="8" fill="none" stroke="#F3F1EC" stroke-width="8"></rect>
+<circle cx="104" cy="32" r="11" fill="#E4572E"></circle>
+<path d="M14 72 L44 46 L66 64 L80 54 L126 82" fill="none" stroke="#F3F1EC" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"></path>
+<line x1="18" y1="88" x2="122" y2="88" stroke="#F3F1EC" stroke-opacity="0.25" stroke-width="7" stroke-linecap="round"></line>
+<line x1="18" y1="88" x2="72" y2="88" stroke="#E4572E" stroke-width="7" stroke-linecap="round"></line>
+<circle cx="72" cy="88" r="9" fill="#E4572E"></circle>
+</svg>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.03em">Photo2Motion</span>
+</div>
+<span style="font-size: 14px; color: #AEB8C7">photo2motion.studio · team@notbadstudio.com</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7">Service</span>
+<a href="#property" style="color: #F3F1EC; text-decoration: none">Property</a>
+<a href="#charters" style="color: #F3F1EC; text-decoration: none">Charters</a>
+<a href="#stays" style="color: #F3F1EC; text-decoration: none">Stays</a>
+<a href="#pricing" style="color: #F3F1EC; text-decoration: none">Pricing</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7">Not Bad Studio</span>
+<a href="https://www.notbadstudio.com/studio" style="color: #F3F1EC; text-decoration: none">Studio</a>
+<a href="https://www.notbadstudio.com/services" style="color: #F3F1EC; text-decoration: none">Services</a>
+<a href="https://www.notbadstudio.com/our-work" style="color: #F3F1EC; text-decoration: none">Our work</a>
+<a href="https://www.notbadstudio.com/contact" style="color: #F3F1EC; text-decoration: none">Contact</a>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; padding-top: 24px; border-top: 1px solid rgba(243,241,236,0.15)">
+<div style="display: flex; align-items: center; gap: 14px">
+<span style="font-size: 13px; color: #AEB8C7">A service by</span>
+<a href="https://www.notbadstudio.com/" aria-label="Not Bad Studio"><svg role="img" aria-label="Not Bad Studio" style="display: block; height: 30px; width: auto; color: #F3F1EC" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 422.5 97.1"> <g> <g> <path fill="currentColor" d="M400.3,84.5H22.7v-71h377.7v71H400.3z M26.8,80.4h369.5V17.6H26.8V80.4z"/> </g> <g> <path fill="currentColor" d="M135.6,56.5V28.8h7.7c5.8,0,8.8,2.5,8.8,7.7c0,2.4-0.8,4.4-2.8,5.6v0.1c2.3,1.1,3.7,3.3,3.7,5.8 c0,4.7-2.8,8.5-9.6,8.5C143.4,56.5,135.6,56.5,135.6,56.5z M142.7,40.2c3.3,0,4.2-1.6,4.2-3.6c0-1.9-1-2.9-4.3-2.9h-1.9v6.5H142.7 z M143.8,51.6c3.3,0,4.2-1.7,4.2-3.6c0-1.9-1-3.3-4.3-3.3h-3.1v6.9C140.6,51.6,143.8,51.6,143.8,51.6z"/> <path fill="currentColor" d="M177,56.5l-0.9-4.4h-6.4l-0.9,4.4h-5.4l6.6-27.8h5.9l6.6,27.8H177z M173.3,38.5c-0.2-0.8-0.4-2.4-0.4-2.4 h-0.1c0,0-0.2,1.6-0.4,2.4l-1.9,9.1h4.6L173.3,38.5z"/> <path fill="currentColor" d="M193.9,56.5V28.8h7.2c7.7,0,10.2,6.7,10.2,13.9s-2.5,13.9-10.2,13.9L193.9,56.5L193.9,56.5z M201.1,51.6 c3.5,0,5-3.9,5-8.9s-1.5-8.9-5-8.9h-2v17.8C199.1,51.6,201.1,51.6,201.1,51.6z"/> </g> <g> <path fill="currentColor" d="M53.3,56.5L46.2,41c-0.3-0.8-0.7-1.9-0.7-1.9h-0.1c0,0,0,1.2,0,2.1v15.4h-4.6V28.8h4.9l7,15.2 c0.3,0.7,0.7,1.9,0.7,1.9h0.1c0-0.2,0-1.3,0-2v-15h4.6v27.8h-4.8V56.5z"/> <path fill="currentColor" d="M70.8,42.7c0-7.6,2.3-14.3,9.6-14.3c7.3,0,9.6,6.7,9.6,14.3S87.7,57,80.4,57C73.1,56.9,70.8,50.3,70.8,42.7z M84.7,42.7c0-5.8-1.2-9.3-4.4-9.3c-3.2,0-4.4,3.5-4.4,9.3s1.3,9.3,4.4,9.3C83.5,52,84.7,48.4,84.7,42.7z"/> <path fill="currentColor" d="M104.9,56.5V33.7H100v-5h15v5h-5v22.8H104.9z"/> </g> <g> <path fill="currentColor" d="M234.7,48.9c0.7,2.1,2.4,3.5,4.4,3.5c2.1,0,3.6-1,3.6-3.1c0-4.5-11.5-4.5-11.5-12.9c0-4.3,3.1-7.6,7.7-7.6 c4.5,0,7.1,2.5,8.4,6l-4.5,2.8c-0.7-2.3-1.9-3.8-4-3.8c-1.5,0-2.5,0.9-2.5,2.5c0,4.9,11.5,3.9,11.5,13.1c0,4.9-3.6,8.1-8.8,8.1 c-4.3,0-7.4-2.2-8.8-5.5L234.7,48.9z"/> <path fill="currentColor" d="M262.3,57V34.2h-4.9v-5h15v5h-4.9V57H262.3z"/> <path fill="currentColor" d="M296.5,29.2h5.2v18.5c0,6.7-3.6,9.6-8.4,9.6s-8.6-2.9-8.6-9.7V29.2h5.2V48c0,2.7,1,4.4,3.4,4.4 c2.5,0,3.4-1.8,3.4-4.5V29.2H296.5z"/> <path fill="currentColor" d="M316,57V29.2h7.2c7.7,0,10.2,6.7,10.2,13.9S330.8,57,323.1,57H316z M323.1,52c3.5,0,5-3.9,5-8.9 s-1.5-8.9-5-8.9h-2V52H323.1z"/> <path fill="currentColor" d="M346.2,57V29.2h5.2V57H346.2z"/> <path fill="currentColor" d="M364,43.1c0-7.6,2.3-14.3,9.6-14.3c7.3,0,9.6,6.7,9.6,14.3s-2.3,14.3-9.6,14.3C366.3,57.4,364,50.7,364,43.1z M378,43.1c0-5.8-1.2-9.3-4.4-9.3c-3.2,0-4.4,3.5-4.4,9.3s1.3,9.3,4.4,9.3C376.7,52.4,378,48.9,378,43.1z"/> </g> <rect x="39.4" y="65.5" fill="currentColor" width="344.7" height="4.2"/> <g> <path fill="currentColor" d="M404.1,17.1v-4.9h-1v-1.1h3.2v1.1h-1v4.9H404.1z"/> <path fill="currentColor" d="M410.8,17.1v-3.7c0-0.2,0-0.4,0-0.4l0,0c0,0-0.1,0.2-0.2,0.3l-1,1.7l0,0l-1-1.7c-0.1-0.1-0.2-0.4-0.2-0.4l0,0 c0,0,0,0.2,0,0.4V17h-1.1v-5.9h1.2l0.9,1.6c0.1,0.1,0.2,0.4,0.2,0.4l0,0c0,0,0.1-0.2,0.2-0.4l0.9-1.6h1.2V17L410.8,17.1 L410.8,17.1z"/> </g> </g> </svg></a>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px">
+<a href="https://www.notbadstudio.com/privacy-policy" style="color: #AEB8C7">Privacy policy</a>
+<a href="https://www.notbadstudio.com/cookies" style="color: #AEB8C7">Cookie policy</a>
+<span style="color: #AEB8C7">© Not Bad Studio</span>
+</div>
+</div>
+</div>
+</footer>
+
+</div>
+<script>
+// Films: each box plays its film when it's on screen (muted), the orange button plays and pauses it, and the bar
+// follows it. The hero showreel plays the three sector films in turn. With reduced motion on, nothing starts by itself.
+(function () {
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var PLAY = '<svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg>';
+  var PAUSE = '<svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><rect x="3" y="2" width="5.5" height="22" rx="1.5" fill="#F3F1EC"></rect><rect x="13.5" y="2" width="5.5" height="22" rx="1.5" fill="#F3F1EC"></rect></svg>';
+  document.querySelectorAll(".p2m-film").forEach(function (box) {
+    var video = box.querySelector("video");
+    var button = box.querySelector("button");
+    var bar = box.lastElementChild && box.lastElementChild.firstElementChild;
+    var tag = box.querySelector(".p2m-tag");
+    var films = box.getAttribute("data-films").split("|").map(function (f) { var p = f.split("~"); return { src: p[0], poster: p[1], title: p[2] }; });
+    var index = 0, wanted = false, userPaused = false;
+    if (bar) { bar.setAttribute("data-bar", ""); bar.style.width = "0%"; }  // the design's mock-up showed a part-played film
+    function label() { button.setAttribute("aria-label", (video.paused ? "Play " : "Pause ") + films[index].title + " film"); }
+    function sync() { box.classList.toggle("is-playing", !video.paused); button.innerHTML = video.paused ? PLAY : PAUSE; label(); }
+    function play() { var p = video.play(); if (p && p.catch) p.catch(function () { sync(); }); }
+    video.addEventListener("play", sync);
+    video.addEventListener("pause", sync);
+    video.addEventListener("timeupdate", function () { if (bar && video.duration) bar.style.width = (100 * video.currentTime / video.duration) + "%"; });
+    if (films.length > 1) {
+      video.addEventListener("ended", function () {
+        index = (index + 1) % films.length;
+        video.src = films[index].src; video.poster = films[index].poster;
+        if (tag) tag.textContent = films[index].title;
+        play();
+      });
+    }
+    button.addEventListener("click", function () {
+      if (video.paused) { userPaused = false; video.preload = "auto"; play(); } else { userPaused = true; video.pause(); }
+    });
+    if (!still && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        wanted = entries[0].isIntersecting;
+        if (wanted && !userPaused) { video.preload = "auto"; play(); } else if (!wanted) { video.pause(); }
+      }, { threshold: 0.4 }).observe(box);
+    }
+    sync();
+  });
+})();
+
+// Nav dropdowns: one open at a time, and they close after a choice or a click elsewhere.
+(function () {
+  var menus = Array.prototype.slice.call(document.querySelectorAll("details.dd"));
+  menus.forEach(function (menu) {
+    menu.addEventListener("toggle", function () { if (menu.open) menus.forEach(function (m) { if (m !== menu) m.open = false; }); });
+    menu.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { menu.open = false; }); });
+  });
+  document.addEventListener("click", function (e) { menus.forEach(function (m) { if (m.open && !m.contains(e.target)) m.open = false; }); });
+})();
+
+// Free-clip form: up to 4 photos, shrunk in the browser, sent with the details to /api/free-clip (one free clip per
+// business; the function passes it on to the motion-clip form, which emails the studio). ?ref= tags the source.
+(function () {
+  var form = document.getElementById("p2m-form");
+  if (!form || !window.fetch || !window.FormData || !window.URL) return;
+  var picker = document.getElementById("fc-photos");
+  var status = document.getElementById("fc-photo-status");
+  var done = document.getElementById("fc-done");
+  var fail = document.getElementById("fc-fail");
+  var button = form.querySelector('[type="submit"]');
+  var hint = status.textContent;
+  var MAX = 4, EDGE = 1920, QUALITY = 0.82;
+  var MESSAGES = {
+    generic: "Something went wrong sending that. Try again, or email team@notbadstudio.com and we'll sort it.",
+    already: "Looks like your business has already had its free clip. Email team@notbadstudio.com and we'll quote for the next one.",
+    photo: "One of those photos didn't upload. Try a JPEG, or leave the photos out and we'll use your website."
+  };
+  var ref = new URLSearchParams(window.location.search);
+  var tag = ref.get("ref") || ref.get("utm_campaign") || ref.get("utm_source");
+  if (tag) form.querySelector('input[name="source"]').value = ("photo2motion-home:" + tag).slice(0, 100);
+
+  function shrink(file) {
+    return new Promise(function (resolve, reject) {
+      var source = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () {
+        var scale = Math.min(1, EDGE / Math.max(img.naturalWidth, img.naturalHeight));
+        var canvas = document.createElement("canvas");
+        canvas.width = Math.round(img.naturalWidth * scale);
+        canvas.height = Math.round(img.naturalHeight * scale);
+        canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+        URL.revokeObjectURL(source);
+        canvas.toBlob(function (blob) { blob ? resolve(blob) : reject(new Error("toBlob failed")); }, "image/jpeg", QUALITY);
+      };
+      img.onerror = function () { URL.revokeObjectURL(source); reject(new Error("unreadable image")); };
+      img.src = source;
+    });
+  }
+
+  picker.addEventListener("change", function () {
+    var n = (picker.files || []).length;
+    status.textContent = !n ? hint : n > MAX ? "Only 4 fit, so we'll send the first 4." : (n === 1 ? "1 photo added." : n + " photos added.");
+  });
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    var label = button.textContent;
+    button.disabled = true;
+    button.textContent = button.getAttribute("data-wait") || label;
+    fail.hidden = true;
+    var files = Array.prototype.slice.call(picker.files || []).slice(0, MAX);
+    Promise.all(files.map(function (f) { return shrink(f).catch(function () { return null; }); })).then(function (blobs) {
+      var data = new FormData(form);
+      blobs.forEach(function (blob, i) { if (blob) data.append("photo-" + (i + 1), blob, "photo-" + (i + 1) + ".jpg"); });
+      return fetch("/api/free-clip", { method: "POST", body: data });
+    }).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (body) { return { res: res, body: body }; });
+    }).then(function (reply) {
+      if (reply.res.ok && reply.body.ok) { form.hidden = true; done.hidden = false; done.scrollIntoView({ block: "center" }); return; }
+      var reason = reply.body.reason || "";
+      fail.textContent = reason === "already" ? MESSAGES.already : /photo/.test(reason) ? MESSAGES.photo : MESSAGES.generic;
+      fail.hidden = false;
+    }).catch(function (error) {
+      console.error(error);
+      fail.textContent = MESSAGES.generic;
+      fail.hidden = false;
+    }).then(function () { button.disabled = false; button.textContent = label; });
+  });
+})();
+</script>
+</body>
+</html>

@@ -15043,3 +15043,8 @@ figcaption {
     place-self: auto;
   }
 }
+
+/* Phones: the decorative squiggles, slide-in images and the nav's social links reach past the right edge of the
+   screen, which let iPhones pan the page sideways and show the teal background. Clip sideways overflow at the page
+   edge. "clip" rather than "hidden" so sticky and fixed elements keep working. Added after the move to Netlify. */
+html, body { overflow-x: clip; }
