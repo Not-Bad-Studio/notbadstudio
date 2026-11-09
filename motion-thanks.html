@@ -21,6 +21,10 @@ body { background: var(--mo-navy); }
 .mo-section .mo-narrow > *, .mo-section .mo-wrap > p { max-width: 760px; }
 .mo-section .mo-narrow > .mo-faq, .mo-section .mo-narrow > .mo-form { max-width: 880px; }
 .mo-hero .mo-h1 { max-width: 1040px !important; text-wrap: balance; }
+/* Hero centred: label, headline, lead and buttons (user preference, 9 November 2026). */
+.mo-hero .mo-narrow { text-align: center; }
+.mo-hero .mo-narrow > * { margin-left: auto; margin-right: auto; }
+.mo-hero .mo-actions { justify-content: center; }
 .mo-center { text-align: center; }
 .mo-section p { max-width: none; margin: 0 0 14px; font-size: 18px; line-height: 1.6; }
 .mo-label::before { content: ""; width: 24px; height: 10px; flex: none; background: var(--wave) no-repeat center / 24px 10px; }
@@ -124,7 +128,7 @@ body { background: var(--mo-navy); }
 .mo-section .mo-info h3 { color: var(--mo-navy); margin: 0 0 6px; }
 .mo-section .mo-info p { margin: 0; font-size: 17px; line-height: 1.5; color: var(--mo-slate); }
 .mo-section .mo-info p.mo-sector-credit { margin-top: 10px; font-size: 13px; line-height: 1.45; opacity: .85; }
-.mo-sector-photos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3px; }
+.mo-sector-photos { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 3px; }  /* one equal column per photo, so a 3-photo sector fills the row */
 .mo-sector-photos img { display: block; width: 100%; height: 100%; min-height: 110px; aspect-ratio: 3 / 2; object-fit: cover; }
 @media (max-width: 991px) {
   .mo-feature-films { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; gap: 12px; }
