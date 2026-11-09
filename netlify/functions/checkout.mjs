@@ -882,7 +882,7 @@ var pricing_default = {
   groups: [
     {
       name: "Packs",
-      note: "Paid up front, used within 12 months.",
+      note: "Pay once now, then use your films any time in the next 12 months.",
       plans: [
         {
           name: "Single film",
@@ -962,7 +962,7 @@ var pricing_default = {
     "Social cuts (9:16 and 1:1) for a single film: +\xA325"
   ],
   terms: "Prices exclude VAT where it applies. Packs arrive in daily batches: the first 5 films within 24 hours, then 5 a day.",
-  packNote: "Packs are paid up front and used within 12 months. Packs of 3 or more also include vertical and square cuts for social.",
+  packNote: "Pay once for a pack, then use the films any time in the next 12 months. Packs of 3 or more also include vertical and square cuts for social.",
   addonItems: [
     {
       id: "music",
@@ -1126,7 +1126,7 @@ async function takeOrder(req) {
   const order = String(body.order || "");
   const text = (key, max = 300) => String(body[key] || "").trim().slice(0, max);
   const email = text("email", 200), business = text("business", 200);
-  if (!UUID.test(order) || !email.includes("@") || !business) return json(req, { ok: false, reason: "missing" }, 400);
+  if (!UUID.test(order) || !email.includes("@")) return json(req, { ok: false, reason: "missing" }, 400);
   const price = priced(text("plan"), body.addons);
   if (price.reason) return json(req, { ok: false, reason: price.reason }, 400);
   const photos = Math.max(0, Math.min(MAX_PHOTOS, Number(body.photos) || 0));

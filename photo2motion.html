@@ -369,6 +369,8 @@ a{color:#16263F}a:hover{color:#E4572E}
 .p2mco-field textarea { min-height: 72px; resize: vertical; }
 .p2mco-field input:focus, .p2mco-field textarea:focus { outline: 2px solid #E4572E; outline-offset: 1px; }
 .p2mco-photos { font-size: 13px; color: #4F5A6B; }
+.p2mco-field.is-error input { border-color: #B23A21; outline: 2px solid #B23A21; outline-offset: 0; }
+.p2mco-field textarea::placeholder, .p2mco-field input::placeholder { color: #8B95A5; }
 .p2mco-terms { margin: 0; font-size: 13px; color: #4F5A6B; }
 .p2mco-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; padding: 16px 28px 22px; border-top: 1px solid rgba(22, 38, 63, .1); background: #FFFFFF; }
 .p2mco-go { display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 26px; border: 0; border-radius: 25px; background: #E4572E; color: #FFFFFF; font: 600 16px/1 Inter, system-ui, sans-serif; text-decoration: none; cursor: pointer; }
@@ -800,7 +802,7 @@ h1, h2, h3 { text-wrap: balance; }
 <span style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600">£850<span style="font-size: 18px; font-weight: 400; color: #AEB8C7"> a month</span></span>
 <div style="margin-top: auto; padding-top: 14px"><a class="p2m-buy" href="https://buy.stripe.com/14AeVe3md8d65AI1zr1VK07" target="_blank" rel="noopener" data-p2m-plan="10 films a month" aria-label="Subscribe to 10 films a month, £850" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 22px; box-sizing: border-box; background: transparent; color: #F3F1EC; border: 1.5px solid rgba(243,241,236,0.55); font-weight: 600; text-decoration: none">Subscribe</a></div></div>
 </div>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4F5A6B"><strong style="color: #16263F; font-weight: 600">Monthly plans</strong> are for a steady flow of new listings. Unused films carry over to the next month, and the minimum term is three months.<br><strong style="color: #16263F; font-weight: 600">Packs</strong> are paid up front and last 12 months.<br>Prices exclude VAT where it applies.</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4F5A6B"><strong style="color: #16263F; font-weight: 600">Monthly plans</strong> are for a steady flow of new listings. Unused films carry over to the next month, and the minimum term is three months.<br><strong style="color: #16263F; font-weight: 600">Packs</strong> are paid once, then you can use the films any time in the next 12 months.<br>Prices exclude VAT where it applies.</p>
 <div id="addons" style="display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid rgba(22,38,63,0.15)">
 <span style="font-size: 15px; font-weight: 600">Add-ons</span>
 <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #4F5A6B">Licensed music · Your logo · A round of tweaks · On-screen text or captions · 30-second cut from 6 to 8 photos · Social cuts (9:16 and 1:1) for a single film</p>
@@ -1155,7 +1157,7 @@ h1, h2, h3 { text-wrap: balance; }
 (function () {
   "use strict";
   var MAX_PHOTOS = 12, EDGE = 3000, QUALITY = 0.88;
-  var opts, dialog, state;
+  var opts, dialog, state, ticked = {};  // ticked: add-on ids kept between opens of the panel
 
   function el(tag, attrs, kids) {
     var node = document.createElement(tag);
@@ -1182,8 +1184,8 @@ h1, h2, h3 { text-wrap: balance; }
     return list;
   }
   function terms(plan) {
-    return (plan.unit ? "Unused films carry over to the next month, and the minimum term is three months. "
-      : "Paid up front, used within 12 months. ") + "Prices exclude VAT where it applies. Payment is by Stripe.";
+    return (plan.unit ? "Billed monthly, for at least three months. Films you don’t use carry over to the next month. "
+      : "Pay once now, then use your films any time in the next 12 months. ") + "Prices exclude VAT where it applies. Payment is by Stripe.";
   }
 
   function build() {
@@ -1199,11 +1201,11 @@ h1, h2, h3 { text-wrap: balance; }
       '<section><h3 class="p2mco-h">Your details</h3><div class="p2mco-fields">',
       '<label class="p2mco-field"><span>Your name</span><input id="p2mco-name" name="name" autocomplete="name"></label>',
       '<label class="p2mco-field"><span>Email</span><input id="p2mco-email" name="email" type="email" autocomplete="email" required></label>',
-      '<label class="p2mco-field"><span>Business</span><input id="p2mco-business" name="business" autocomplete="organization" required></label>',
+      '<label class="p2mco-field"><span>Business <em>(optional)</em></span><input id="p2mco-business" name="business" autocomplete="organization"></label>',
       '<label class="p2mco-field"><span>Website <em>(optional)</em></span><input id="p2mco-website" name="website" placeholder="yourbusiness.co.uk"></label>',
       '<label class="p2mco-field wide"><span>Your photos <em>(optional, up to 12)</em></span><input id="p2mco-photos" name="photos" type="file" accept="image/*" multiple>',
       '<span class="p2mco-photos">Add them now, or send them after paying. Originals work best.</span></label>',
-      '<label class="p2mco-field wide"><span>Which boats, properties or rooms? <em>(optional)</em></span><textarea id="p2mco-notes" name="notes" rows="3"></textarea></label>',
+      '<label class="p2mco-field wide"><span>What are the films of? <em>(optional)</em></span><textarea id="p2mco-notes" name="notes" rows="3" placeholder="For example: our three yachts, or rooms 1 to 5. We can also pick from your website."></textarea></label>',
       '<input type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px">',
       '</div></section><p class="p2mco-terms" id="p2mco-terms"></p>',
       '<div class="p2mco-fallback" id="p2mco-fallback" hidden></div></form>',
@@ -1214,10 +1216,19 @@ h1, h2, h3 { text-wrap: balance; }
     dialog.querySelector(".p2mco-close").addEventListener("click", close);
     dialog.addEventListener("close", function () { document.documentElement.classList.remove("p2mco-lock"); });
     dialog.addEventListener("click", function (e) { if (e.target === dialog) close(); }); // a click on the backdrop
-    dialog.querySelector("#p2mco-addons").addEventListener("change", total);
+    dialog.querySelector("#p2mco-addons").addEventListener("change", function (e) {
+      if (e.target && e.target.name === "addon") ticked[e.target.value] = e.target.checked;
+      total();
+    });
+    dialog.querySelector("#p2mco-email").addEventListener("input", function (e) { mark(e.target, false); });
     dialog.querySelector("#p2mco-form").addEventListener("submit", submit);
   }
   function $(id) { return dialog.querySelector("#" + id); }
+  // Flag (or clear) a field that needs fixing, on the field itself.
+  function mark(input, bad) {
+    input.closest(".p2mco-field").classList.toggle("is-error", bad);
+    if (bad) input.setAttribute("aria-invalid", "true"); else input.removeAttribute("aria-invalid");
+  }
   function status(text, error) { var s = $("p2mco-status"); s.textContent = text || ""; s.classList.toggle("is-error", Boolean(error)); }
 
   function open(name) {
@@ -1234,7 +1245,7 @@ h1, h2, h3 { text-wrap: balance; }
     var box = $("p2mco-addons"); box.textContent = "";
     addonsFor(plan).forEach(function (a) {
       box.appendChild(el("label", { class: "p2mco-addon" }, [
-        el("input", { type: "checkbox", name: "addon", value: a.id }),
+        el("input", { type: "checkbox", name: "addon", value: a.id, checked: Boolean(ticked[a.id]) }),
         el("b", { text: a.name }),
         el("span", { class: "p2mco-each", text: "+£" + a.price + (plan.films > 1 ? " a film" : "") }),
         el("small", { text: a.note || "" }),
@@ -1254,6 +1265,7 @@ h1, h2, h3 { text-wrap: balance; }
     total();
     document.documentElement.classList.add("p2mco-lock");
     dialog.showModal();
+    dialog.querySelector(".p2mco-body").scrollTop = 0;  // always open at the top, with the add-ons in view
     return true;
   }
   function close() { if (dialog && dialog.open) dialog.close(); }
@@ -1312,8 +1324,12 @@ h1, h2, h3 { text-wrap: balance; }
     e.preventDefault();
     if (state.busy) return;
     var form = $("p2mco-form"), email = $("p2mco-email"), business = $("p2mco-business");
-    if (!business.value.trim()) { status("Add your business name.", true); business.focus(); return; }
-    if (!/.+@.+\..+/.test(email.value.trim())) { status("Add an email we can reach you on.", true); email.focus(); return; }
+    if (!/.+@.+\..+/.test(email.value.trim())) {
+      mark(email, true);
+      status("Add an email we can reach you on.", true);
+      email.focus();
+      return;
+    }
     var files = Array.prototype.slice.call($("p2mco-photos").files || [], 0, MAX_PHOTOS);
     state.busy = true; $("p2mco-go").disabled = true;
     var order = uuid(), sent = 0;
@@ -1361,7 +1377,7 @@ h1, h2, h3 { text-wrap: balance; }
   };
 })();
 
-P2MCheckout.init({ pricing: {"heading": "Simple prices, 24-hour delivery", "includes": "Every film covers one boat, property or room: 15 to 20 seconds from 4 to 6 photos, in landscape (16:9) for your website, listings and ads. Packs of 3 or more also include vertical (9:16) and square (1:1) cuts for social. Your photographer is credited, and films arrive within 24 hours of your photos, Monday to Friday. Music, your logo and a round of tweaks are add-ons.", "includesList": ["A 15 to 20 second film from 4 to 6 photos", "Landscape (16:9) for your website, listings and ads", "Your photographer credited", "Back within 24 hours, Monday to Friday"], "groups": [{"name": "Packs", "note": "Paid up front, used within 12 months.", "plans": [{"name": "Single film", "price": "£175", "unit": "", "per": "£175 a film", "for": "One hero boat, villa or room", "payUrl": "https://buy.stripe.com/bJe00kbSJ2SM6EMba11VK02", "extra": "", "films": 1}, {"name": "3 films", "price": "£450", "unit": "", "per": "£150 a film", "for": "A hotel's best rooms, or a small fleet", "payUrl": "https://buy.stripe.com/eVq3cw2i9dxq5AI5PH1VK03", "extra": "Includes vertical and square social cuts", "films": 3}, {"name": "5 films", "price": "£650", "unit": "", "per": "£130 a film", "for": "Boat fleets and holiday-let portfolios", "payUrl": "https://buy.stripe.com/5kQ3cwg8Z2SMd3ace51VK04", "extra": "Includes vertical and square social cuts", "films": 5}, {"name": "10 films", "price": "£1,100", "unit": "", "per": "£110 a film", "for": "Bigger fleets and agencies", "payUrl": "https://buy.stripe.com/4gM9AU6ypbpi2owdi91VK05", "extra": "Includes vertical and square social cuts", "films": 10}]}, {"name": "Monthly", "note": "For a steady flow of new listings. Unused films carry over to the next month, and the minimum term is three months.", "plans": [{"name": "4 films a month", "price": "£395", "unit": "a month", "per": "About £99 a film", "for": "Letting and holiday-let agencies", "payUrl": "https://buy.stripe.com/dRm8wQ1e53WQ9QY7XP1VK06", "extra": "Includes vertical and square social cuts", "films": 4}, {"name": "10 films a month", "price": "£850", "unit": "a month", "per": "£85 a film", "for": "Larger agencies", "payUrl": "https://buy.stripe.com/14AeVe3md8d65AI1zr1VK07", "extra": "Includes vertical and square social cuts", "films": 10}]}], "addons": ["Licensed music: +£25", "Your logo: +£25", "A round of tweaks: +£35", "On-screen text or captions: +£25", "30-second cut from 6 to 8 photos: +£60", "Social cuts (9:16 and 1:1) for a single film: +£25"], "terms": "Prices exclude VAT where it applies. Packs arrive in daily batches: the first 5 films within 24 hours, then 5 a day.", "packNote": "Packs are paid up front and used within 12 months. Packs of 3 or more also include vertical and square cuts for social.", "addonItems": [{"id": "music", "name": "Licensed music", "price": 25, "note": "A licensed track under the film."}, {"id": "logo", "name": "Your logo", "price": 25, "note": "Your logo on the closing frame."}, {"id": "tweaks", "name": "A round of tweaks", "price": 35, "note": "One round of changes once you've seen it."}, {"id": "captions", "name": "On-screen text or captions", "price": 25, "note": "A line of text, a name or a price on screen."}, {"id": "long", "name": "30-second cut from 6 to 8 photos", "price": 60, "note": "A longer film, for a walk-through."}, {"id": "social", "name": "Social cuts (9:16 and 1:1)", "price": 25, "singleOnly": true, "note": "Vertical and square versions. Included with packs of 3 or more."}]}, api: "/api/checkout", source: "photo2motion-home", suggested: "5 films", suggestedLabel: "Recommended", freeClipUrl: "#free-clip" });
+P2MCheckout.init({ pricing: {"heading": "Simple prices, 24-hour delivery", "includes": "Every film covers one boat, property or room: 15 to 20 seconds from 4 to 6 photos, in landscape (16:9) for your website, listings and ads. Packs of 3 or more also include vertical (9:16) and square (1:1) cuts for social. Your photographer is credited, and films arrive within 24 hours of your photos, Monday to Friday. Music, your logo and a round of tweaks are add-ons.", "includesList": ["A 15 to 20 second film from 4 to 6 photos", "Landscape (16:9) for your website, listings and ads", "Your photographer credited", "Back within 24 hours, Monday to Friday"], "groups": [{"name": "Packs", "note": "Pay once now, then use your films any time in the next 12 months.", "plans": [{"name": "Single film", "price": "£175", "unit": "", "per": "£175 a film", "for": "One hero boat, villa or room", "payUrl": "https://buy.stripe.com/bJe00kbSJ2SM6EMba11VK02", "extra": "", "films": 1}, {"name": "3 films", "price": "£450", "unit": "", "per": "£150 a film", "for": "A hotel's best rooms, or a small fleet", "payUrl": "https://buy.stripe.com/eVq3cw2i9dxq5AI5PH1VK03", "extra": "Includes vertical and square social cuts", "films": 3}, {"name": "5 films", "price": "£650", "unit": "", "per": "£130 a film", "for": "Boat fleets and holiday-let portfolios", "payUrl": "https://buy.stripe.com/5kQ3cwg8Z2SMd3ace51VK04", "extra": "Includes vertical and square social cuts", "films": 5}, {"name": "10 films", "price": "£1,100", "unit": "", "per": "£110 a film", "for": "Bigger fleets and agencies", "payUrl": "https://buy.stripe.com/4gM9AU6ypbpi2owdi91VK05", "extra": "Includes vertical and square social cuts", "films": 10}]}, {"name": "Monthly", "note": "For a steady flow of new listings. Unused films carry over to the next month, and the minimum term is three months.", "plans": [{"name": "4 films a month", "price": "£395", "unit": "a month", "per": "About £99 a film", "for": "Letting and holiday-let agencies", "payUrl": "https://buy.stripe.com/dRm8wQ1e53WQ9QY7XP1VK06", "extra": "Includes vertical and square social cuts", "films": 4}, {"name": "10 films a month", "price": "£850", "unit": "a month", "per": "£85 a film", "for": "Larger agencies", "payUrl": "https://buy.stripe.com/14AeVe3md8d65AI1zr1VK07", "extra": "Includes vertical and square social cuts", "films": 10}]}], "addons": ["Licensed music: +£25", "Your logo: +£25", "A round of tweaks: +£35", "On-screen text or captions: +£25", "30-second cut from 6 to 8 photos: +£60", "Social cuts (9:16 and 1:1) for a single film: +£25"], "terms": "Prices exclude VAT where it applies. Packs arrive in daily batches: the first 5 films within 24 hours, then 5 a day.", "packNote": "Pay once for a pack, then use the films any time in the next 12 months. Packs of 3 or more also include vertical and square cuts for social.", "addonItems": [{"id": "music", "name": "Licensed music", "price": 25, "note": "A licensed track under the film."}, {"id": "logo", "name": "Your logo", "price": 25, "note": "Your logo on the closing frame."}, {"id": "tweaks", "name": "A round of tweaks", "price": 35, "note": "One round of changes once you've seen it."}, {"id": "captions", "name": "On-screen text or captions", "price": 25, "note": "A line of text, a name or a price on screen."}, {"id": "long", "name": "30-second cut from 6 to 8 photos", "price": 60, "note": "A longer film, for a walk-through."}, {"id": "social", "name": "Social cuts (9:16 and 1:1)", "price": 25, "singleOnly": true, "note": "Vertical and square versions. Included with packs of 3 or more."}]}, api: "/api/checkout", source: "photo2motion-home", suggested: "5 films", suggestedLabel: "Recommended", freeClipUrl: "#free-clip" });
 </script>
 </body>
 </html>
