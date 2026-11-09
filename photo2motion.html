@@ -404,6 +404,8 @@ h1, h2, h3 { text-wrap: balance; }
 #how [style*="auto-fit"] { gap: 24px !important; }
 #how [style*="auto-fit"] > div { background: #F3F1EC; border-radius: 12px; padding: 32px; }
 @media (max-width: 520px) { #how [style*="auto-fit"] { gap: 16px !important; } #how [style*="auto-fit"] > div { padding: 24px; } }
+.p2m-checklist li { position: relative; padding-left: 20px; }
+.p2m-checklist li::before { content: ""; position: absolute; left: 0; top: .62em; width: 7px; height: 7px; border-radius: 50%; background: #E4572E; }
 .p2m-burger, .p2m-menu { display: none; }
 @media (max-width: 860px) {
   /* holh: one row on phones: logo, the free-clip button, then the menu button. */
@@ -611,7 +613,7 @@ h1, h2, h3 { text-wrap: balance; }
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #E4572E; font-weight: 600">When it’s right</p>
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.02">Not a replacement for filming.</h2>
 </div>
-<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #4F5A6B">Photo2Motion is a service for the <strong style="color: #16263F; font-weight: 600">professional photography you already have</strong>. When a film shoot is out of budget or simply can’t happen, we turn those images into motion. When filming is the right call, we’ll tell you.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #4F5A6B">Photo2Motion is a service for the <strong style="color: #16263F; font-weight: 600">professional photography you already have</strong>. When a film shoot is out of budget or simply can’t happen, we turn those images into motion. When filming is the right call, we would recommend it.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 40px">
 <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 2px solid #16263F">
@@ -667,9 +669,9 @@ h1, h2, h3 { text-wrap: balance; }
 <div class="two" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end">
 <div style="display: flex; flex-direction: column; gap: 14px">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">Why motion</p>
-<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Movement gets<br class="bd"> seen first.</h2>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Bring your photos to life.</h2>
 </div>
-<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">People notice what starts to move before anything else on screen (Psychological Science, 2003). Stills still lead on listings and booking pages, and they’re what every film is made from. Motion gives your best photos a second job.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">People notice what moves before anything else on screen (Psychological Science, 2003). Motion brings the photos you already have to life: water catches the light, the camera drifts slowly through a room, trees move in the breeze. Nothing is added. It’s still your photograph, now moving.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 40px">
 <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 2px solid #E4572E">
@@ -733,7 +735,7 @@ h1, h2, h3 { text-wrap: balance; }
 <span style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600">£850<span style="font-size: 18px; font-weight: 400; color: #AEB8C7"> a month</span></span>
 </div>
 </div>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4F5A6B">For new listings every month. Unused films carry over one month; 3-month minimum. Packs are paid up front and used within 12 months. Prices exclude VAT where it applies.</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4F5A6B"><strong style="color: #16263F; font-weight: 600">Monthly plans</strong> are for a steady flow of new listings. Unused films carry over to the next month, and the minimum term is three months.<br><strong style="color: #16263F; font-weight: 600">Packs</strong> are paid up front and last 12 months.<br>Prices exclude VAT where it applies.</p>
 <div id="addons" style="display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid rgba(22,38,63,0.15)">
 <span style="font-size: 15px; font-weight: 600">Add-ons</span>
 <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #4F5A6B">Social cuts (9:16 and 1:1) for a single film · 30-second cut from 6 to 8 photos · Extra round of edits · On-screen text or captions</p>
@@ -760,6 +762,11 @@ h1, h2, h3 { text-wrap: balance; }
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #AEB8C7">Free clip</p>
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">See your own photos in motion.</h2>
 <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #DCE2EA">Add four photos, or just your website. We’ll send back a short film within 24 hours, Monday to Friday, and a price<br class="bd"> for the rest if you want it. One free clip per business.</p>
+<div class="p2m-checklist" style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px; padding-top: 24px; border-top: 1px solid rgba(243,241,236,0.15)">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #FF8A63; font-weight: 600">What works best</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; font-size: 16px; line-height: 1.5; color: #DCE2EA"><li>Professional photos, the originals rather than screenshots, at least 2000 pixels on the long side.</li><li>One boat, property or room, from a few angles: outside, inside and a detail.</li><li>No one in the shot. Distant silhouettes are fine.</li><li>Sharp, bright and level. A soft or dark photo makes a soft or dark film.</li></ul>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #AEB8C7">The film is only as good as the photos. If yours won’t work well, we’ll tell you before we make anything.</p>
+</div>
 </div>
 <div class="p2m-form-wrap"><form id="p2m-form" novalidate style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 18px"><input type="hidden" name="source" value="photo2motion-home"><p hidden><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 <div style="display: flex; flex-direction: column; gap: 6px">
@@ -801,8 +808,8 @@ h1, h2, h3 { text-wrap: balance; }
 </div>
 <div style="display: flex; flex-direction: column; gap: 18px">
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Why Photo2Motion exists.</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">We kept seeing the same thing. Businesses pay for beautiful professional photography, then use it once. Meanwhile the places people actually look are filling up with video, and a film shoot isn’t always practical: the yacht is out on charter, the house sells before a crew can be booked,<br class="bd"> or the budget isn’t there.</p>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">Photo2Motion is a Not Bad Studio service that gives those photos a second job. It was built by the same team, in London and Mallorca, for clients whose images deserve more than one use.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">We saw our clients pay for beautiful professional photography, then use it once. Meanwhile the places people actually look are filling up with video, and a film shoot isn’t always practical: the yacht is out on charter, the house sells before a crew can be booked,<br class="bd"> or the budget isn’t there.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">Photo2Motion is a Not Bad Studio service that enhances existing professional photography, built by the same team for clients whose images deserve more than one use.</p>
 <a href="https://www.notbadstudio.com/" style="align-self: flex-start; font-weight: 600">Visit Not Bad Studio <span class="p2m-arrow" aria-hidden="true">→</span></a>
 </div>
 </div>
