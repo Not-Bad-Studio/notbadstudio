@@ -399,6 +399,11 @@ p, li, span, summary { text-wrap: pretty; }   /* akqo: no lone last words */
 h1, h2, h3 { text-wrap: balance; }
 @media (max-width: 1099px) { br.bd { display: none; } }   /* desktop-only line breaks */
 @media (min-width: 861px) { br.bm { display: none; } }    /* phone-only line breaks */
+/* "put the how 2 stages in subtle containers" (9 Nov 2026): each How it works step in a paper panel, like the
+   sector cards in Why now (32px padding, 12px corners, #F3F1EC), a tighter gap so the three read as a set. */
+#how [style*="auto-fit"] { gap: 24px !important; }
+#how [style*="auto-fit"] > div { background: #F3F1EC; border-radius: 12px; padding: 32px; }
+@media (max-width: 520px) { #how [style*="auto-fit"] { gap: 16px !important; } #how [style*="auto-fit"] > div { padding: 24px; } }
 .p2m-burger, .p2m-menu { display: none; }
 @media (max-width: 860px) {
   /* holh: one row on phones: logo, the free-clip button, then the menu button. */
@@ -647,12 +652,12 @@ h1, h2, h3 { text-wrap: balance; }
 <div style="display: flex; flex-direction: column; gap: 12px">
 <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #E4572E">02</span>
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">We make your film</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Within 24 hours, checked by a person. Nothing added, and no one in your<br class="bd"> photos is animated.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Within 24 hours, checked by a person. Nothing added, and no one in your photos is animated.</p>
 </div>
 <div style="display: flex; flex-direction: column; gap: 12px">
 <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #E4572E">03</span>
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">Keep it</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Download it free with our end card,<br class="bm"> buy the clean film, or get a pack for<br class="bd"> everything you have.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Download it free with our end card, buy the clean film, or get a pack for<br class="bd"> everything you have.</p>
 </div>
 </div>
 </div>
