@@ -13,6 +13,7 @@ https://photo2motion.studio/fonts/*      /fonts/:splat                          
 https://photo2motion.studio/images/*     /images/:splat                         200!
 https://photo2motion.studio/videos/*     /videos/:splat                         200!
 https://photo2motion.studio/api/*        /api/:splat                            200!
+https://photo2motion.studio/thanks       /p2m-thanks.html                       200!
 https://photo2motion.studio/*            https://www.notbadstudio.com/:splat    301!
 https://www.notbadstudio.com/photo2motion       https://photo2motion.studio/    301!
 https://www.notbadstudio.com/photo2motion.html  https://photo2motion.studio/    301!
@@ -21,6 +22,10 @@ https://notbadstudio.com/photo2motion           https://photo2motion.studio/    
 # The NBS end card on downloaded films still reads notbadstudio.com/motion, so this must stay.
 /motion                                         https://photo2motion.studio/    301!
 /motion.html                                    https://photo2motion.studio/    301!
+# Stripe's payment links send buyers to notbadstudio.com/motion-thanks after paying; that forwards to the
+# Photo2Motion thank-you page (built by build_p2m_home.py as p2m-thanks.html). Keep both rules.
+/motion-thanks                                  https://photo2motion.studio/thanks    301!
+/motion-thanks.html                             https://photo2motion.studio/thanks    301!
 
 /archive/old-home  /  301
 /archive/our-work-old  /our-work  301

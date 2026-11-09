@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Payment received · Photo2Motion</title>
+<meta name="description" content="Cinematic short films made from the photography you already have, for property, marine and stays. Directed and checked by people, delivered in 24 hours. Your first clip is free.">
+<meta property="og:title" content="Photo2Motion · Your professional photos, in motion">
+<meta property="og:description" content="Cinematic short films made from the photography you already have, for property, marine and stays. Directed and checked by people, delivered in 24 hours. Your first clip is free.">
+<meta property="og:image" content="https://www.notbadstudio.com/images/motion-real-estate.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F3F1EC">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 104'><rect x='4' y='4' width='132' height='96' rx='8' fill='%23F3F1EC' stroke='%2316263F' stroke-width='8'/><circle cx='104' cy='32' r='11' fill='%23E4572E'/><path d='M14 72 L44 46 L66 64 L80 54 L126 82' fill='none' stroke='%2316263F' stroke-width='8' stroke-linejoin='round' stroke-linecap='round'/></svg>">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Built by ~/Sites/motion-demos/tools/build_p2m_home.py from design/p2m-home; edit there, not here. -->
+<style>
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/p2m-inter-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/p2m-inter-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/p2m-inter-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/p2m-space-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/p2m-space-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/p2m-space-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/p2m-space-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---- */
+
+body{margin:0}
+a{color:#16263F}a:hover{color:#E4572E}
+.dd summary::-webkit-details-marker{display:none}
+.dd-panel a:hover{background:#F3F1EC}
+@media (max-width: 860px){
+.nav{grid-template-columns:1fr !important;justify-items:center;row-gap:8px}
+.nav-l,.nav-r{justify-content:center !important;flex-wrap:wrap}
+.nav-logo{order:-1}
+.two{grid-template-columns:1fr !important;gap:32px !important}
+.hero h1{font-size:44px !important}
+}
+
+/* ---- */
+
+
+/* Added by build_p2m_home.py: films, photos, form states and phone layout. The design's own styles are inline. */
+html { scroll-behavior: smooth; }
+/* Nothing should let a phone pan the page sideways; clip (not hidden) keeps the sticky header working. */
+html, body { overflow-x: clip; }
+section[id], #top { scroll-margin-top: 88px; }
+.p2m-film { overflow: hidden; isolation: isolate; }
+.p2m-film .p2m-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.p2m-film::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(22,38,63,.55) 0%, rgba(22,38,63,0) 30%, rgba(22,38,63,0) 70%, rgba(22,38,63,.55) 100%); }
+.p2m-film .p2m-tag { color: #F3F1EC !important; }
+.p2m-film button { transition: transform .15s ease, opacity .2s ease; }
+.p2m-film button:hover { transform: scale(1.06); }
+.p2m-film.is-playing button { opacity: 0; }
+.p2m-film.is-playing:hover button, .p2m-film.is-playing button:focus-visible { opacity: 1; }
+.p2m-film [data-bar] { transition: width .25s linear; }
+#p2m-form input::placeholder { color: rgba(243,241,236,.45); }
+#p2m-form input:focus, #p2m-form select:focus { outline: 2px solid #E4572E; outline-offset: 1px; }
+#p2m-form select option { color: #16263F; }
+#p2m-form button[disabled] { opacity: .7; cursor: wait; }
+#p2m-form[hidden], .p2m-msg[hidden] { display: none !important; }  /* the form's inline display: grid beats [hidden] */
+.dd[open] > summary svg { transform: rotate(180deg); }
+@media (max-width: 860px) {
+  /* The design stacks the nav into three rows on phones; pinned, that covers a quarter of the screen. */
+  header[style*="position: sticky"] { position: static !important; }
+  section[id], #top { scroll-margin-top: 16px; }
+  [style*="repeat(4, 1fr)"]:not(.p2m-photos), [style*="repeat(3, 1fr)"]:not(.p2m-photos) { grid-template-columns: 1fr 1fr !important; }
+  #why-now h2, #when h2, #how h2, #why h2, #pricing h2, #questions h2, #free-clip h2, #developed h2 { font-size: 38px !important; }
+  section[style*="padding: 112px 0"], section[style*="padding-top: 112px"] { padding-top: 72px !important; padding-bottom: 72px !important; }
+  .p2m-photos { gap: 6px !important; }
+}
+@media (max-width: 520px) {
+  [style*="repeat(4, 1fr)"]:not(.p2m-photos), [style*="repeat(3, 1fr)"]:not(.p2m-photos) { grid-template-columns: 1fr !important; }
+  .p2m-film button { width: 56px !important; height: 56px !important; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+
+/* Added by build_p2m_home.py: subtle motion (see FX_CSS in the builder). */
+:root { --p2m-ease: cubic-bezier(.22, .61, .36, 1); }
+header { transition: box-shadow .35s ease; }
+.p2m-scrolled header { box-shadow: 0 1px 0 rgba(22, 38, 63, .06), 0 8px 24px rgba(22, 38, 63, .06); }
+.p2m-btn { transition: transform .25s var(--p2m-ease), box-shadow .25s var(--p2m-ease), filter .25s ease; }
+.p2m-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(228, 87, 46, .22); filter: brightness(1.03); }
+.p2m-card { transition: transform .4s var(--p2m-ease), box-shadow .4s var(--p2m-ease); }
+.p2m-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(22, 38, 63, .08); }
+.p2m-arrow { display: inline-block; transition: transform .3s var(--p2m-ease); }
+a:hover > .p2m-arrow { transform: translateX(3px); }
+@media (prefers-reduced-motion: no-preference) {
+  .fx .p2m-rv { opacity: 0; transform: translateY(14px);
+    transition: opacity .9s var(--p2m-ease), transform .9s var(--p2m-ease); transition-delay: calc(var(--p2m-i, 0) * 90ms); }
+  .fx .p2m-rv.p2m-in { opacity: 1; transform: none; }
+  .fx .p2m-settle { animation: p2m-settle 1s var(--p2m-ease) both; animation-delay: calc(var(--p2m-i, 0) * 110ms + 80ms); }
+  details[open] > :not(summary) { animation: p2m-fade .35s ease both; }
+  @keyframes p2m-settle { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes p2m-fade { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .p2m-btn, .p2m-card, .p2m-arrow, header { transition: none; }
+  .p2m-btn:hover, .p2m-card:hover, a:hover > .p2m-arrow { transform: none; }
+}
+
+
+/* Added by build_p2m_home.py: the user's amendments of 9 November 2026 (see AMENDMENTS in the builder). */
+p, li, span, summary { text-wrap: pretty; }   /* akqo: no lone last words */
+h1, h2, h3 { text-wrap: balance; }
+@media (max-width: 1099px) { br.bd { display: none; } }   /* desktop-only line breaks */
+@media (min-width: 861px) { br.bm { display: none; } }    /* phone-only line breaks */
+/* "put the how 2 stages in subtle containers" (9 Nov 2026): each How it works step in a paper panel, like the
+   sector cards in Why now (32px padding, 12px corners, #F3F1EC), a tighter gap so the three read as a set. */
+#how [style*="auto-fit"] { gap: 24px !important; }
+#how [style*="auto-fit"] > div { background: #F3F1EC; border-radius: 12px; padding: 32px; }
+@media (max-width: 520px) { #how [style*="auto-fit"] { gap: 16px !important; } #how [style*="auto-fit"] > div { padding: 24px; } }
+#what-works [style*="repeat(4, 1fr)"] > div { background: #F3F1EC; border-radius: 12px; padding: 28px; }
+@media (max-width: 1100px) { #what-works [style*="repeat(4, 1fr)"] { grid-template-columns: 1fr 1fr !important; } }
+@media (max-width: 520px) { #what-works [style*="repeat(4, 1fr)"] { grid-template-columns: 1fr !important; } }
+@media (max-width: 860px) { #what-works h2 { font-size: 38px !important; } #what-works [style*="repeat(4, 1fr)"] { gap: 16px !important; } #what-works [style*="repeat(4, 1fr)"] > div { padding: 24px; } }
+@media (max-width: 860px) { #thanks { padding: 64px 32px !important; gap: 32px !important; } #thanks h1 { font-size: 40px !important; } #thanks [style*="repeat(3, 1fr)"] > div { padding: 24px !important; } }
+.p2m-burger, .p2m-menu { display: none; }
+@media (max-width: 860px) {
+  /* holh: one row on phones: logo, the free-clip button, then the menu button. */
+  header[style*="position: sticky"] { position: relative !important; }
+  header nav.nav { display: flex !important; align-items: center; gap: 10px; padding: 10px 16px !important; }
+  header .nav-l { display: none !important; }
+  header .nav-logo { order: -1; margin-right: auto; gap: 10px !important; }
+  header .nav-logo span { font-size: 20px !important; }
+  header .nav-logo svg { width: 36px; height: auto; }
+  header .nav-r { gap: 0 !important; }
+  header .nav-r > :not(a[style*="#E4572E"]) { display: none !important; }
+  header .nav-r > a[style*="#E4572E"] { height: 40px !important; padding: 0 16px !important; font-size: 14px; white-space: nowrap; }
+  .p2m-burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px;
+    margin-right: -10px; padding: 0 11px; border: 0; background: none; cursor: pointer; }
+  .p2m-burger span { display: block; height: 2px; border-radius: 1px; background: #16263F; transition: transform .25s ease, opacity .2s ease; }
+  .p2m-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .p2m-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .p2m-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .p2m-menu:not([hidden]) { display: block; position: absolute; left: 0; right: 0; top: 100%; z-index: 30; background: #F3F1EC;
+    border-bottom: 1px solid rgba(22,38,63,.1); box-shadow: 0 18px 30px rgba(22,38,63,.08); max-height: calc(100vh - 64px); overflow-y: auto;
+    animation: p2m-menu .25s ease both; }
+  .p2m-menu-in { padding: 4px 16px 20px; display: grid; gap: 14px; }
+  .p2m-menu-group { display: grid; }
+  .p2m-menu-head { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #4F5A6B; padding: 12px 0 2px; }
+  .p2m-menu a { padding: 11px 0; font-size: 17px; color: #16263F; text-decoration: none; border-bottom: 1px solid rgba(22,38,63,.08); }
+  @keyframes p2m-menu { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  /* 4ce3: sector sections read label, headline, film, copy, photos (2 by 2), credit, button. */
+  .p2m-sector { display: flex !important; flex-direction: column; align-items: stretch !important; gap: 14px !important; }
+  .p2m-sector > div:not(.p2m-film), .p2m-sector > div:not(.p2m-film) > div { display: contents !important; }
+  .p2m-sector > div > p:first-child { order: 1; }
+  .p2m-sector h3 { order: 2; }
+  .p2m-sector > .p2m-film { order: 3; margin: 6px 0; }
+  .p2m-sector > div > p:not(:first-child) { order: 4; }
+  .p2m-sector .p2m-photos { order: 5; }
+  .p2m-sector > div > div > span { order: 6; }
+  .p2m-sector > div > a { order: 7; margin-top: 4px; }
+  .p2m-photos[style*="repeat(4, 1fr)"] { grid-template-columns: 1fr 1fr !important; }  /* n3r7: 2 by 2 */
+}
+@media (max-width: 380px) {
+  /* Smaller phones (360px Android): a tighter header so the menu button stays on screen. */
+  header nav.nav { gap: 6px !important; padding: 10px 12px !important; }
+  header .nav-logo { gap: 8px !important; }
+  header .nav-logo span { font-size: 17px !important; }
+  header .nav-logo svg { width: 30px; }
+  header .nav-r > a[style*="#E4572E"] { height: 36px !important; padding: 0 12px !important; font-size: 13px; }
+  .p2m-burger { width: 40px; padding: 0 9px; margin-right: -8px; }
+}
+@media (max-width: 349px) { header .nav-logo span { display: none; } }   /* 320px: the mark alone */
+@media (prefers-reduced-motion: reduce) { .p2m-burger span { transition: none; } .p2m-menu:not([hidden]) { animation: none; } }
+
+</style>
+</head>
+<body>
+<div style="background: #F3F1EC; color: #16263F; font-family: Inter, system-ui, sans-serif">
+<header style="position: sticky; top: 0; z-index: 20; background: #F3F1EC; border-bottom: 1px solid rgba(22,38,63,0.1)">
+<nav aria-label="Photo2Motion" class="nav" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; max-width: 1280px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding-top: 14px; padding-bottom: 14px">
+<div class="nav-l" style="display: flex; align-items: center; gap: 20px">
+<details class="dd" style="position: relative">
+<summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">Sectors<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="/#why-now" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Why now</a><a href="/#property" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Property</a><a href="/#charters" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Marine</a><a href="/#stays" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Stays</a></div>
+</details>
+<details class="dd" style="position: relative">
+<summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">How it works<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="/#how" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Three steps</a><a href="/#when" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">When it’s right</a><a href="/#why" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Why motion</a><a href="/#questions" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Questions</a><a href="/#what-works" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">What works best</a></div>
+</details>
+</div>
+<a href="/#top" class="nav-logo" aria-label="Photo2Motion home" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #16263F">
+<svg width="44" height="33" viewBox="0 0 140 104" aria-hidden="true">
+<rect x="4" y="4" width="132" height="96" rx="8" fill="none" stroke="#16263F" stroke-width="8"></rect>
+<circle cx="104" cy="32" r="11" fill="#E4572E"></circle>
+<path d="M14 72 L44 46 L66 64 L80 54 L126 82" fill="none" stroke="#16263F" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"></path>
+<line x1="18" y1="88" x2="122" y2="88" stroke="#16263F" stroke-opacity="0.25" stroke-width="7" stroke-linecap="round"></line>
+<line x1="18" y1="88" x2="72" y2="88" stroke="#E4572E" stroke-width="7" stroke-linecap="round"></line>
+<circle cx="72" cy="88" r="9" fill="#E4572E"></circle>
+</svg>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: -0.03em">Photo2Motion</span>
+</a>
+<div class="nav-r" style="display: flex; align-items: center; justify-content: flex-end; gap: 20px">
+<details class="dd" style="position: relative">
+<summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">Pricing<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="/#pricing" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Packs</a><a href="/#monthly" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Monthly</a><a href="/#addons" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Add-ons</a></div>
+</details>
+<a href="/#developed" style="padding: 12px 8px; font-size: 15px; font-weight: 500; text-decoration: none">About</a>
+<a href="/#free-clip" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 22px; background: #E4572E; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none">Get a free clip</a>
+</div>
+<button type="button" class="p2m-burger" aria-label="Menu" aria-expanded="false" aria-controls="p2m-menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="p2m-menu" id="p2m-menu" hidden><div class="p2m-menu-in"><div class="p2m-menu-group"><span class="p2m-menu-head">Sectors</span><a href="/#why-now">Why now</a><a href="/#property">Property</a><a href="/#charters">Marine</a><a href="/#stays">Stays</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">How it works</span><a href="/#how">Three steps</a><a href="/#when">When it’s right</a><a href="/#why">Why motion</a><a href="/#questions">Questions</a><a href="/#what-works">What works best</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">Pricing</span><a href="/#pricing">Packs</a><a href="/#monthly">Monthly</a><a href="/#addons">Add-ons</a></div><div class="p2m-menu-group"><a href="/#developed">About</a></div></div></div>
+</header>
+<main>
+<section id="thanks" style="max-width: 1200px; margin: 0 auto; padding: 112px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 720px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #E4572E; font-weight: 600">Payment received</p>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 64px; font-weight: 600; letter-spacing: -0.035em; line-height: 1.02">Thank you. Your films are booked in.</h1>
+<p style="margin: 0; font-size: 20px; line-height: 1.55; color: #4F5A6B">Your receipt is on its way from Stripe. Here’s what happens next.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 12px; background: #FFFFFF; border-radius: 12px; padding: 32px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #E4572E">01</span>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">Send us your photos</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Email team@photo2motion.studio with a link to the photos (your website, a folder or WeTransfer) and which boat, property or room each film is for. <a href="/#what-works" style="color: #16263F; font-weight: 600">What works best</a></p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; background: #FFFFFF; border-radius: 12px; padding: 32px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #E4572E">02</span>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">We confirm the details</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">We reply within one working day with the photos we’ll use and what will move, so there are no surprises.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; background: #FFFFFF; border-radius: 12px; padding: 32px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #E4572E">03</span>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">Your films arrive</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Within 24 hours of your photos, Monday to Friday, in 16:9 for your website, listings and ads. Bigger packs arrive five a day. One round of tweaks is included.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px">
+<a href="mailto:team@photo2motion.studio?subject=Photos%20for%20my%20films" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 26px; background: #E4572E; color: #FFFFFF; font-weight: 600; text-decoration: none">Email your photos</a>
+<span style="font-size: 15px; color: #4F5A6B">team@photo2motion.studio</span>
+<a href="/" style="margin-left: auto; font-weight: 600; color: #16263F">Back to Photo2Motion</a>
+</div>
+</section>
+</main>
+<footer style="background: #16263F; color: #F3F1EC; padding: 64px 0 40px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px">
+<svg width="44" height="33" viewBox="0 0 140 104" aria-hidden="true">
+<rect x="4" y="4" width="132" height="96" rx="8" fill="none" stroke="#F3F1EC" stroke-width="8"></rect>
+<circle cx="104" cy="32" r="11" fill="#E4572E"></circle>
+<path d="M14 72 L44 46 L66 64 L80 54 L126 82" fill="none" stroke="#F3F1EC" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"></path>
+<line x1="18" y1="88" x2="122" y2="88" stroke="#F3F1EC" stroke-opacity="0.25" stroke-width="7" stroke-linecap="round"></line>
+<line x1="18" y1="88" x2="72" y2="88" stroke="#E4572E" stroke-width="7" stroke-linecap="round"></line>
+<circle cx="72" cy="88" r="9" fill="#E4572E"></circle>
+</svg>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.03em">Photo2Motion</span>
+</div>
+<span style="font-size: 14px; color: #AEB8C7">Your professional photos, in motion.</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7">Service</span>
+<a href="/#property" style="color: #F3F1EC; text-decoration: none">Property</a>
+<a href="/#charters" style="color: #F3F1EC; text-decoration: none">Marine</a>
+<a href="/#stays" style="color: #F3F1EC; text-decoration: none">Stays</a>
+<a href="/#pricing" style="color: #F3F1EC; text-decoration: none">Pricing</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7">Not Bad Studio</span>
+<a href="https://www.notbadstudio.com/studio" style="color: #F3F1EC; text-decoration: none">Studio</a>
+<a href="https://www.notbadstudio.com/services" style="color: #F3F1EC; text-decoration: none">Services</a>
+<a href="https://www.notbadstudio.com/our-work" style="color: #F3F1EC; text-decoration: none">Our work</a>
+<a href="https://www.notbadstudio.com/contact" style="color: #F3F1EC; text-decoration: none">Contact</a>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; padding-top: 24px; border-top: 1px solid rgba(243,241,236,0.15)">
+<div style="display: flex; align-items: center; gap: 14px">
+<span style="font-size: 13px; color: #AEB8C7">A service by</span>
+<a href="https://www.notbadstudio.com/" aria-label="Not Bad Studio"><svg role="img" aria-label="Not Bad Studio" style="display: block; height: 30px; width: auto; color: #F3F1EC" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 422.5 97.1"> <g> <g> <path fill="currentColor" d="M400.3,84.5H22.7v-71h377.7v71H400.3z M26.8,80.4h369.5V17.6H26.8V80.4z"/> </g> <g> <path fill="currentColor" d="M135.6,56.5V28.8h7.7c5.8,0,8.8,2.5,8.8,7.7c0,2.4-0.8,4.4-2.8,5.6v0.1c2.3,1.1,3.7,3.3,3.7,5.8 c0,4.7-2.8,8.5-9.6,8.5C143.4,56.5,135.6,56.5,135.6,56.5z M142.7,40.2c3.3,0,4.2-1.6,4.2-3.6c0-1.9-1-2.9-4.3-2.9h-1.9v6.5H142.7 z M143.8,51.6c3.3,0,4.2-1.7,4.2-3.6c0-1.9-1-3.3-4.3-3.3h-3.1v6.9C140.6,51.6,143.8,51.6,143.8,51.6z"/> <path fill="currentColor" d="M177,56.5l-0.9-4.4h-6.4l-0.9,4.4h-5.4l6.6-27.8h5.9l6.6,27.8H177z M173.3,38.5c-0.2-0.8-0.4-2.4-0.4-2.4 h-0.1c0,0-0.2,1.6-0.4,2.4l-1.9,9.1h4.6L173.3,38.5z"/> <path fill="currentColor" d="M193.9,56.5V28.8h7.2c7.7,0,10.2,6.7,10.2,13.9s-2.5,13.9-10.2,13.9L193.9,56.5L193.9,56.5z M201.1,51.6 c3.5,0,5-3.9,5-8.9s-1.5-8.9-5-8.9h-2v17.8C199.1,51.6,201.1,51.6,201.1,51.6z"/> </g> <g> <path fill="currentColor" d="M53.3,56.5L46.2,41c-0.3-0.8-0.7-1.9-0.7-1.9h-0.1c0,0,0,1.2,0,2.1v15.4h-4.6V28.8h4.9l7,15.2 c0.3,0.7,0.7,1.9,0.7,1.9h0.1c0-0.2,0-1.3,0-2v-15h4.6v27.8h-4.8V56.5z"/> <path fill="currentColor" d="M70.8,42.7c0-7.6,2.3-14.3,9.6-14.3c7.3,0,9.6,6.7,9.6,14.3S87.7,57,80.4,57C73.1,56.9,70.8,50.3,70.8,42.7z M84.7,42.7c0-5.8-1.2-9.3-4.4-9.3c-3.2,0-4.4,3.5-4.4,9.3s1.3,9.3,4.4,9.3C83.5,52,84.7,48.4,84.7,42.7z"/> <path fill="currentColor" d="M104.9,56.5V33.7H100v-5h15v5h-5v22.8H104.9z"/> </g> <g> <path fill="currentColor" d="M234.7,48.9c0.7,2.1,2.4,3.5,4.4,3.5c2.1,0,3.6-1,3.6-3.1c0-4.5-11.5-4.5-11.5-12.9c0-4.3,3.1-7.6,7.7-7.6 c4.5,0,7.1,2.5,8.4,6l-4.5,2.8c-0.7-2.3-1.9-3.8-4-3.8c-1.5,0-2.5,0.9-2.5,2.5c0,4.9,11.5,3.9,11.5,13.1c0,4.9-3.6,8.1-8.8,8.1 c-4.3,0-7.4-2.2-8.8-5.5L234.7,48.9z"/> <path fill="currentColor" d="M262.3,57V34.2h-4.9v-5h15v5h-4.9V57H262.3z"/> <path fill="currentColor" d="M296.5,29.2h5.2v18.5c0,6.7-3.6,9.6-8.4,9.6s-8.6-2.9-8.6-9.7V29.2h5.2V48c0,2.7,1,4.4,3.4,4.4 c2.5,0,3.4-1.8,3.4-4.5V29.2H296.5z"/> <path fill="currentColor" d="M316,57V29.2h7.2c7.7,0,10.2,6.7,10.2,13.9S330.8,57,323.1,57H316z M323.1,52c3.5,0,5-3.9,5-8.9 s-1.5-8.9-5-8.9h-2V52H323.1z"/> <path fill="currentColor" d="M346.2,57V29.2h5.2V57H346.2z"/> <path fill="currentColor" d="M364,43.1c0-7.6,2.3-14.3,9.6-14.3c7.3,0,9.6,6.7,9.6,14.3s-2.3,14.3-9.6,14.3C366.3,57.4,364,50.7,364,43.1z M378,43.1c0-5.8-1.2-9.3-4.4-9.3c-3.2,0-4.4,3.5-4.4,9.3s1.3,9.3,4.4,9.3C376.7,52.4,378,48.9,378,43.1z"/> </g> <rect x="39.4" y="65.5" fill="currentColor" width="344.7" height="4.2"/> <g> <path fill="currentColor" d="M404.1,17.1v-4.9h-1v-1.1h3.2v1.1h-1v4.9H404.1z"/> <path fill="currentColor" d="M410.8,17.1v-3.7c0-0.2,0-0.4,0-0.4l0,0c0,0-0.1,0.2-0.2,0.3l-1,1.7l0,0l-1-1.7c-0.1-0.1-0.2-0.4-0.2-0.4l0,0 c0,0,0,0.2,0,0.4V17h-1.1v-5.9h1.2l0.9,1.6c0.1,0.1,0.2,0.4,0.2,0.4l0,0c0,0,0.1-0.2,0.2-0.4l0.9-1.6h1.2V17L410.8,17.1 L410.8,17.1z"/> </g> </g> </svg></a>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px">
+<a href="https://www.notbadstudio.com/privacy-policy" style="color: #AEB8C7">Privacy policy</a>
+<a href="https://www.notbadstudio.com/cookies" style="color: #AEB8C7">Cookie policy</a>
+<span style="color: #AEB8C7">© Not Bad Studio</span>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script>
+// Subtle motion: tag the buttons and sector cards for their hover, give the header its shadow once the page scrolls,
+// settle the hero in, and fade blocks up as they come into view. Anything already on screen when the page opens is
+// left alone (no flash), and with reduced motion or no IntersectionObserver nothing is hidden at all.
+(function () {
+  var root = document.documentElement;
+  document.querySelectorAll('a[style*="background: #E4572E"], #p2m-form button[type="submit"]').forEach(function (el) {
+    el.classList.add("p2m-btn");
+  });
+  document.querySelectorAll('#why-now [style*="repeat(auto-fit"] > a').forEach(function (el) { el.classList.add("p2m-card"); });
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { root.classList.toggle("p2m-scrolled", window.scrollY > 8); ticking = false; });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if (!("IntersectionObserver" in window) || (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+  root.classList.add("fx");
+
+  var hero = document.getElementById("top");
+  if (hero) [].forEach.call(hero.children, function (el, i) { el.style.setProperty("--p2m-i", Math.min(i, 4)); el.classList.add("p2m-settle"); });
+
+  var selectors = [
+    'section:not(#top) .two > *', '[style*="repeat(auto-fit"]:not(form) > *', '#monthly > *',
+    '#questions h2', '#questions details', '#why-now [style*="background: #16263F"]', '#addons'
+  ];
+  var seen = [], below = window.innerHeight * 0.92;
+  document.querySelectorAll(selectors.join(",")).forEach(function (el) {
+    if (seen.some(function (s) { return s.contains(el); })) return;  // a block already fading carries its children
+    if (el.getBoundingClientRect().top < below) return;              // on screen at load: leave it be
+    seen.push(el);
+  });
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("p2m-in");
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -8% 0px" });
+  seen.forEach(function (el) {
+    var siblings = [].filter.call(el.parentNode.children, function (s) { return seen.indexOf(s) !== -1; });
+    el.style.setProperty("--p2m-i", Math.min(siblings.indexOf(el), 4));
+    el.classList.add("p2m-rv");
+    observer.observe(el);
+  });
+})();
+</script>
+<script>
+// Phone menu: the menu button opens and closes the panel of nav links; a link, Escape or a tap outside closes it.
+(function () {
+  var button = document.querySelector(".p2m-burger"), menu = document.getElementById("p2m-menu");
+  if (!button || !menu) return;
+  function set(open) { menu.hidden = !open; button.setAttribute("aria-expanded", String(open)); button.setAttribute("aria-label", open ? "Close menu" : "Menu"); }
+  button.addEventListener("click", function (e) { e.stopPropagation(); set(menu.hidden); });
+  menu.addEventListener("click", function (e) { if (e.target.closest("a")) set(false); });
+  document.addEventListener("click", function (e) { if (!menu.hidden && !menu.contains(e.target)) set(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !menu.hidden) { set(false); button.focus(); } });
+  window.addEventListener("resize", function () { if (window.innerWidth > 860 && !menu.hidden) set(false); });
+})();
+</script>
+</body>
+</html>
