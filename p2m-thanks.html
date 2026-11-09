@@ -408,6 +408,9 @@ h1, h2, h3 { text-wrap: balance; }
 @media (max-width: 520px) { #what-works [style*="repeat(4, 1fr)"] { grid-template-columns: 1fr !important; } }
 @media (max-width: 860px) { #what-works h2 { font-size: 38px !important; } #what-works [style*="repeat(4, 1fr)"] { gap: 16px !important; } #what-works [style*="repeat(4, 1fr)"] > div { padding: 24px; } }
 @media (max-width: 860px) { #thanks { padding: 64px 32px !important; gap: 32px !important; } #thanks h1 { font-size: 40px !important; } #thanks [style*="repeat(3, 1fr)"] > div { padding: 24px !important; } }
+.p2m-buy { transition: background-color .25s ease, border-color .25s ease; }
+#pricing [style*="#FFFFFF"] .p2m-buy[style*="transparent"]:hover { background: rgba(22,38,63,0.06) !important; border-color: #16263F !important; }
+#monthly .p2m-buy[style*="transparent"]:hover { background: rgba(243,241,236,0.1) !important; border-color: #F3F1EC !important; }
 .p2m-burger, .p2m-menu { display: none; }
 @media (max-width: 860px) {
   /* holh: one row on phones: logo, the free-clip button, then the menu button. */
