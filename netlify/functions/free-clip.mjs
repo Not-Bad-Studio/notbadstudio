@@ -966,7 +966,8 @@ async function takeRequest(req) {
   }
   const id = crypto.randomUUID();
   const photoStore = getStore("free-clip-photos");
-  const base = new URL("/api/free-clip/photo/", req.url);
+  const home = process.env.CONTEXT !== "dev" && process.env.URL || req.url;
+  const base = new URL("/api/free-clip/photo/", home);
   const links = [];
   for (const [index, photo] of read.photos.entries()) {
     const n = index + 1;
@@ -977,7 +978,7 @@ async function takeRequest(req) {
     const out = new URLSearchParams({ "form-name": "motion-clip" });
     for (const name of FIELDS) out.set(name, String(form.get(name) || ""));
     out.set("photos", links.length ? links.join("\n") : "None uploaded. Use the website.");
-    const res = await fetch(new URL("/", req.url), {
+    const res = await fetch(new URL("/", home), {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: out.toString()

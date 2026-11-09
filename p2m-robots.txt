@@ -1,0 +1,5 @@
+# Served as robots.txt on photo2motion.studio (see _redirects).
+User-agent: *
+Allow: /
+
+Sitemap: https://photo2motion.studio/sitemap.xml

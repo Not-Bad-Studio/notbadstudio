@@ -1,6 +1,23 @@
 # Redirects carried over from Webflow (69 rules, 2026-11-08) plus pages dropped in the move to Netlify.
 # Query strings are ignored, so the many /search/portal.php?... spam rules collapse into one line.
 
+# photo2motion.studio serves the Photo2Motion page from this same site (Netlify domain aliases photo2motion.studio and
+# www.photo2motion.studio; DNS at GoDaddy). The page and the files it uses pass through; any other path goes to the
+# same path on notbadstudio.com. The old address forwards to the domain. Host rules first: the first match wins.
+https://www.photo2motion.studio/*        https://photo2motion.studio/:splat     301!
+http://www.photo2motion.studio/*         https://photo2motion.studio/:splat     301!
+https://photo2motion.studio/             /photo2motion.html                     200!
+https://photo2motion.studio/robots.txt   /p2m-robots.txt                        200!
+https://photo2motion.studio/sitemap.xml  /p2m-sitemap.xml                       200!
+https://photo2motion.studio/fonts/*      /fonts/:splat                          200!
+https://photo2motion.studio/images/*     /images/:splat                         200!
+https://photo2motion.studio/videos/*     /videos/:splat                         200!
+https://photo2motion.studio/api/*        /api/:splat                            200!
+https://photo2motion.studio/*            https://www.notbadstudio.com/:splat    301!
+https://www.notbadstudio.com/photo2motion       https://photo2motion.studio/    301!
+https://www.notbadstudio.com/photo2motion.html  https://photo2motion.studio/    301!
+https://notbadstudio.com/photo2motion           https://photo2motion.studio/    301!
+
 /archive/old-home  /  301
 /archive/our-work-old  /our-work  301
 /archive/sections/cms  /  301
