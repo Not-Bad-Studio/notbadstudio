@@ -368,6 +368,87 @@ section[id], #top { scroll-margin-top: 88px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
+
+/* Added by build_p2m_home.py: subtle motion (see FX_CSS in the builder). */
+:root { --p2m-ease: cubic-bezier(.22, .61, .36, 1); }
+header { transition: box-shadow .35s ease; }
+.p2m-scrolled header { box-shadow: 0 1px 0 rgba(22, 38, 63, .06), 0 8px 24px rgba(22, 38, 63, .06); }
+.p2m-btn { transition: transform .25s var(--p2m-ease), box-shadow .25s var(--p2m-ease), filter .25s ease; }
+.p2m-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(228, 87, 46, .22); filter: brightness(1.03); }
+.p2m-card { transition: transform .4s var(--p2m-ease), box-shadow .4s var(--p2m-ease); }
+.p2m-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(22, 38, 63, .08); }
+.p2m-arrow { display: inline-block; transition: transform .3s var(--p2m-ease); }
+a:hover > .p2m-arrow { transform: translateX(3px); }
+@media (prefers-reduced-motion: no-preference) {
+  .fx .p2m-rv { opacity: 0; transform: translateY(14px);
+    transition: opacity .9s var(--p2m-ease), transform .9s var(--p2m-ease); transition-delay: calc(var(--p2m-i, 0) * 90ms); }
+  .fx .p2m-rv.p2m-in { opacity: 1; transform: none; }
+  .fx .p2m-settle { animation: p2m-settle 1s var(--p2m-ease) both; animation-delay: calc(var(--p2m-i, 0) * 110ms + 80ms); }
+  details[open] > :not(summary) { animation: p2m-fade .35s ease both; }
+  @keyframes p2m-settle { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes p2m-fade { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .p2m-btn, .p2m-card, .p2m-arrow, header { transition: none; }
+  .p2m-btn:hover, .p2m-card:hover, a:hover > .p2m-arrow { transform: none; }
+}
+
+
+/* Added by build_p2m_home.py: the user's amendments of 9 November 2026 (see AMENDMENTS in the builder). */
+p, li, span, summary { text-wrap: pretty; }   /* akqo: no lone last words */
+h1, h2, h3 { text-wrap: balance; }
+@media (max-width: 1099px) { br.bd { display: none; } }   /* desktop-only line breaks */
+@media (min-width: 861px) { br.bm { display: none; } }    /* phone-only line breaks */
+.p2m-burger, .p2m-menu { display: none; }
+@media (max-width: 860px) {
+  /* holh: one row on phones: logo, the free-clip button, then the menu button. */
+  header[style*="position: sticky"] { position: relative !important; }
+  header nav.nav { display: flex !important; align-items: center; gap: 10px; padding: 10px 16px !important; }
+  header .nav-l { display: none !important; }
+  header .nav-logo { order: -1; margin-right: auto; gap: 10px !important; }
+  header .nav-logo span { font-size: 20px !important; }
+  header .nav-logo svg { width: 36px; height: auto; }
+  header .nav-r { gap: 0 !important; }
+  header .nav-r > :not(a[style*="#E4572E"]) { display: none !important; }
+  header .nav-r > a[style*="#E4572E"] { height: 40px !important; padding: 0 16px !important; font-size: 14px; white-space: nowrap; }
+  .p2m-burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px;
+    margin-right: -10px; padding: 0 11px; border: 0; background: none; cursor: pointer; }
+  .p2m-burger span { display: block; height: 2px; border-radius: 1px; background: #16263F; transition: transform .25s ease, opacity .2s ease; }
+  .p2m-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .p2m-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .p2m-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .p2m-menu:not([hidden]) { display: block; position: absolute; left: 0; right: 0; top: 100%; z-index: 30; background: #F3F1EC;
+    border-bottom: 1px solid rgba(22,38,63,.1); box-shadow: 0 18px 30px rgba(22,38,63,.08); max-height: calc(100vh - 64px); overflow-y: auto;
+    animation: p2m-menu .25s ease both; }
+  .p2m-menu-in { padding: 4px 16px 20px; display: grid; gap: 14px; }
+  .p2m-menu-group { display: grid; }
+  .p2m-menu-head { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #4F5A6B; padding: 12px 0 2px; }
+  .p2m-menu a { padding: 11px 0; font-size: 17px; color: #16263F; text-decoration: none; border-bottom: 1px solid rgba(22,38,63,.08); }
+  @keyframes p2m-menu { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  /* 4ce3: sector sections read label, headline, film, copy, photos (2 by 2), credit, button. */
+  .p2m-sector { display: flex !important; flex-direction: column; align-items: stretch !important; gap: 14px !important; }
+  .p2m-sector > div:not(.p2m-film), .p2m-sector > div:not(.p2m-film) > div { display: contents !important; }
+  .p2m-sector > div > p:first-child { order: 1; }
+  .p2m-sector h3 { order: 2; }
+  .p2m-sector > .p2m-film { order: 3; margin: 6px 0; }
+  .p2m-sector > div > p:not(:first-child) { order: 4; }
+  .p2m-sector .p2m-photos { order: 5; }
+  .p2m-sector > div > div > span { order: 6; }
+  .p2m-sector > div > a { order: 7; margin-top: 4px; }
+  .p2m-photos[style*="repeat(4, 1fr)"] { grid-template-columns: 1fr 1fr !important; }  /* n3r7: 2 by 2 */
+}
+@media (max-width: 380px) {
+  /* Smaller phones (360px Android): a tighter header so the menu button stays on screen. */
+  header nav.nav { gap: 6px !important; padding: 10px 12px !important; }
+  header .nav-logo { gap: 8px !important; }
+  header .nav-logo span { font-size: 17px !important; }
+  header .nav-logo svg { width: 30px; }
+  header .nav-r > a[style*="#E4572E"] { height: 36px !important; padding: 0 12px !important; font-size: 13px; }
+  .p2m-burger { width: 40px; padding: 0 9px; margin-right: -8px; }
+}
+@media (max-width: 349px) { header .nav-logo span { display: none; } }   /* 320px: the mark alone */
+@media (prefers-reduced-motion: reduce) { .p2m-burger span { transition: none; } .p2m-menu:not([hidden]) { animation: none; } }
+
 </style>
 </head>
 <body>
@@ -404,19 +485,21 @@ section[id], #top { scroll-margin-top: 88px; }
 <a href="#developed" style="padding: 12px 8px; font-size: 15px; font-weight: 500; text-decoration: none">About</a>
 <a href="#free-clip" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 22px; background: #E4572E; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none">Get a free clip</a>
 </div>
+<button type="button" class="p2m-burger" aria-label="Menu" aria-expanded="false" aria-controls="p2m-menu"><span></span><span></span><span></span></button>
 </nav>
+<div class="p2m-menu" id="p2m-menu" hidden><div class="p2m-menu-in"><div class="p2m-menu-group"><span class="p2m-menu-head">Sectors</span><a href="#why-now">Why now</a><a href="#property">Property</a><a href="#charters">Charters</a><a href="#stays">Stays</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">How it works</span><a href="#how">Three steps</a><a href="#when">When it’s right</a><a href="#why">Why motion</a><a href="#questions">Questions</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">Pricing</span><a href="#pricing">Packs</a><a href="#monthly">Monthly</a><a href="#addons">Add-ons</a></div><div class="p2m-menu-group"><a href="#developed">About</a></div></div></div>
 </header>
 
 <main>
 <section id="top" class="hero" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; padding-top: 96px; padding-bottom: 96px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">Property · Charters · Stays</p>
-<h1 style="margin: 0; max-width: 900px; font-family: 'Space Grotesk', sans-serif; font-size: 76px; font-weight: 600; letter-spacing: -0.035em; line-height: 1.02">Your professional photos, in motion.</h1>
+<h1 style="margin: 0; max-width: 900px; font-family: 'Space Grotesk', sans-serif; font-size: 76px; font-weight: 600; letter-spacing: -0.035em; line-height: 1.02">Your professional<br class="bd"> photos,<br class="bm"> in motion.</h1>
 <p style="margin: 0; max-width: 640px; font-size: 20px; line-height: 1.55; color: #4F5A6B">Cinematic short films made from the photography you already have, for when filming isn’t practical. Directed and checked by people, delivered in 24 hours.</p>
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px">
 <a href="#free-clip" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 26px; background: #E4572E; color: #FFFFFF; font-weight: 600; text-decoration: none">Get a free clip</a>
 <a href="#pricing" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 26px; border: 1.5px solid #16263F; color: #16263F; font-weight: 600; text-decoration: none">See prices</a>
 </div>
-<div style="width: 100%; max-width: 1040px; margin-top: 32px"><div class="p2m-film" data-films="/videos/motion-real-estate.mp4~/images/motion-real-estate.jpg~Property|/videos/motion-marine.mp4~/images/motion-marine.jpg~Charters|/videos/motion-hospitality.mp4~/images/motion-hospitality.jpg~Stays" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-real-estate.mp4" poster="/images/motion-real-estate.jpg" muted playsinline preload="none" aria-label="Salterns Lane, a Manns &amp; Manns listing in Bursledon: a film made from the photos below it"></video>
+<div style="width: 100%; max-width: 728px; margin-top: 32px"><div class="p2m-film" data-films="/videos/motion-real-estate.mp4~/images/motion-real-estate.jpg~Property|/videos/motion-marine.mp4~/images/motion-marine.jpg~Charters|/videos/motion-hospitality.mp4~/images/motion-hospitality.jpg~Stays" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-real-estate.mp4" poster="/images/motion-real-estate.jpg" muted playsinline preload="none" aria-label="Salterns Lane, a Manns &amp; Manns listing in Bursledon: a film made from the photos below it"></video>
 <span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Property</span>
 <button type="button" aria-label="Play Showreel film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
 <div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 40%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>
@@ -428,11 +511,11 @@ section[id], #top { scroll-margin-top: 88px; }
 <div class="two" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end">
 <div style="display: flex; flex-direction: column; gap: 14px">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #E4572E; font-weight: 600">Why now</p>
-<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.02">Your market is already moving.</h2>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 72px; font-weight: 600; letter-spacing: -0.035em; line-height: 1">Your market is already moving.</h2>
 </div>
 <div style="display: flex; flex-direction: column; gap: 14px">
 <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B"><strong style="color: #16263F; font-weight: 600">91% of businesses now use video in their marketing.</strong> In feeds and on listing sites, your still photos sit next to ones that move, and movement gets seen first.</p>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">Photo2Motion lets you keep up without a shoot, using photos you already own.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">Photo2Motion lets you keep up without a shoot,<br class="bd"> using photos you already own.</p>
 <span style="font-size: 13px; color: #4F5A6B">Source: Wyzowl, State of Video Marketing 2026.</span>
 </div>
 </div>
@@ -451,7 +534,7 @@ section[id], #top { scroll-margin-top: 88px; }
 </a>
 <a href="#stays" style="display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 12px; background: #F3F1EC; text-decoration: none; color: #16263F">
 <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Stays</span>
-<span style="font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15">Sell the feeling, not just the room.</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15">Sell the feeling,<br class="bm"> not just the room.</span>
 <span style="font-size: 16px; line-height: 1.55; color: #4F5A6B">Rooms that look alike get scrolled past. A few seconds of motion shows the light, the space and the view, on your website, your listings and your socials.</span>
 <span style="margin-top: auto; font-weight: 600">See stay films →</span>
 </a>
@@ -464,7 +547,7 @@ section[id], #top { scroll-margin-top: 88px; }
 </section>
 
 <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 120px; padding-bottom: 120px">
-<section id="property" class="two" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
+<section id="property" class="two p2m-sector" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
 <div class="p2m-film" data-films="/videos/motion-real-estate.mp4~/images/motion-real-estate.jpg~Property" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-real-estate.mp4" poster="/images/motion-real-estate.jpg" muted playsinline preload="none" loop aria-label="Salterns Lane, a Manns &amp; Manns listing in Bursledon: a film made from the photos below it"></video>
 <span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Property</span>
 <button type="button" aria-label="Play Property film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
@@ -472,25 +555,25 @@ section[id], #top { scroll-margin-top: 88px; }
 </div>
 <div style="display: flex; flex-direction: column; gap: 20px">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Property</p>
-<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">More views, more confident vendors.</h3>
-<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">Your listing photos are already paid for. We turn them into a short film for your listing, website and social channels, so the property gets noticed first.</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">More views,<br class="bm"> more confident vendors.</h3>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">Your listing photos are already paid for. We turn them into a short film for your listing, website and social channels,<br class="bd"> so the property gets noticed first.</p>
 <div style="display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 13px; color: #4F5A6B">Made from these 4 photos. Salterns Lane, a Manns &amp; Manns listing in Bursledon. Photos: Manns &amp; Manns.</span>
 <div class="p2m-photos" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px"><img src="/images/motion-real-estate-1.jpg" alt="The back of the house: a white gable with tall glass doors, a stone terrace and a wide lawn" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-real-estate-2.jpg" alt="The vaulted living room with roof windows, grey sofas and blue armchairs" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-real-estate-3.jpg" alt="The kitchen and dining area, with glass doors onto the garden" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-real-estate-4.jpg" alt="The stone terrace with outdoor sofas, the house and tall trees beyond" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
 </div>
-<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos →</a>
+<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos <span class="p2m-arrow" aria-hidden="true">→</span></a>
 </div>
 </section>
-<section id="charters" class="two" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
+<section id="charters" class="two p2m-sector" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
 <div style="display: flex; flex-direction: column; gap: 20px">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Charters</p>
-<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Your boat in motion, without a film shoot.</h3>
-<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">Boats are rarely in one place long enough to film. Send the photos you have and we’ll make a film of the boat, inside and out, ready for your listings and ads.</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Your boat in motion,<br class="bd"> without a film shoot.</h3>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">Boats are rarely in one place long enough to film. Send the photos you have and we’ll make a film of the boat, inside and out,<br class="bd"> ready for your listings and ads.</p>
 <div style="display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 13px; color: #4F5A6B">Made from these 4 photos, from deck to cabin. Mon Ami, a Fairview Sailing yacht. Photos: PKC Media and fairviewsailing.co.uk.</span>
 <div class="p2m-photos" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px"><img src="/images/motion-marine-1.jpg" alt="Drone photo of Mon Ami at anchor off a wooded shore, a paddleboard tied alongside" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-2.jpg" alt="Mon Ami&#x27;s saloon, laid for breakfast, looking forward to the cabin" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-3.jpg" alt="Mon Ami&#x27;s galley with a jug of orange juice, fruit bowl and champagne" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-4.jpg" alt="The forward cabin of an Oceanis 37, with an open book on the bed under the hatch" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
 </div>
-<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos →</a>
+<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos <span class="p2m-arrow" aria-hidden="true">→</span></a>
 </div>
 <div class="p2m-film" data-films="/videos/motion-marine.mp4~/images/motion-marine.jpg~Charters" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-marine.mp4" poster="/images/motion-marine.jpg" muted playsinline preload="none" loop aria-label="Mon Ami, a Fairview Sailing yacht: a film made from the photos below it"></video>
 <span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Charters</span>
@@ -498,7 +581,7 @@ section[id], #top { scroll-margin-top: 88px; }
 <div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 66%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>
 </div>
 </section>
-<section id="stays" class="two" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
+<section id="stays" class="two p2m-sector" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
 <div class="p2m-film" data-films="/videos/motion-hospitality.mp4~/images/motion-hospitality.jpg~Stays" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-hospitality.mp4" poster="/images/motion-hospitality.jpg" muted playsinline preload="none" loop aria-label="Indulgent Room 1 at The Scarlet, Mawgan Porth: a film made from the photos below it"></video>
 <span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Stays</span>
 <button type="button" aria-label="Play Stays film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
@@ -507,12 +590,12 @@ section[id], #top { scroll-margin-top: 88px; }
 <div style="display: flex; flex-direction: column; gap: 20px">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Stays</p>
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Show how a room feels, not just how it looks.</h3>
-<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">For hotels, holiday lets and glamping sites. One room or one property per film, made from the photography on your website.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">For hotels, holiday lets and glamping sites. One room or one property per film, made from the photography<br class="bd"> on your website.</p>
 <div style="display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 13px; color: #4F5A6B">Made from these 3 photos, one room. Indulgent Room 1 at The Scarlet, Mawgan Porth. Photos: scarlethotel.co.uk.</span>
 <div class="p2m-photos" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px"><img src="/images/motion-hospitality-1.jpg" alt="Indulgent Room 1: the bed with a mustard throw, two armchairs and glass doors onto the sea" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-hospitality-2.jpg" alt="The same room in warm light, with a teal velvet sofa and a pendant lamp" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-hospitality-3.jpg" alt="The view from the bed at golden hour, through sheer curtains to the balcony and the surf" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
 </div>
-<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos →</a>
+<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos <span class="p2m-arrow" aria-hidden="true">→</span></a>
 </div>
 </section>
 </div>
@@ -532,17 +615,17 @@ section[id], #top { scroll-margin-top: 88px; }
 </div>
 <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 2px solid #16263F">
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600">When filming isn’t possible</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">The boat is out on charter, the house sells before a crew can be booked, the hotel is full all season. The photos are already there.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">The boat is out on charter, the house sells before a crew can be booked,<br class="bd"> the hotel is full all season. The photos are already there.</p>
 </div>
 <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 2px solid #16263F">
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600">When photos could work harder</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">You’ve paid for great images. Motion gives them a second job across your listings, ads and social channels.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">You’ve paid for great images. Motion gives them a second job across your listings,<br class="bd"> ads and social channels.</p>
 </div>
 </div>
 <div class="two" style="display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center; padding: 36px; border-radius: 12px; background: #FFFFFF">
 <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="4" y="14" width="48" height="36" rx="6" fill="none" stroke="#16263F" stroke-width="3"></rect><path d="M18 14 L22 7 H34 L38 14" fill="none" stroke="#16263F" stroke-width="3" stroke-linejoin="round"></path><circle cx="28" cy="32" r="10" fill="none" stroke="#E4572E" stroke-width="3"></circle></svg>
 <div style="display: flex; flex-direction: column; gap: 8px">
-<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">We work with photographers, not around them.</h3>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">We work with photographers,<br class="bm"> not around them.</h3>
 <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Every film starts from professional photography, and the photographer is credited on every one. Photographers: talk to us about offering films to your clients from your shoots.</p>
 </div>
 <a href="#free-clip" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 24px; border: 1.5px solid #16263F; color: #16263F; font-weight: 600; text-decoration: none; white-space: nowrap">Talk to us</a>
@@ -553,23 +636,23 @@ section[id], #top { scroll-margin-top: 88px; }
 <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 56px">
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">How it works</p>
-<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Three steps, and the first film is on us.</h2>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Three steps,<br class="bm"> and the first film is on us.</h2>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 48px">
 <div style="display: flex; flex-direction: column; gap: 12px">
 <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #E4572E">01</span>
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">Send your photos</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Four to six photos of one boat, property or room. A link to your website works too.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Four to six photos of one boat,<br class="bm"> property or room. A link to your website works too.</p>
 </div>
 <div style="display: flex; flex-direction: column; gap: 12px">
 <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #E4572E">02</span>
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">We make your film</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Within 24 hours, checked by a person. Nothing added, and no one in your photos is animated.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Within 24 hours, checked by a person. Nothing added, and no one in your<br class="bd"> photos is animated.</p>
 </div>
 <div style="display: flex; flex-direction: column; gap: 12px">
 <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #E4572E">03</span>
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">Keep it</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Download it free with our end card, buy the clean film, or get a pack for everything you have.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4F5A6B">Download it free with our end card,<br class="bm"> buy the clean film, or get a pack for<br class="bd"> everything you have.</p>
 </div>
 </div>
 </div>
@@ -579,22 +662,22 @@ section[id], #top { scroll-margin-top: 88px; }
 <div class="two" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end">
 <div style="display: flex; flex-direction: column; gap: 14px">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">Why motion</p>
-<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Movement gets seen first.</h2>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Movement gets<br class="bd"> seen first.</h2>
 </div>
 <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">People notice what starts to move before anything else on screen (Psychological Science, 2003). Stills still lead on listings and booking pages, and they’re what every film is made from. Motion gives your best photos a second job.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 40px">
 <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 2px solid #E4572E">
 <span style="font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.03em; line-height: 1">8 in 10</span>
-<span style="font-size: 16px; line-height: 1.5; color: #4F5A6B">people say watching a brand’s video has convinced them to buy.</span>
+<span style="font-size: 16px; line-height: 1.5; color: #4F5A6B">people say watching a brand’s video<br class="bd"> has convinced them to buy.</span>
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 2px solid #E4572E">
 <span style="font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.03em; line-height: 1">82%</span>
-<span style="font-size: 16px; line-height: 1.5; color: #4F5A6B">of businesses using video say it pays back what they put in.</span>
+<span style="font-size: 16px; line-height: 1.5; color: #4F5A6B">of businesses using video say it<br class="bd"> pays back what they put in.</span>
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 2px solid #E4572E">
 <span style="font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.03em; line-height: 1">91%</span>
-<span style="font-size: 16px; line-height: 1.5; color: #4F5A6B">of businesses now use video in their marketing.</span>
+<span style="font-size: 16px; line-height: 1.5; color: #4F5A6B">of businesses now use video<br class="bd"> in their marketing.</span>
 </div>
 </div>
 <p style="margin: 0; font-size: 13px; color: #4F5A6B">Source: Wyzowl, State of Video Marketing 2026.</p>
@@ -605,9 +688,9 @@ section[id], #top { scroll-margin-top: 88px; }
 <div class="two" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end">
 <div style="display: flex; flex-direction: column; gap: 14px">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">Pricing</p>
-<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Simple prices, 24-hour delivery.</h2>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Simple prices,<br> 24-hour delivery.</h2>
 </div>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #4F5A6B">Every film is 15 to 20 seconds from 4 to 6 photos, in 16:9 for your website, listings and ads, with music, your logo and your photographer credited. One round of tweaks, back within 24 hours.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #4F5A6B">Every film is 15 to 20 seconds from 4 to 6 photos, in 16:9 for<br class="bd"> your website, listings and ads, with music, your logo and your photographer credited. One round of tweaks, back within 24 hours.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 20px">
 <div style="border-radius: 12px; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 10px">
@@ -648,30 +731,21 @@ section[id], #top { scroll-margin-top: 88px; }
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4F5A6B">For new listings every month. Unused films carry over one month; 3-month minimum. Packs are paid up front and used within 12 months. Prices exclude VAT where it applies.</p>
 <div id="addons" style="display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid rgba(22,38,63,0.15)">
 <span style="font-size: 15px; font-weight: 600">Add-ons</span>
-<p style="margin: 0; font-size: 15px; line-height: 1.7; color: #4F5A6B">Social cuts (9:16 and 1:1) for a single film +£25 · 30-second cut from 6 to 8 photos +£60 · Extra round of edits £35 · On-screen text or captions +£25</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.7; color: #4F5A6B">Social cuts (9:16 and 1:1) for a single film · 30-second cut from 6 to 8 photos · Extra round of edits · On-screen text or captions</p>
 </div>
 </div>
 </section>
 
 <section id="questions" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; max-width: 960px; padding-top: 112px; padding-bottom: 112px; display: flex; flex-direction: column; gap: 32px">
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Why not just use an app?</h2>
+<p style="margin: -8px 0 0; font-size: 18px; line-height: 1.6; color: #4F5A6B; max-width: 680px">There are plenty of apps that will animate a photo. Here’s what you get from us that you don’t get from them.</p>
 <div>
-<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0">
-<summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">Can’t I do this myself with an AI app?</summary>
-<p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">You can, and for a quick post it might do. An app turns one photo into one clip and gives you whatever comes out. We pick the right photos, direct each shot, check every frame and cut it into one film of one boat, property or room, with your brand on it.</p>
-</details>
-<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0">
-<summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">How do you make sure nothing is added?</summary>
-<p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">We check every shot frame by frame against the original photo. If anything appears, changes or moves that shouldn’t, we redo the shot or hold that part of the frame to the photo.</p>
-</details>
-<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0">
-<summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">What about people in my photos?</summary>
-<p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">We never animate people. We choose photos without them, and if someone is in frame we hold them still.</p>
-</details>
-<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0">
-<summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">Is it made with AI?</summary>
-<p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">The motion comes from the same kind of tools the apps use. What you’re paying for is everything around them: choosing the photos, directing each move, checking every frame and delivering a finished film in 24 hours.</p>
-</details>
+<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0"><summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">Can’t I do this myself with an AI app?</summary><p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">You can, and for a quick post it might do. An app turns one photo into one clip and gives you whatever comes out. We pick the right photos, direct each shot, check every frame and cut it all into one film of one boat, property or room, with your brand on it.</p></details>
+<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0"><summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">What goes wrong when you do it yourself?</summary><p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">The tools add things. In our own testing, raw output switched on lights that weren’t in the room, put a pen on a bed, invented scenery beyond the edge of the photo, blurred sail numbers and had a guest lift her magazine. One of those in front of a customer undoes the trust your photos built. We catch them before you see anything.</p></details>
+<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0"><summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">How do you make sure nothing is added?</summary><p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">We check every shot frame by frame against the original photo. If anything appears, changes or moves that shouldn’t, we redo the shot or hold that part of the frame to the photo. Names, numbers and logos stay sharp because we end each shot before they start to drift.</p></details>
+<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0"><summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">What about people in my photos?</summary><p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">We never animate people. We choose photos without them, and if someone is in frame we hold them still, so they only move with the boat or the camera. Silhouettes are fine.</p></details>
+<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0"><summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">Will it look like every other AI video?</summary><p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">No. Apps tend to put big zooms and swoops on every photo. We keep the motion subtle, the way a film crew would shoot it: a slow drift, water moving, light shifting across a room. It should look shot, not generated.</p></details>
+<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0"><summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">Is it made with AI?</summary><p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">The motion comes from the same kind of tools the apps use. What you’re paying for is everything around them: choosing the photos, directing each move, checking every frame, fixing what goes wrong and delivering a finished film in 24 hours.</p></details>
 </div>
 </section>
 
@@ -680,7 +754,7 @@ section[id], #top { scroll-margin-top: 88px; }
 <div style="display: flex; flex-direction: column; gap: 18px">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #AEB8C7">Free clip</p>
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">See your own photos in motion.</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #DCE2EA">Add four photos, or just your website. We’ll send back a short film within 24 hours, Monday to Friday, and a price for the rest if you want it. One free clip per business.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #DCE2EA">Add four photos, or just your website. We’ll send back a short film within 24 hours, Monday to Friday, and a price<br class="bd"> for the rest if you want it. One free clip per business.</p>
 </div>
 <div class="p2m-form-wrap"><form id="p2m-form" novalidate style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 18px"><input type="hidden" name="source" value="photo2motion-home"><p hidden><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 <div style="display: flex; flex-direction: column; gap: 6px">
@@ -717,15 +791,14 @@ section[id], #top { scroll-margin-top: 88px; }
 <section id="developed" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; padding-top: 112px; padding-bottom: 112px">
 <div class="two" style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: start">
 <div style="display: flex; flex-direction: column; gap: 16px">
-<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">Developed by</p>
-<a href="https://www.notbadstudio.com/" aria-label="Not Bad Studio" style="display: inline-block; align-self: flex-start"><svg role="img" aria-label="Not Bad Studio" style="display: block; height: 64px; width: auto; color: #16263F" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 422.5 97.1"> <g> <g> <path fill="currentColor" d="M400.3,84.5H22.7v-71h377.7v71H400.3z M26.8,80.4h369.5V17.6H26.8V80.4z"/> </g> <g> <path fill="currentColor" d="M135.6,56.5V28.8h7.7c5.8,0,8.8,2.5,8.8,7.7c0,2.4-0.8,4.4-2.8,5.6v0.1c2.3,1.1,3.7,3.3,3.7,5.8 c0,4.7-2.8,8.5-9.6,8.5C143.4,56.5,135.6,56.5,135.6,56.5z M142.7,40.2c3.3,0,4.2-1.6,4.2-3.6c0-1.9-1-2.9-4.3-2.9h-1.9v6.5H142.7 z M143.8,51.6c3.3,0,4.2-1.7,4.2-3.6c0-1.9-1-3.3-4.3-3.3h-3.1v6.9C140.6,51.6,143.8,51.6,143.8,51.6z"/> <path fill="currentColor" d="M177,56.5l-0.9-4.4h-6.4l-0.9,4.4h-5.4l6.6-27.8h5.9l6.6,27.8H177z M173.3,38.5c-0.2-0.8-0.4-2.4-0.4-2.4 h-0.1c0,0-0.2,1.6-0.4,2.4l-1.9,9.1h4.6L173.3,38.5z"/> <path fill="currentColor" d="M193.9,56.5V28.8h7.2c7.7,0,10.2,6.7,10.2,13.9s-2.5,13.9-10.2,13.9L193.9,56.5L193.9,56.5z M201.1,51.6 c3.5,0,5-3.9,5-8.9s-1.5-8.9-5-8.9h-2v17.8C199.1,51.6,201.1,51.6,201.1,51.6z"/> </g> <g> <path fill="currentColor" d="M53.3,56.5L46.2,41c-0.3-0.8-0.7-1.9-0.7-1.9h-0.1c0,0,0,1.2,0,2.1v15.4h-4.6V28.8h4.9l7,15.2 c0.3,0.7,0.7,1.9,0.7,1.9h0.1c0-0.2,0-1.3,0-2v-15h4.6v27.8h-4.8V56.5z"/> <path fill="currentColor" d="M70.8,42.7c0-7.6,2.3-14.3,9.6-14.3c7.3,0,9.6,6.7,9.6,14.3S87.7,57,80.4,57C73.1,56.9,70.8,50.3,70.8,42.7z M84.7,42.7c0-5.8-1.2-9.3-4.4-9.3c-3.2,0-4.4,3.5-4.4,9.3s1.3,9.3,4.4,9.3C83.5,52,84.7,48.4,84.7,42.7z"/> <path fill="currentColor" d="M104.9,56.5V33.7H100v-5h15v5h-5v22.8H104.9z"/> </g> <g> <path fill="currentColor" d="M234.7,48.9c0.7,2.1,2.4,3.5,4.4,3.5c2.1,0,3.6-1,3.6-3.1c0-4.5-11.5-4.5-11.5-12.9c0-4.3,3.1-7.6,7.7-7.6 c4.5,0,7.1,2.5,8.4,6l-4.5,2.8c-0.7-2.3-1.9-3.8-4-3.8c-1.5,0-2.5,0.9-2.5,2.5c0,4.9,11.5,3.9,11.5,13.1c0,4.9-3.6,8.1-8.8,8.1 c-4.3,0-7.4-2.2-8.8-5.5L234.7,48.9z"/> <path fill="currentColor" d="M262.3,57V34.2h-4.9v-5h15v5h-4.9V57H262.3z"/> <path fill="currentColor" d="M296.5,29.2h5.2v18.5c0,6.7-3.6,9.6-8.4,9.6s-8.6-2.9-8.6-9.7V29.2h5.2V48c0,2.7,1,4.4,3.4,4.4 c2.5,0,3.4-1.8,3.4-4.5V29.2H296.5z"/> <path fill="currentColor" d="M316,57V29.2h7.2c7.7,0,10.2,6.7,10.2,13.9S330.8,57,323.1,57H316z M323.1,52c3.5,0,5-3.9,5-8.9 s-1.5-8.9-5-8.9h-2V52H323.1z"/> <path fill="currentColor" d="M346.2,57V29.2h5.2V57H346.2z"/> <path fill="currentColor" d="M364,43.1c0-7.6,2.3-14.3,9.6-14.3c7.3,0,9.6,6.7,9.6,14.3s-2.3,14.3-9.6,14.3C366.3,57.4,364,50.7,364,43.1z M378,43.1c0-5.8-1.2-9.3-4.4-9.3c-3.2,0-4.4,3.5-4.4,9.3s1.3,9.3,4.4,9.3C376.7,52.4,378,48.9,378,43.1z"/> </g> <rect x="39.4" y="65.5" fill="currentColor" width="344.7" height="4.2"/> <g> <path fill="currentColor" d="M404.1,17.1v-4.9h-1v-1.1h3.2v1.1h-1v4.9H404.1z"/> <path fill="currentColor" d="M410.8,17.1v-3.7c0-0.2,0-0.4,0-0.4l0,0c0,0-0.1,0.2-0.2,0.3l-1,1.7l0,0l-1-1.7c-0.1-0.1-0.2-0.4-0.2-0.4l0,0 c0,0,0,0.2,0,0.4V17h-1.1v-5.9h1.2l0.9,1.6c0.1,0.1,0.2,0.4,0.2,0.4l0,0c0,0,0.1-0.2,0.2-0.4l0.9-1.6h1.2V17L410.8,17.1 L410.8,17.1z"/> </g> </g> </svg></a>
-<p style="margin: 0; font-size: 15px; color: #4F5A6B">London &amp; Mallorca</p>
+<p style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5A6B">Developed by</p>
+<a href="https://www.notbadstudio.com/" aria-label="Not Bad Studio" style="display: inline-block; align-self: flex-start; margin-left: -15px"><svg role="img" aria-label="Not Bad Studio" style="display: block; height: 64px; width: auto; color: #16263F" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 422.5 97.1"> <g> <g> <path fill="currentColor" d="M400.3,84.5H22.7v-71h377.7v71H400.3z M26.8,80.4h369.5V17.6H26.8V80.4z"/> </g> <g> <path fill="currentColor" d="M135.6,56.5V28.8h7.7c5.8,0,8.8,2.5,8.8,7.7c0,2.4-0.8,4.4-2.8,5.6v0.1c2.3,1.1,3.7,3.3,3.7,5.8 c0,4.7-2.8,8.5-9.6,8.5C143.4,56.5,135.6,56.5,135.6,56.5z M142.7,40.2c3.3,0,4.2-1.6,4.2-3.6c0-1.9-1-2.9-4.3-2.9h-1.9v6.5H142.7 z M143.8,51.6c3.3,0,4.2-1.7,4.2-3.6c0-1.9-1-3.3-4.3-3.3h-3.1v6.9C140.6,51.6,143.8,51.6,143.8,51.6z"/> <path fill="currentColor" d="M177,56.5l-0.9-4.4h-6.4l-0.9,4.4h-5.4l6.6-27.8h5.9l6.6,27.8H177z M173.3,38.5c-0.2-0.8-0.4-2.4-0.4-2.4 h-0.1c0,0-0.2,1.6-0.4,2.4l-1.9,9.1h4.6L173.3,38.5z"/> <path fill="currentColor" d="M193.9,56.5V28.8h7.2c7.7,0,10.2,6.7,10.2,13.9s-2.5,13.9-10.2,13.9L193.9,56.5L193.9,56.5z M201.1,51.6 c3.5,0,5-3.9,5-8.9s-1.5-8.9-5-8.9h-2v17.8C199.1,51.6,201.1,51.6,201.1,51.6z"/> </g> <g> <path fill="currentColor" d="M53.3,56.5L46.2,41c-0.3-0.8-0.7-1.9-0.7-1.9h-0.1c0,0,0,1.2,0,2.1v15.4h-4.6V28.8h4.9l7,15.2 c0.3,0.7,0.7,1.9,0.7,1.9h0.1c0-0.2,0-1.3,0-2v-15h4.6v27.8h-4.8V56.5z"/> <path fill="currentColor" d="M70.8,42.7c0-7.6,2.3-14.3,9.6-14.3c7.3,0,9.6,6.7,9.6,14.3S87.7,57,80.4,57C73.1,56.9,70.8,50.3,70.8,42.7z M84.7,42.7c0-5.8-1.2-9.3-4.4-9.3c-3.2,0-4.4,3.5-4.4,9.3s1.3,9.3,4.4,9.3C83.5,52,84.7,48.4,84.7,42.7z"/> <path fill="currentColor" d="M104.9,56.5V33.7H100v-5h15v5h-5v22.8H104.9z"/> </g> <g> <path fill="currentColor" d="M234.7,48.9c0.7,2.1,2.4,3.5,4.4,3.5c2.1,0,3.6-1,3.6-3.1c0-4.5-11.5-4.5-11.5-12.9c0-4.3,3.1-7.6,7.7-7.6 c4.5,0,7.1,2.5,8.4,6l-4.5,2.8c-0.7-2.3-1.9-3.8-4-3.8c-1.5,0-2.5,0.9-2.5,2.5c0,4.9,11.5,3.9,11.5,13.1c0,4.9-3.6,8.1-8.8,8.1 c-4.3,0-7.4-2.2-8.8-5.5L234.7,48.9z"/> <path fill="currentColor" d="M262.3,57V34.2h-4.9v-5h15v5h-4.9V57H262.3z"/> <path fill="currentColor" d="M296.5,29.2h5.2v18.5c0,6.7-3.6,9.6-8.4,9.6s-8.6-2.9-8.6-9.7V29.2h5.2V48c0,2.7,1,4.4,3.4,4.4 c2.5,0,3.4-1.8,3.4-4.5V29.2H296.5z"/> <path fill="currentColor" d="M316,57V29.2h7.2c7.7,0,10.2,6.7,10.2,13.9S330.8,57,323.1,57H316z M323.1,52c3.5,0,5-3.9,5-8.9 s-1.5-8.9-5-8.9h-2V52H323.1z"/> <path fill="currentColor" d="M346.2,57V29.2h5.2V57H346.2z"/> <path fill="currentColor" d="M364,43.1c0-7.6,2.3-14.3,9.6-14.3c7.3,0,9.6,6.7,9.6,14.3s-2.3,14.3-9.6,14.3C366.3,57.4,364,50.7,364,43.1z M378,43.1c0-5.8-1.2-9.3-4.4-9.3c-3.2,0-4.4,3.5-4.4,9.3s1.3,9.3,4.4,9.3C376.7,52.4,378,48.9,378,43.1z"/> </g> <rect x="39.4" y="65.5" fill="currentColor" width="344.7" height="4.2"/> <g> <path fill="currentColor" d="M404.1,17.1v-4.9h-1v-1.1h3.2v1.1h-1v4.9H404.1z"/> <path fill="currentColor" d="M410.8,17.1v-3.7c0-0.2,0-0.4,0-0.4l0,0c0,0-0.1,0.2-0.2,0.3l-1,1.7l0,0l-1-1.7c-0.1-0.1-0.2-0.4-0.2-0.4l0,0 c0,0,0,0.2,0,0.4V17h-1.1v-5.9h1.2l0.9,1.6c0.1,0.1,0.2,0.4,0.2,0.4l0,0c0,0,0.1-0.2,0.2-0.4l0.9-1.6h1.2V17L410.8,17.1 L410.8,17.1z"/> </g> </g> </svg></a>
 </div>
 <div style="display: flex; flex-direction: column; gap: 18px">
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Why Photo2Motion exists.</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">We kept seeing the same thing. Businesses pay for beautiful professional photography, then use it once. Meanwhile the places people actually look are filling up with video, and a film shoot isn’t always practical: the yacht is out on charter, the house sells before a crew can be booked, or the budget isn’t there.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">We kept seeing the same thing. Businesses pay for beautiful professional photography, then use it once. Meanwhile the places people actually look are filling up with video, and a film shoot isn’t always practical: the yacht is out on charter, the house sells before a crew can be booked,<br class="bd"> or the budget isn’t there.</p>
 <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">Photo2Motion is a Not Bad Studio service that gives those photos a second job. It was built by the same team, in London and Mallorca, for clients whose images deserve more than one use.</p>
-<a href="https://www.notbadstudio.com/" style="align-self: flex-start; font-weight: 600">Visit Not Bad Studio →</a>
+<a href="https://www.notbadstudio.com/" style="align-self: flex-start; font-weight: 600">Visit Not Bad Studio <span class="p2m-arrow" aria-hidden="true">→</span></a>
 </div>
 </div>
 </section>
@@ -746,7 +819,7 @@ section[id], #top { scroll-margin-top: 88px; }
 </svg>
 <span style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.03em">Photo2Motion</span>
 </div>
-<span style="font-size: 14px; color: #AEB8C7">photo2motion.studio · team@notbadstudio.com</span>
+<span style="font-size: 14px; color: #AEB8C7">Your professional photos, in motion.</span>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 56px">
 <div style="display: flex; flex-direction: column; gap: 10px">
@@ -850,8 +923,8 @@ section[id], #top { scroll-margin-top: 88px; }
   var hint = status.textContent;
   var MAX = 4, EDGE = 1920, QUALITY = 0.82;
   var MESSAGES = {
-    generic: "Something went wrong sending that. Try again, or email team@notbadstudio.com and we'll sort it.",
-    already: "Looks like your business has already had its free clip. Email team@notbadstudio.com and we'll quote for the next one.",
+    generic: "Something went wrong sending that. Try again, or email team@photo2motion.studio and we'll sort it.",
+    already: "Looks like your business has already had its free clip. Email team@photo2motion.studio and we'll quote for the next one.",
     photo: "One of those photos didn't upload. Try a JPEG, or leave the photos out and we'll use your website."
   };
   var ref = new URLSearchParams(window.location.search);
@@ -906,6 +979,70 @@ section[id], #top { scroll-margin-top: 88px; }
       fail.hidden = false;
     }).then(function () { button.disabled = false; button.textContent = label; });
   });
+})();
+</script>
+<script>
+// Subtle motion: tag the buttons and sector cards for their hover, give the header its shadow once the page scrolls,
+// settle the hero in, and fade blocks up as they come into view. Anything already on screen when the page opens is
+// left alone (no flash), and with reduced motion or no IntersectionObserver nothing is hidden at all.
+(function () {
+  var root = document.documentElement;
+  document.querySelectorAll('a[style*="background: #E4572E"], #p2m-form button[type="submit"]').forEach(function (el) {
+    el.classList.add("p2m-btn");
+  });
+  document.querySelectorAll('#why-now [style*="repeat(auto-fit"] > a').forEach(function (el) { el.classList.add("p2m-card"); });
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { root.classList.toggle("p2m-scrolled", window.scrollY > 8); ticking = false; });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if (!("IntersectionObserver" in window) || (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+  root.classList.add("fx");
+
+  var hero = document.getElementById("top");
+  if (hero) [].forEach.call(hero.children, function (el, i) { el.style.setProperty("--p2m-i", Math.min(i, 4)); el.classList.add("p2m-settle"); });
+
+  var selectors = [
+    'section:not(#top) .two > *', '[style*="repeat(auto-fit"]:not(form) > *', '#monthly > *',
+    '#questions h2', '#questions details', '#why-now [style*="background: #16263F"]', '#addons'
+  ];
+  var seen = [], below = window.innerHeight * 0.92;
+  document.querySelectorAll(selectors.join(",")).forEach(function (el) {
+    if (seen.some(function (s) { return s.contains(el); })) return;  // a block already fading carries its children
+    if (el.getBoundingClientRect().top < below) return;              // on screen at load: leave it be
+    seen.push(el);
+  });
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("p2m-in");
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -8% 0px" });
+  seen.forEach(function (el) {
+    var siblings = [].filter.call(el.parentNode.children, function (s) { return seen.indexOf(s) !== -1; });
+    el.style.setProperty("--p2m-i", Math.min(siblings.indexOf(el), 4));
+    el.classList.add("p2m-rv");
+    observer.observe(el);
+  });
+})();
+</script>
+<script>
+// Phone menu: the menu button opens and closes the panel of nav links; a link, Escape or a tap outside closes it.
+(function () {
+  var button = document.querySelector(".p2m-burger"), menu = document.getElementById("p2m-menu");
+  if (!button || !menu) return;
+  function set(open) { menu.hidden = !open; button.setAttribute("aria-expanded", String(open)); button.setAttribute("aria-label", open ? "Close menu" : "Menu"); }
+  button.addEventListener("click", function (e) { e.stopPropagation(); set(menu.hidden); });
+  menu.addEventListener("click", function (e) { if (e.target.closest("a")) set(false); });
+  document.addEventListener("click", function (e) { if (!menu.hidden && !menu.contains(e.target)) set(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !menu.hidden) { set(false); button.focus(); } });
+  window.addEventListener("resize", function () { if (window.innerWidth > 860 && !menu.hidden) set(false); });
 })();
 </script>
 </body>
