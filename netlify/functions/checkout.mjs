@@ -1041,7 +1041,7 @@ var pricing_default = {
       addons: [
         "long"
       ],
-      price: 150,
+      price: 149,
       about: "One film of the whole place",
       includes: [
         "One film of the whole place, about 34 seconds",
