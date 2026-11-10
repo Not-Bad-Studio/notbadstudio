@@ -892,7 +892,8 @@ var pricing_default = {
           for: "One hero boat, villa or room",
           payUrl: "https://buy.stripe.com/bJe00kbSJ2SM6EMba11VK02",
           extra: "",
-          films: 1
+          films: 1,
+          stripeProduct: "prod_Vb0JSH30FPgyOW"
         },
         {
           name: "3 films",
@@ -902,7 +903,8 @@ var pricing_default = {
           for: "A hotel's best rooms, or a small fleet",
           payUrl: "https://buy.stripe.com/eVq3cw2i9dxq5AI5PH1VK03",
           extra: "Includes vertical and square social cuts",
-          films: 3
+          films: 3,
+          stripeProduct: "prod_Vb0L0R8RAXFETJ"
         },
         {
           name: "5 films",
@@ -912,7 +914,8 @@ var pricing_default = {
           for: "Boat fleets and holiday-let portfolios",
           payUrl: "https://buy.stripe.com/5kQ3cwg8Z2SMd3ace51VK04",
           extra: "Includes vertical and square social cuts",
-          films: 5
+          films: 5,
+          stripeProduct: "prod_Vb0M217JfWYeEg"
         },
         {
           name: "10 films",
@@ -922,7 +925,8 @@ var pricing_default = {
           for: "Bigger fleets and agencies",
           payUrl: "https://buy.stripe.com/4gM9AU6ypbpi2owdi91VK05",
           extra: "Includes vertical and square social cuts",
-          films: 10
+          films: 10,
+          stripeProduct: "prod_Vb0NsrnyT3wKtN"
         }
       ]
     },
@@ -938,7 +942,8 @@ var pricing_default = {
           for: "Letting and holiday-let agencies",
           payUrl: "https://buy.stripe.com/dRm8wQ1e53WQ9QY7XP1VK06",
           extra: "Includes vertical and square social cuts",
-          films: 4
+          films: 4,
+          stripeProduct: "prod_Vb0OvcbGOGSX4S"
         },
         {
           name: "10 films a month",
@@ -948,7 +953,8 @@ var pricing_default = {
           for: "Larger agencies",
           payUrl: "https://buy.stripe.com/14AeVe3md8d65AI1zr1VK07",
           extra: "Includes vertical and square social cuts",
-          films: 10
+          films: 10,
+          stripeProduct: "prod_Vb0P1TR5Flm0k8"
         }
       ]
     }
@@ -1034,6 +1040,7 @@ var ORIGINS = [
   /^https:\/\/[a-z0-9-]+--nbs-motion-demos\.netlify\.app$/,
   /^https:\/\/[a-z0-9-]+--notbadstudio\.netlify\.app$/
 ];
+var STRIPE_VERSION = "2023-08-16";
 var FIELDS = ["order", "status", "plan", "addons", "total", "name", "email", "business", "website", "notes", "photos", "source"];
 function cors(req) {
   const origin = req.headers.get("origin") || "";
@@ -1086,15 +1093,19 @@ async function servePhoto(req, order, n) {
 async function stripeSession({ order, price, email, business, source, back }) {
   const { plan, monthly, addons } = price;
   const form = new URLSearchParams();
-  const item = (i, name, description, amount, quantity) => {
+  const item = (i, name, description, amount, quantity, product) => {
     form.set(`line_items[${i}][price_data][currency]`, "gbp");
     form.set(`line_items[${i}][price_data][unit_amount]`, String(amount));
-    form.set(`line_items[${i}][price_data][product_data][name]`, name);
-    if (description) form.set(`line_items[${i}][price_data][product_data][description]`, description);
+    if (product) {
+      form.set(`line_items[${i}][price_data][product]`, product);
+    } else {
+      form.set(`line_items[${i}][price_data][product_data][name]`, name);
+      if (description) form.set(`line_items[${i}][price_data][product_data][description]`, description);
+    }
     if (monthly) form.set(`line_items[${i}][price_data][recurring][interval]`, "month");
     form.set(`line_items[${i}][quantity]`, String(quantity));
   };
-  item(0, `Photo2Motion \xB7 ${plan.name}`, `${plan.per}. ${pricing_default.includesList.join(". ")}.`, pence(plan.price), 1);
+  item(0, `Photo2Motion \xB7 ${plan.name}`, `${plan.per}. ${pricing_default.includesList.join(". ")}.`, pence(plan.price), 1, plan.stripeProduct);
   addons.forEach((a, i) => item(i + 1, a.name, `${a.note} \xA3${a.price} a film, for ${plan.films} film${plan.films > 1 ? "s" : ""}${monthly ? " a month" : ""}.`, a.price * 100, plan.films));
   form.set("mode", monthly ? "subscription" : "payment");
   form.set("success_url", `${P2M}/thanks?order=${order}`);
@@ -1112,10 +1123,13 @@ async function stripeSession({ order, price, email, business, source, back }) {
       res = await fetch(`${base}/v1/checkout/sessions`, {
         method: "POST",
         signal: AbortSignal.timeout(1e4),
+        // Stripe-Version: the account default is 2022-08-01, and Checkout only takes £0 orders (a 100% off code such
+        // as NBSTEST100) from 2023-08-16 on; before that Stripe calls the code "invalid".
         headers: {
           Authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}`,
           "Content-Type": "application/x-www-form-urlencoded",
-          "Idempotency-Key": `p2m-${order}`
+          "Idempotency-Key": `p2m-${order}`,
+          "Stripe-Version": STRIPE_VERSION
         },
         body: form.toString()
       });
