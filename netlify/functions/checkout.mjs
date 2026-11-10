@@ -1043,6 +1043,21 @@ var pricing_default = {
         "Your photographer credited",
         "Back within 24 hours of your photos, Monday to Friday"
       ]
+    },
+    "film-now": {
+      name: "Your own film",
+      plan: "Single film",
+      addons: [],
+      price: 140,
+      was: 175,
+      until: "2026-11-24",
+      about: "One film from your own photos, back within 24 hours",
+      includes: [
+        "One 15 to 20 second film from 4 to 6 of your photos",
+        "Landscape (16:9) for your website and ads",
+        "Your photographer credited",
+        "Back within 24 hours of your photos, Monday to Friday"
+      ]
     }
   }
 };
@@ -1099,6 +1114,7 @@ function priced(planName, addonIds, offerId) {
   if (!plan) return { reason: "unknown-plan" };
   const offer = offerId ? (pricing_default.editOffers || {})[offerId] : null;
   if (offerId && (!offer || offer.plan !== planName)) return { reason: "unknown-offer" };
+  if (offer && offer.until && Date.now() > Date.parse(`${offer.until}T23:59:59Z`)) return { reason: "offer-ended" };
   const ids = [...new Set(Array.isArray(addonIds) ? addonIds : [])];
   const addons = [];
   for (const id of ids) {
@@ -1221,7 +1237,7 @@ async function takeOrder(req) {
   const fields = {
     order,
     status: configured ? 'Sent to Stripe checkout, not paid yet. A "Paid" email follows when Stripe confirms the payment.' : "Stripe checkout isn't set up yet: offered the plan's payment link, so add-ons need an invoice.",
-    plan: price.offer ? `${price.offer.name} offer: ${pounds(price.offer.price * 100)}${price.offer.was ? `, was ${pounds(price.offer.was * 100)}` : ""} (${plan.name} + ${price.offer.addons.join(", ")})` : `${plan.name} (${plan.price}${monthly ? " a month" : ""})`,
+    plan: price.offer ? `${price.offer.name} offer: ${pounds(price.offer.price * 100)}${price.offer.was ? `, was ${pounds(price.offer.was * 100)}` : ""} (${[plan.name, ...price.offer.addons].join(" + ")})` : `${plan.name} (${plan.price}${monthly ? " a month" : ""})`,
     addons: addons.length ? addons.map((a) => `${a.name} (\xA3${a.price} x ${plan.films})`).join("; ") : "None",
     total: `${pounds(total)}${monthly ? " a month" : ""}, excluding VAT`,
     name: text("name", 200),
