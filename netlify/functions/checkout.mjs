@@ -1026,11 +1026,11 @@ var pricing_default = {
       ],
       price: 190,
       was: 250,
-      about: "One film of the whole place, with a line on each scene",
+      about: "A film with a line on each scene",
       includes: [
-        "One film of the whole place, about 43 seconds",
-        "A line on each scene in subtitles",
+        "One film with a line on each scene in subtitles",
         "Your logo, colours and tagline on the end frame",
+        "Full-quality file for your website, booking pages and ads",
         "Your photographer credited",
         "Back within 24 hours of your photos, Monday to Friday"
       ]
@@ -1042,9 +1042,9 @@ var pricing_default = {
         "long"
       ],
       price: 149,
-      about: "One film of the whole place",
+      about: "A longer film, ending on your name",
       includes: [
-        "One film of the whole place, about 34 seconds",
+        "One longer film of your place",
         "Ends on your name and web address",
         "Your photographer credited",
         "Back within 24 hours of your photos, Monday to Friday"
