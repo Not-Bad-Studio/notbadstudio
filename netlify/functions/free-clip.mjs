@@ -869,6 +869,24 @@ var getStore = (input, options) => {
   );
 };
 
+// functions/lib/jobs.mjs
+var STORE = "jobs";
+var jobs = () => getStore({ name: STORE, consistency: "strong" });
+async function getJob(id) {
+  if (!id) return null;
+  return await jobs().get(id, { type: "json" }) || null;
+}
+async function saveJob(id, fields, note) {
+  const now = (/* @__PURE__ */ new Date()).toISOString();
+  const old = await getJob(id) || { id, createdAt: now, history: [] };
+  const job = { ...old, ...fields, id, updatedAt: now };
+  for (const key of ["customer", "stripe"]) if (old[key] || fields[key]) job[key] = { ...old[key] || {}, ...fields[key] || {} };
+  if (fields.status && fields.status !== old.status) job.history = [...old.history || [], { at: now, status: fields.status, note: note || "" }];
+  else if (note) job.history = [...old.history || [], { at: now, note }];
+  await jobs().setJSON(id, job);
+  return job;
+}
+
 // functions/free-clip.src.mjs
 var WEBMAIL = /* @__PURE__ */ new Set([
   "gmail.com",
@@ -988,6 +1006,16 @@ async function takeRequest(req) {
       return json({ ok: false, reason: "forward-failed" }, 502);
     }
   }
+  await saveJob(id, {
+    kind: "free-clip",
+    status: "new",
+    plan: "Free clip",
+    films: 1,
+    customer: { name: String(form.get("name") || ""), email, business, website },
+    businessType: String(form.get("business-type") || ""),
+    photos: links,
+    source: String(form.get("source") || "")
+  }, "Free clip requested").catch((err) => console.error("free-clip: saving the job failed: %s", err && err.message));
   const record = JSON.stringify({ business, website: siteDomain(website), photos: links.length, id, at: (/* @__PURE__ */ new Date()).toISOString() });
   await Promise.all(keys.map((key) => clips.set(key, record)));
   return json({ ok: true, photos: links.length });

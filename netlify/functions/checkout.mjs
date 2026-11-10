@@ -1004,6 +1004,24 @@ var pricing_default = {
   ]
 };
 
+// functions/lib/jobs.mjs
+var STORE = "jobs";
+var jobs = () => getStore({ name: STORE, consistency: "strong" });
+async function getJob(id) {
+  if (!id) return null;
+  return await jobs().get(id, { type: "json" }) || null;
+}
+async function saveJob(id, fields, note) {
+  const now = (/* @__PURE__ */ new Date()).toISOString();
+  const old = await getJob(id) || { id, createdAt: now, history: [] };
+  const job = { ...old, ...fields, id, updatedAt: now };
+  for (const key of ["customer", "stripe"]) if (old[key] || fields[key]) job[key] = { ...old[key] || {}, ...fields[key] || {} };
+  if (fields.status && fields.status !== old.status) job.history = [...old.history || [], { at: now, status: fields.status, note: note || "" }];
+  else if (note) job.history = [...old.history || [], { at: now, note }];
+  await jobs().setJSON(id, job);
+  return job;
+}
+
 // functions/checkout.src.mjs
 var MAX_PHOTOS = 12;
 var MAX_PHOTO_BYTES = 5.5 * 1024 * 1024;
@@ -1142,7 +1160,7 @@ async function takeOrder(req) {
   const { plan, monthly, addons, total } = price;
   const fields = {
     order,
-    status: configured ? "Sent to Stripe checkout. Check Stripe for the payment (reference = this order)." : "Stripe checkout isn't set up yet: offered the plan's payment link, so add-ons need an invoice.",
+    status: configured ? 'Sent to Stripe checkout, not paid yet. A "Paid" email follows when Stripe confirms the payment.' : "Stripe checkout isn't set up yet: offered the plan's payment link, so add-ons need an invoice.",
     plan: `${plan.name} (${plan.price}${monthly ? " a month" : ""})`,
     addons: addons.length ? addons.map((a) => `${a.name} (\xA3${a.price} x ${plan.films})`).join("; ") : "None",
     total: `${pounds(total)}${monthly ? " a month" : ""}, excluding VAT`,
@@ -1168,6 +1186,21 @@ async function takeOrder(req) {
     });
     if (res && !res.ok) console.error("checkout: order email answered %s", res.status);
   }
+  await saveJob(order, {
+    kind: "order",
+    status: "awaiting-payment",
+    plan: plan.name,
+    films: plan.films,
+    monthly,
+    addons: addons.map((a) => a.id),
+    total,
+    customer: { name: fields.name, email, business, website: fields.website },
+    notes: fields.notes,
+    photos: links,
+    source: fields.source
+  }, configured ? "Went to Stripe checkout" : "Offered the plan's payment link (online checkout not set up)").catch((err) => {
+    console.error("checkout: saving the job failed: %s", err && err.message);
+  });
   if (!configured) return json(req, { ok: false, reason: "not-configured", payUrl: plan.payUrl || "" });
   const session = await stripeSession({ order, price, email, business, source: fields.source, back });
   if (session.reason) return json(req, { ok: false, reason: session.reason, payUrl: plan.payUrl || "" }, 502);

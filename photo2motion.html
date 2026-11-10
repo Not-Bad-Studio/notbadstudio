@@ -880,7 +880,7 @@ h1, h2, h3 { text-wrap: balance; }
 <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4F5A6B">The film is only as good as the photos it’s made from. If yours won’t work well, we’ll tell you before we make anything.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px">
-<div style="display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; line-height: 1.2">Originals, not screenshots</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4F5A6B">Professional photos at full size, at least 2000 pixels on the long side.</p></div>
+<div style="display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; line-height: 1.2">Originals, not screenshots</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4F5A6B">Professional photos at full size, as your photographer delivered them.</p></div>
 <div style="display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; line-height: 1.2">One subject</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4F5A6B">One boat, property or room, from a few angles: outside, inside and a detail.</p></div>
 <div style="display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; line-height: 1.2">No one in the shot</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4F5A6B">We never animate people. Distant silhouettes are fine.</p></div>
 <div style="display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; line-height: 1.2">Sharp, bright and level</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4F5A6B">A soft or dark photo makes a soft or dark film.</p></div>
@@ -1001,6 +1001,11 @@ h1, h2, h3 { text-wrap: balance; }
   <input type="hidden" name="form-name" value="p2m-order"><input name="bot-field"><input name="order"><input name="status">
   <input name="plan"><input name="addons"><input name="total"><input name="name"><input name="email"><input name="business">
   <input name="website"><textarea name="notes"></textarea><textarea name="photos"></textarea><input name="source">
+</form>
+<form name="p2m-paid" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+  <input type="hidden" name="form-name" value="p2m-paid"><input name="bot-field"><input name="order"><input name="kind">
+  <input name="plan"><input name="addons"><input name="total"><input name="customer"><input name="email"><input name="business">
+  <input name="website"><textarea name="notes"></textarea><textarea name="photos"></textarea><input name="source"><input name="stripe">
 </form>
 <script>
 // Films: each box plays its film when it's on screen (muted), the orange button plays and pauses it, and the bar
