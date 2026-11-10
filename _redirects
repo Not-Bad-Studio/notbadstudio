@@ -14,6 +14,8 @@ https://photo2motion.studio/images/*     /images/:splat                         
 https://photo2motion.studio/videos/*     /videos/:splat                         200!
 https://photo2motion.studio/api/*        /api/:splat                            200!
 https://photo2motion.studio/thanks       /p2m-thanks.html                       200!
+# The studio's job board (private: it asks for the JOBS_BOARD_KEY passphrase; noindex, kept out of robots).
+https://photo2motion.studio/jobs         /p2m-jobs.html                         200!
 https://photo2motion.studio/*            https://www.notbadstudio.com/:splat    301!
 https://www.notbadstudio.com/photo2motion       https://photo2motion.studio/    301!
 https://www.notbadstudio.com/photo2motion.html  https://photo2motion.studio/    301!

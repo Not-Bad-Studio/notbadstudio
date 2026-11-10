@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Photo2Motion Jobs</title>
+<!-- The studio's job board (served at photo2motion.studio/jobs). Every order, free clip and monthly renewal from the
+     "jobs" store, through the private API in netlify/functions/jobs-board.mjs. The passphrase (JOBS_BOARD_KEY in
+     Netlify) is typed once and kept in this browser only. Hand-written page; not built by build_p2m_home.py. -->
+<style>
+@font-face { font-family: "Space Grotesk"; src: url("/fonts/p2m-space-grotesk-latin.woff2") format("woff2"); font-weight: 300 700; font-display: swap; }
+@font-face { font-family: Inter; src: url("/fonts/p2m-inter-latin.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+:root {
+  --bg: #F3F1EC; --surface: #FFFFFF; --ink: #16263F; --muted: #4F5A6B; --faint: #8B95A5; --line: rgba(22, 38, 63, .12);
+  --accent: #E4572E; --accent-ink: #FFFFFF; --chip: rgba(22, 38, 63, .06); --ok: #2F7D5B; --ok-bg: rgba(47, 125, 91, .12);
+  --warn-bg: rgba(228, 87, 46, .12); --shade: rgba(22, 38, 63, .45);
+  --display: "Space Grotesk", Inter, system-ui, sans-serif; --text: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #0E1726; --surface: #16233A; --ink: #F3F1EC; --muted: #B6C0CE; --faint: #8592A6; --line: rgba(243, 241, 236, .14);
+  --accent: #F06A43; --chip: rgba(243, 241, 236, .08); --ok: #6CC79C; --ok-bg: rgba(108, 199, 156, .14);
+  --warn-bg: rgba(240, 106, 67, .16); --shade: rgba(0, 0, 0, .6); color-scheme: dark; } }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 400 15px/1.5 var(--text); }
+.wrap { max-width: 1100px; margin: 0 auto; padding: max(20px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 64px max(16px, env(safe-area-inset-left, 0px)); }
+header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; margin-bottom: 24px; }
+h1 { margin: 0; font: 600 30px/1.1 var(--display); letter-spacing: -.02em; }
+h1 span { color: var(--accent); }
+h2 { margin: 0 0 10px; font: 600 18px/1.2 var(--display); display: flex; gap: 8px; align-items: baseline; }
+h2 small { font: 500 13px var(--text); color: var(--muted); }
+.tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+button, .btn { font: 600 14px var(--text); cursor: pointer; }
+.ghost { height: 36px; padding: 0 14px; border-radius: 18px; border: 1.5px solid var(--line); background: transparent; color: var(--ink); }
+.go { height: 40px; padding: 0 18px; border-radius: 20px; border: 0; background: var(--accent); color: var(--accent-ink); }
+.go:disabled, .ghost:disabled { opacity: .5; cursor: not-allowed; }
+label.check { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; color: var(--muted); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.gate { max-width: 420px; margin: 12vh auto 0; display: flex; flex-direction: column; gap: 12px; }
+.gate input { height: 44px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 400 16px var(--text); }
+.msg { margin: 0; font-size: 14px; color: var(--muted); }
+.msg.bad { color: var(--accent); }
+section.group { margin-bottom: 28px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 12px; }
+.card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border-radius: 12px; background: var(--surface); border: 1.5px solid transparent; text-align: left; color: var(--ink); width: 100%; min-width: 0; }
+.card:hover { border-color: var(--line); }
+.card .top { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+.card b { font: 600 16px var(--display); overflow-wrap: anywhere; }
+.card .sub { color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+.money { font: 600 15px var(--display); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pill { display: inline-flex; padding: 2px 9px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 12px; font-weight: 600; white-space: nowrap; }
+.pill.need { background: var(--warn-bg); color: var(--accent); }
+.pill.done { background: var(--ok-bg); color: var(--ok); }
+.empty { color: var(--faint); font-size: 14px; padding: 6px 0; }
+dialog { width: min(720px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); padding: 0; border: 0; border-radius: 16px; background: var(--surface); color: var(--ink); }
+dialog::backdrop { background: var(--shade); }
+.sheet { display: flex; flex-direction: column; gap: 18px; padding: 22px; }
+.sheet .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.sheet h3 { margin: 0; font: 600 24px/1.15 var(--display); overflow-wrap: anywhere; }
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 14px; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; overflow-wrap: anywhere; min-width: 0; }
+.facts a { color: var(--ink); }
+.photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
+.photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: var(--chip); display: block; }
+.steps { display: flex; flex-wrap: wrap; gap: 8px; }
+.steps button[aria-current="true"] { border-color: var(--accent); color: var(--accent); }
+textarea { width: 100%; min-height: 70px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); font: 400 15px/1.45 var(--text); resize: vertical; }
+ol.history { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
+.close { width: 36px; height: 36px; border-radius: 18px; border: 0; background: var(--chip); color: var(--ink); font-size: 20px; line-height: 1; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <form class="gate" id="gate" hidden>
+    <h1>Photo2Motion <span>jobs</span></h1>
+    <p class="msg">Type the board passphrase. It's kept in this browser only, so you'll type it once per device.</p>
+    <input id="key" type="password" autocomplete="current-password" aria-label="Board passphrase" placeholder="Board passphrase">
+    <button class="go" type="submit">Open the board</button>
+    <p class="msg" id="gate-msg" aria-live="polite"></p>
+  </form>
+
+  <div id="board" hidden>
+    <header>
+      <h1>Photo2Motion <span>jobs</span></h1>
+      <div class="tools">
+        <label class="check"><input type="checkbox" id="show-tests"> Show test orders</label>
+        <button class="ghost" type="button" id="refresh">Refresh</button>
+        <button class="ghost" type="button" id="forget">Forget passphrase here</button>
+      </div>
+    </header>
+    <p class="msg" id="board-msg" aria-live="polite"></p>
+    <div id="groups"></div>
+  </div>
+</div>
+
+<dialog id="detail" aria-labelledby="d-title"><div class="sheet" id="sheet"></div></dialog>
+
+<script>
+(function () {
+  "use strict";
+  var KEY_STORE = "p2m-jobs-key";
+  var ADDONS = { music: "Licensed music", logo: "Your logo", tweaks: "A round of tweaks", captions: "On-screen text", long: "30-second cut", social: "Social cuts" };
+  var KIND = { order: "Order", "free-clip": "Free clip", renewal: "Monthly" };
+  var LABEL = { "awaiting-payment": "Waiting for payment", paid: "Paid", new: "New", making: "Making", "ready-to-check": "Ready to check",
+    delivered: "Delivered", cancelled: "Cancelled", declined: "Declined" };
+  var NEXT = { paid: "making", new: "making", making: "ready-to-check", "ready-to-check": "delivered" };
+  var GROUPS = [
+    ["Needs you", function (j) { return j.status === "paid" || j.status === "new"; }],
+    ["Making", function (j) { return j.status === "making"; }],
+    ["Ready to check", function (j) { return j.status === "ready-to-check"; }],
+    ["Waiting for payment", function (j) { return j.status === "awaiting-payment"; }],
+    ["Done", function (j) { return ["delivered", "cancelled", "declined"].indexOf(j.status) >= 0; }],
+  ];
+  var state = { key: "", jobs: [], statuses: {}, open: null };
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) {
+      if (k === "text") n.textContent = attrs[k];
+      else if (k === "class") n.className = attrs[k];
+      else if (k.slice(0, 2) === "on") n.addEventListener(k.slice(2), attrs[k]);
+      else n.setAttribute(k, attrs[k]);
+    });
+    (kids || []).forEach(function (c) { if (c != null) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return n;
+  }
+  function pounds(p) { if (p == null) return ""; var v = Number(p) / 100; return "£" + v.toLocaleString("en-GB", { minimumFractionDigits: v % 1 ? 2 : 0 }); }
+  function when(iso) {
+    if (!iso) return "";
+    var d = new Date(iso), mins = Math.round((Date.now() - d) / 60000);
+    if (mins < 1) return "just now";
+    if (mins < 60) return mins + " min ago";
+    if (mins < 60 * 24) return Math.round(mins / 60) + " h ago";
+    return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" }) + " " + d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+  }
+  function who(j) { var c = j.customer || {}; return c.business || c.name || c.email || "Unnamed"; }
+  function what(j) {
+    var add = (j.addons || []).map(function (a) { return ADDONS[a] || a; });
+    return (j.plan || KIND[j.kind] || "Job") + (j.monthly ? " (monthly)" : "") + (add.length ? " + " + add.join(", ") : "");
+  }
+  function paid(j) { return j.stripe && j.stripe.amount != null ? pounds(j.stripe.amount) + " paid" : j.total ? pounds(j.total) : ""; }
+  function pillClass(s) { return s === "paid" || s === "new" ? "pill need" : s === "delivered" ? "pill done" : "pill"; }
+
+  async function api(path, opts) {
+    var res = await fetch(path, Object.assign({ headers: { Authorization: "Bearer " + state.key, "Content-Type": "application/json" }, cache: "no-store" }, opts || {}));
+    var body = {};
+    try { body = await res.json(); } catch (e) {}
+    if (res.status === 401) { forget("That passphrase didn't work. Try again."); throw new Error("wrong-key"); }
+    if (res.status === 503) { showGate("The board isn't switched on yet. Add JOBS_BOARD_KEY in Netlify, then try again."); throw new Error("not-configured"); }
+    if (!res.ok || !body.ok) throw new Error(body.reason || "failed");
+    return body;
+  }
+
+  function showGate(message) { $("board").hidden = true; $("gate").hidden = false; $("gate-msg").textContent = message || ""; $("gate-msg").className = message ? "msg bad" : "msg"; $("key").focus(); }
+  function forget(message) { try { localStorage.removeItem(KEY_STORE); } catch (e) {} state.key = ""; showGate(message); }
+
+  async function load() {
+    $("board-msg").textContent = "Loading…";
+    try {
+      var body = await api("/api/jobs");
+      state.jobs = body.jobs; state.statuses = body.statuses;
+      $("gate").hidden = true; $("board").hidden = false;
+      $("board-msg").textContent = "Updated " + new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }) + ".";
+      render();
+      if (state.open) { var j = state.jobs.filter(function (x) { return x.id === state.open; })[0]; if (j) openJob(j); }
+    } catch (e) {
+      if (e.message !== "wrong-key" && e.message !== "not-configured") $("board-msg").textContent = "Couldn't load the jobs. Check your connection and press Refresh.";
+    }
+  }
+
+  function render() {
+    var showTests = $("show-tests").checked;
+    var jobs = state.jobs.filter(function (j) { return showTests || !j.test; });
+    var box = $("groups"); box.textContent = "";
+    GROUPS.forEach(function (g) {
+      var list = jobs.filter(g[1]);
+      if (!list.length && g[0] !== "Needs you") return;
+      var cards = el("div", { class: "cards" });
+      if (!list.length) cards.appendChild(el("p", { class: "empty", text: "Nothing waiting. New paid orders and free-clip requests land here." }));
+      list.forEach(function (j) {
+        cards.appendChild(el("button", { type: "button", class: "card", onclick: function () { openJob(j); } }, [
+          el("div", { class: "top" }, [el("span", { class: pillClass(j.status), text: LABEL[j.status] || j.status }), el("span", { class: "money", text: paid(j) })]),
+          el("b", { text: who(j) }),
+          el("span", { class: "sub", text: what(j) }),
+          el("span", { class: "sub", text: KIND[j.kind] + " · " + (j.photos || []).length + " photo" + ((j.photos || []).length === 1 ? "" : "s") + " · " + when(j.updatedAt) + (j.test ? " · test" : "") }),
+        ]));
+      });
+      box.appendChild(el("section", { class: "group" }, [el("h2", {}, [g[0], el("small", { text: String(list.length) })]), cards]));
+    });
+  }
+
+  function openJob(j) {
+    state.open = j.id;
+    var c = j.customer || {}, s = j.stripe || {};
+    var sheet = $("sheet"); sheet.textContent = "";
+    var steps = el("div", { class: "steps" }, (state.statuses[j.kind] || []).map(function (st) {
+      return el("button", { type: "button", class: "ghost", "aria-current": String(st === j.status), text: (NEXT[j.status] === st ? "→ " : "") + (LABEL[st] || st),
+        onclick: function () { send(j, { status: st }); } });
+    }));
+    var note = el("textarea", { id: "note", "aria-label": "Note for this job's history", placeholder: "A note for this job's history, e.g. photos chased, film sent" });
+    var facts = el("dl", { class: "facts" });
+    function fact(k, v) { if (v) { facts.appendChild(el("dt", { text: k })); facts.appendChild(el("dd", {}, [v])); } }
+    fact("Bought", what(j));
+    fact("Total", j.total ? pounds(j.total) + " list price" : "");
+    fact("Paid", s.amount != null ? pounds(s.amount) + (s.paymentStatus ? " (" + s.paymentStatus + ")" : "") : "");
+    fact("Name", c.name); fact("Business", c.business);
+    if (c.email) fact("Email", el("span", {}, [c.email, " ", el("button", { type: "button", class: "ghost", style: "height: 28px; padding: 0 10px; font-size: 12px",
+      text: "Copy", onclick: function (e) { var b = e.currentTarget; navigator.clipboard.writeText(c.email).then(function () { b.textContent = "Copied"; }, function () { b.textContent = "Select it"; }); } })]));
+    if (c.website) fact("Website", el("a", { href: /^https?:/.test(c.website) ? c.website : "https://" + c.website, target: "_blank", rel: "noopener", text: c.website }));
+    fact("Notes", j.notes); fact("From", j.source);
+    fact("Stripe", s.session || s.invoice || "");
+    fact("Order id", j.id);
+    var photos = el("div", { class: "photos" }, (j.photos || []).map(function (u, i) {
+      return el("a", { href: u, target: "_blank", rel: "noopener" }, [el("img", { src: u, alt: "Photo " + (i + 1), loading: "lazy" })]);
+    }));
+    var history = el("ol", { class: "history" }, (j.history || []).slice().reverse().map(function (h) {
+      return el("li", { text: when(h.at) + " · " + (h.status ? (LABEL[h.status] || h.status) + (h.note ? ": " : "") : "") + (h.note || "") });
+    }));
+    var status = el("p", { class: "msg", "aria-live": "polite" });
+    sheet.appendChild(el("div", { class: "top" }, [
+      el("div", {}, [el("span", { class: pillClass(j.status), text: (LABEL[j.status] || j.status) + " · " + KIND[j.kind] }), el("h3", { id: "d-title", text: who(j) })]),
+      el("button", { type: "button", class: "close", "aria-label": "Close", text: "×", onclick: function () { state.open = null; $("detail").close(); } }),
+    ]));
+    sheet.appendChild(el("div", {}, [el("h2", { text: "Move it on" }), steps]));
+    sheet.appendChild(facts);
+    sheet.appendChild(el("div", {}, [el("h2", {}, ["Photos", el("small", { text: (j.photos || []).length ? String(j.photos.length) : "none yet: they may send them after paying" })]), photos]));
+    sheet.appendChild(el("div", { style: "display: flex; flex-direction: column; gap: 8px" }, [el("h2", { text: "Add a note" }), note,
+      el("div", { class: "tools" }, [el("button", { type: "button", class: "go", text: "Save note", onclick: function () { if (note.value.trim()) send(j, { note: note.value }); } }),
+        el("label", { class: "check" }, [el("input", { type: "checkbox", id: "is-test", onchange: function (e) { send(j, { test: e.target.checked }); } }), " Test order"]), status])]));
+    sheet.querySelector("#is-test").checked = !!j.test;
+    sheet.appendChild(el("div", {}, [el("h2", { text: "History" }), history]));
+    if (!$("detail").open) $("detail").showModal();
+
+    async function send(job, change) {
+      status.textContent = "Saving…";
+      sheet.querySelectorAll("button").forEach(function (b) { b.disabled = true; });
+      try {
+        var body = await api("/api/jobs/" + encodeURIComponent(job.id), { method: "POST", body: JSON.stringify(change) });
+        state.jobs = state.jobs.map(function (x) { return x.id === job.id ? body.job : x; });
+        render(); openJob(body.job);
+      } catch (e) {
+        status.textContent = e.message === "bad-status" ? "That step doesn't apply to this job." : "Couldn't save. Try again.";
+        sheet.querySelectorAll("button").forEach(function (b) { b.disabled = false; });
+      }
+    }
+  }
+
+  $("gate").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var k = $("key").value.trim();
+    if (!k) { $("gate-msg").textContent = "Type the passphrase first."; return; }
+    state.key = k;
+    try { localStorage.setItem(KEY_STORE, k); } catch (err) {}
+    $("key").value = "";
+    load();
+  });
+  $("refresh").addEventListener("click", load);
+  $("forget").addEventListener("click", function () { forget("Passphrase forgotten on this device."); });
+  $("show-tests").addEventListener("change", render);
+  $("detail").addEventListener("close", function () { state.open = null; });
+  document.addEventListener("visibilitychange", function () { if (!document.hidden && state.key) load(); });
+
+  try { state.key = localStorage.getItem(KEY_STORE) || ""; } catch (e) {}
+  if (state.key) load(); else showGate();
+})();
+</script>
+</body>
+</html>
