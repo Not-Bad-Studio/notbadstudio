@@ -961,6 +961,7 @@ var pricing_default = {
   ],
   addons: [
     "Licensed music: +\xA325",
+    "Voice-over: +\xA335",
     "Your logo: +\xA325",
     "A round of tweaks: +\xA335",
     "On-screen text or captions: +\xA325",
@@ -975,6 +976,12 @@ var pricing_default = {
       name: "Licensed music",
       price: 25,
       note: "A licensed track under the film."
+    },
+    {
+      id: "voice",
+      name: "Voice-over",
+      price: 35,
+      note: "A voice reading a short line over each scene."
     },
     {
       id: "logo",
@@ -1010,21 +1017,20 @@ var pricing_default = {
   ],
   editOffers: {
     "hospitality-signature": {
-      name: "Narrated film",
+      name: "Subtitled film",
       plan: "Single film",
       addons: [
         "long",
-        "music",
         "captions",
         "logo"
       ],
       price: 190,
       was: 250,
-      about: "One narrated film of the whole place",
+      about: "One film of the whole place, with a line on each scene",
       includes: [
-        "One film of the whole place, about 40 seconds",
-        "A spoken line on each scene, with subtitles",
-        "Music under the voice, and your logo on the end frame",
+        "One film of the whole place, about 43 seconds",
+        "A line on each scene in subtitles",
+        "Your logo, colours and tagline on the end frame",
         "Your photographer credited",
         "Back within 24 hours of your photos, Monday to Friday"
       ]
