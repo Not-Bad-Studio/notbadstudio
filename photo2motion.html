@@ -331,82 +331,112 @@ a{color:#16263F}a:hover{color:#E4572E}
 
 /* ---- */
 
-/* The "review your package" step (assets/p2m-checkout.js), shared by photo2motion.studio and the Photo2Motion company
-   pages, which both inline it. Its own colours and faces, so it looks the same on either page. */
-.p2mco { width: min(640px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 0; border: 0;
+/* The "review your package" panel (assets/p2m-checkout.js), shared by photo2motion.studio and the Photo2Motion
+   company pages, which both inline it. Two short steps (package, then details), add-ons as toggle switches, and the
+   total always in the footer. Its own colours and faces, so it looks the same on either page. */
+.p2mco { width: min(560px, calc(100vw - 32px)); max-height: min(780px, calc(100dvh - 32px)); margin: auto; padding: 0; border: 0;
   border-radius: 16px; background: #FFFFFF; color: #16263F; box-shadow: 0 24px 60px rgba(22, 38, 63, .25);
   font: 400 16px/1.5 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; overflow: hidden; }
 .p2mco::backdrop { background: rgba(22, 38, 63, .55); }
 .p2mco[open] { display: flex; flex-direction: column; }
 .p2mco * { box-sizing: border-box; }
-.p2mco-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 24px 28px 18px; border-bottom: 1px solid rgba(22, 38, 63, .1); }
-.p2mco-eyebrow { margin: 0 0 6px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #E4572E; }
+.p2mco [hidden] { display: none !important; }
+
+/* Header: what you're buying */
+.p2mco-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 22px 24px 14px; }
+.p2mco-eyebrow { margin: 0 0 4px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #E4572E; }
+.p2mco-title:focus { outline: none; }
 .p2mco-title { margin: 0; font: 600 28px/1.1 "Space Grotesk", Inter, system-ui, sans-serif; letter-spacing: -.02em; }
-.p2mco-sub { margin: 6px 0 0; font-size: 15px; color: #4F5A6B; }
+.p2mco-sub { margin: 4px 0 0; font-size: 15px; color: #4F5A6B; }
 .p2mco-close { flex: none; width: 40px; height: 40px; margin: -6px -10px 0 0; border: 0; border-radius: 20px; background: none; color: #4F5A6B; font-size: 26px; line-height: 1; cursor: pointer; }
 .p2mco-close:hover { background: rgba(22, 38, 63, .06); color: #16263F; }
-.p2mco-body { padding: 20px 28px 8px; overflow-y: auto; display: grid; gap: 22px; }
-.p2mco-h { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 0 0 10px; font: 600 17px/1.3 "Space Grotesk", Inter, system-ui, sans-serif; }
-.p2mco-h small { flex-basis: 100%; padding-left: 32px; font: 400 13px/1.4 Inter, system-ui, sans-serif; color: #4F5A6B; }
-.p2mco-n { flex: none; width: 22px; height: 22px; border-radius: 11px; background: #16263F; color: #FFFFFF; font: 600 12px/22px Inter, system-ui, sans-serif; text-align: center; }
-.p2mco-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px 20px; font-size: 15px; color: #4F5A6B; }
-.p2mco-cols { grid-template-columns: 1fr 1fr; }
-.p2mco-list li { position: relative; padding-left: 20px; }
-.p2mco-list li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px; border-radius: 50%; background: #E4572E; }
-.p2mco-addons { display: grid; gap: 8px; }
-.p2mco-addon { display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 2px 12px; padding: 10px 14px; border: 1px solid rgba(22, 38, 63, .14); border-radius: 10px; cursor: pointer; }
-.p2mco-addon:has(input:checked) { border-color: #E4572E; background: #FDF4F1; }
-.p2mco-addon input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: #E4572E; }
+
+/* Progress: 1 Package, 2 Your details */
+.p2mco-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; padding: 0 24px 16px; list-style: none; border-bottom: 1px solid rgba(22, 38, 63, .1); }
+.p2mco-steps li { display: flex; align-items: center; gap: 8px; padding-top: 10px; border-top: 3px solid rgba(22, 38, 63, .12); font-size: 13px; font-weight: 600; color: #8B95A5; }
+.p2mco-steps li span { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 10px; background: rgba(22, 38, 63, .1); font-size: 11px; }
+.p2mco-steps li.is-on { border-top-color: #E4572E; color: #16263F; }
+.p2mco-steps li.is-on span { background: #E4572E; color: #FFFFFF; }
+.p2mco-steps li.is-done { border-top-color: #16263F; color: #16263F; }
+.p2mco-steps li.is-done span { background: #16263F; color: #FFFFFF; }
+
+.p2mco-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 20px 24px 8px; }  /* content height, scrolls when the panel hits its max */
+.p2mco-step { display: grid; gap: 20px; }
+.p2mco-h { margin: 0 0 10px; font: 600 16px/1.3 "Space Grotesk", Inter, system-ui, sans-serif; }
+.p2mco-h small { margin-left: 6px; font: 400 13px/1.3 Inter, system-ui, sans-serif; color: #4F5A6B; }
+
+/* Step 1: what's included, as a short checklist in a soft panel */
+.p2mco-box { padding: 16px 18px; border-radius: 12px; background: #F3F1EC; }
+.p2mco-box .p2mco-h { margin-bottom: 8px; }
+.p2mco-ticks { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 15px; color: #33415A; }
+.p2mco-ticks li { position: relative; padding-left: 26px; }
+.p2mco-ticks li::before { content: ""; position: absolute; left: 2px; top: .3em; width: 14px; height: 8px; border: solid #E4572E; border-width: 0 0 2px 2px; transform: rotate(-45deg) scale(.8); }
+
+/* Step 1: add-ons as toggle rows */
+.p2mco-addons { border-top: 1px solid rgba(22, 38, 63, .1); }
+.p2mco-addon { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 4px 14px; padding: 12px 2px; border-bottom: 1px solid rgba(22, 38, 63, .1); cursor: pointer; }
+.p2mco-addon-text { display: grid; gap: 1px; min-width: 0; }
 .p2mco-addon b { font-weight: 600; font-size: 15px; }
-.p2mco-addon small { grid-column: 2; font-size: 13px; color: #4F5A6B; }
-.p2mco-addon .p2mco-each { grid-column: 3; grid-row: 1; font-size: 14px; color: #4F5A6B; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.p2mco-sum { display: grid; gap: 4px; padding: 14px 16px; border-radius: 10px; background: #F3F1EC; font-size: 15px; font-variant-numeric: tabular-nums; }
-.p2mco-sum div { display: flex; justify-content: space-between; gap: 12px; }
-.p2mco-sum .p2mco-total { margin-top: 4px; padding-top: 8px; border-top: 1px solid rgba(22, 38, 63, .12); font-weight: 600; font-size: 17px; }
-.p2mco-sum .p2mco-vat { color: #4F5A6B; font-size: 13px; }
-.p2mco-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.p2mco-field { display: grid; gap: 5px; font-size: 14px; font-weight: 500; }
-.p2mco-field.wide { grid-column: 1 / -1; }
-.p2mco-field span em { font-style: normal; font-weight: 400; color: #4F5A6B; }
-.p2mco-field input, .p2mco-field textarea { width: 100%; padding: 10px 12px; border: 1px solid rgba(22, 38, 63, .22); border-radius: 8px; background: #FFFFFF; color: #16263F; font: 400 16px/1.4 Inter, system-ui, sans-serif; }
-.p2mco-field textarea { min-height: 72px; resize: vertical; }
-.p2mco-field input:focus, .p2mco-field textarea:focus { outline: 2px solid #E4572E; outline-offset: 1px; }
-.p2mco-photos { font-size: 13px; color: #4F5A6B; }
-.p2mco-field.is-error input { border-color: #B23A21; outline: 2px solid #B23A21; outline-offset: 0; }
-.p2mco-field textarea::placeholder, .p2mco-field input::placeholder { color: #8B95A5; }
-.p2mco-sumwrap { display: grid; gap: 8px; }
-.p2mco-terms { margin: 0; padding: 0 4px; font-size: 13px; color: #4F5A6B; }
-.p2mco-pickrow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
-.p2mco-pick { position: relative; display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border: 1.5px solid rgba(22, 38, 63, .35); border-radius: 22px; font-weight: 600; font-size: 15px; cursor: pointer; }
-.p2mco-pick:hover { border-color: #16263F; background: rgba(22, 38, 63, .04); }
-.p2mco-pick:focus-within { outline: 2px solid #E4572E; outline-offset: 2px; }
-.p2mco-pick input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
-.p2mco-picked { font-size: 14px; color: #4F5A6B; }
-.p2mco-clear { padding: 0; border: 0; background: none; color: #16263F; font: 500 14px Inter, system-ui, sans-serif; text-decoration: underline; cursor: pointer; }
-.p2mco-hint { margin: 8px 0 0; font-size: 13px; color: #4F5A6B; }
-.p2mco-foot-sum { display: grid; line-height: 1.15; margin-right: auto; }
-.p2mco-foot-sum span { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #4F5A6B; }
-.p2mco-foot-sum b { font: 600 24px/1.2 "Space Grotesk", Inter, system-ui, sans-serif; font-variant-numeric: tabular-nums; }
-.p2mco-foot-sum small { font-size: 12px; color: #4F5A6B; }
-.p2mco-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; padding: 14px 28px 20px; border-top: 1px solid rgba(22, 38, 63, .1); background: #FFFFFF; }
-.p2mco-go { display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 26px; border: 0; border-radius: 25px; background: #E4572E; color: #FFFFFF; font: 600 16px/1 Inter, system-ui, sans-serif; text-decoration: none; cursor: pointer; }
-.p2mco-go[disabled] { opacity: .65; cursor: wait; }
+.p2mco-addon small { font-size: 13px; color: #4F5A6B; }
+.p2mco-price { font-size: 14px; color: #4F5A6B; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.p2mco-switch { appearance: none; -webkit-appearance: none; position: relative; flex: none; width: 44px; height: 26px; margin: 0; border-radius: 13px; background: #CBD1DA; cursor: pointer; transition: background-color .2s ease; }
+.p2mco-switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 1px 3px rgba(22, 38, 63, .3); transition: transform .2s ease; }
+.p2mco-switch:checked { background: #E4572E; }
+.p2mco-switch:checked::after { transform: translateX(18px); }
+.p2mco-switch:focus-visible { outline: 2px solid #16263F; outline-offset: 2px; }
 .p2mco-alt { margin: 0; font-size: 14px; color: #4F5A6B; }
 .p2mco-alt:empty { display: none; }
 .p2mco-alt a { color: #16263F; font-weight: 600; }
-.p2mco-status { flex-basis: 100%; min-height: 1.4em; margin: 0; font-size: 14px; color: #4F5A6B; }
-.p2mco-status.is-error { color: #B23A21; }
+
+/* Step 2: details */
+.p2mco-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.p2mco-field { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
+.p2mco-field > span em { margin-left: 4px; font-style: normal; font-weight: 400; color: #8B95A5; }
+.p2mco-field input, .p2mco-field textarea { width: 100%; padding: 11px 12px; border: 1px solid rgba(22, 38, 63, .22); border-radius: 8px; background: #FFFFFF; color: #16263F; font: 400 16px/1.4 Inter, system-ui, sans-serif; }
+.p2mco-field textarea { min-height: 64px; resize: vertical; }
+.p2mco-field input:focus, .p2mco-field textarea:focus { border-color: #16263F; outline: 2px solid rgba(22, 38, 63, .25); outline-offset: 0; }
+.p2mco-field input::placeholder, .p2mco-field textarea::placeholder { color: #8B95A5; }
+.p2mco-field.is-error input { border-color: #B23A21; outline: 2px solid #B23A21; outline-offset: 0; }
+.p2mco-pickrow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; font-weight: 400; }
+.p2mco-pick { position: relative; display: inline-flex; align-items: center; height: 42px; padding: 0 18px; border: 1.5px solid rgba(22, 38, 63, .3); border-radius: 21px; font-weight: 600; font-size: 15px; cursor: pointer; }
+.p2mco-pick:hover { border-color: #16263F; background: rgba(22, 38, 63, .04); }
+.p2mco-pick:focus-within { outline: 2px solid #E4572E; outline-offset: 2px; }
+.p2mco-pick input { position: absolute; inset: 0; width: 100%; opacity: 0; cursor: pointer; }
+.p2mco-picked { font-size: 14px; color: #33415A; }
+.p2mco-clear { padding: 0; border: 0; background: none; color: #16263F; font: 500 14px Inter, system-ui, sans-serif; text-decoration: underline; cursor: pointer; }
+.p2mco-hint { font-size: 13px; font-weight: 400; color: #4F5A6B; }
+.p2mco-terms { margin: 0; padding: 12px 14px; border-radius: 10px; background: #F3F1EC; font-size: 13px; color: #4F5A6B; }
 .p2mco-fallback { display: grid; gap: 10px; padding: 14px 16px; border-radius: 10px; background: #FDF4F1; font-size: 15px; }
-.p2mco-fallback[hidden] { display: none; }
+
+/* Footer: back, the total, and the next step */
+.p2mco-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 14px 24px 18px; border-top: 1px solid rgba(22, 38, 63, .1); background: #FFFFFF; }
+.p2mco-back { justify-self: start; margin: -6px 0 -4px; padding: 0; border: 0; background: none; color: #4F5A6B; font: 600 14px Inter, system-ui, sans-serif; cursor: pointer; }
+.p2mco-back:hover { color: #16263F; }
+.p2mco-back::before { content: "‹ "; }
+.p2mco-foot-sum { display: grid; margin-right: auto; line-height: 1.2; }
+.p2mco-foot-sum b { font: 600 22px/1.2 "Space Grotesk", Inter, system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.p2mco-foot-sum small { font-size: 12px; color: #4F5A6B; }
+.p2mco-go { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 24px; border: 0; border-radius: 24px; background: #E4572E; color: #FFFFFF; font: 600 16px/1 Inter, system-ui, sans-serif; text-decoration: none; cursor: pointer; }
+.p2mco-go[disabled] { opacity: .65; cursor: wait; }
+.p2mco-status { flex-basis: 100%; margin: 0; font-size: 14px; color: #4F5A6B; }
+.p2mco-status:empty { display: none; }
+.p2mco-status.is-error { color: #B23A21; }
 html.p2mco-lock { overflow: hidden; }
+
 @media (max-width: 600px) {
   .p2mco { width: 100vw; max-width: 100vw; max-height: 100dvh; height: 100dvh; margin: 0; border-radius: 0; }
   .p2mco-head, .p2mco-body, .p2mco-foot { padding-left: 18px; padding-right: 18px; }
+  .p2mco-steps { padding-left: 18px; padding-right: 18px; }
   .p2mco-title { font-size: 24px; }
-  .p2mco-fields, .p2mco-cols { grid-template-columns: 1fr; }
-  .p2mco-go { width: 100%; }
+  .p2mco-pair { grid-template-columns: 1fr; }
+  .p2mco-foot { padding-bottom: max(18px, env(safe-area-inset-bottom, 0px)); }
+  .p2mco-go { flex: 1 1 auto; }
+  .p2mco-addon { grid-template-columns: 1fr auto; }
+  .p2mco-price { grid-column: 1; grid-row: 2; }
+  .p2mco-switch { grid-column: 2; grid-row: 1 / span 2; }
 }
 @media (prefers-reduced-motion: no-preference) { .p2mco[open] { animation: p2mco-in .25s ease both; } }
+@media (prefers-reduced-motion: reduce) { .p2mco-switch, .p2mco-switch::after { transition: none; } }
 @keyframes p2mco-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
 
@@ -1161,16 +1191,21 @@ h1, h2, h3 { text-wrap: balance; }
 </script>
 <script>// The "review your package" step, shared by photo2motion.studio and the Photo2Motion company pages (both inline this
 // file and assets/p2m-checkout.css). Any link with data-p2m-plan="<plan name from pricing.json>" opens it instead of
-// going straight to Stripe: what's included, add-ons with a live total, the buyer's details, optional photos, then
-// "Continue to secure payment". The order and photos go to /api/checkout (functions/checkout.src.mjs), which starts a
-// Stripe checkout for the package plus add-ons. Without JavaScript the link still opens the plan's Stripe payment link.
+// going straight to Stripe. Two short steps (user, 10 Nov 2026: "the form still looks untidy and hard to follow, also
+// add ons can be a toggle"):
+//   1. Package: what's included, and add-ons as toggle switches. "Next: your details".
+//   2. Your details: email (the only required field), optional name, business, website, photos and what the films
+//      are of, the terms, then "Continue to secure payment".
+// The footer always shows the total and a one-line breakdown. The order and any photos go to /api/checkout
+// (functions/checkout.src.mjs), which starts one Stripe checkout for the package plus add-ons. Without JavaScript the
+// link still opens the plan's own Stripe payment link.
 //
-//   P2MCheckout.init({ pricing, api, source, suggested, freeClipUrl })
-//     pricing      pricing.json (plans with films, addonItems, includesList, groups' notes)
-//     api          "/api/checkout" on photo2motion.studio; the full https://www.notbadstudio.com/... elsewhere
-//     source       where the order came from, for the order email (e.g. "photo2motion-home")
-//     suggested    optional plan name to call out; suggestedLabel is its eyebrow (default "Suggested for you")
-//     freeClipUrl  optional link for "Not sure yet? Get a free clip first"
+//   P2MCheckout.init({ pricing, api, source, suggested, suggestedLabel, freeClipUrl })
+//     pricing         pricing.json (plans with films, addonItems, groups)
+//     api             "/api/checkout" on photo2motion.studio; the full https://www.notbadstudio.com/... elsewhere
+//     source          where the order came from, for the order email (e.g. "photo2motion-home")
+//     suggested       optional plan name to call out; suggestedLabel is its eyebrow (default "Suggested for you")
+//     freeClipUrl     optional link for "Not sure yet? Get a free clip first"
 (function () {
   "use strict";
   var MAX_PHOTOS = 12, EDGE = 3000, QUALITY = 0.88;
@@ -1187,17 +1222,19 @@ h1, h2, h3 { text-wrap: balance; }
   }
   function pence(price) { return Math.round(Number(String(price).replace(/[£,\s]/g, "")) * 100); }
   function money(p) { return "£" + (p / 100).toLocaleString("en-GB", { minimumFractionDigits: p % 100 ? 2 : 0 }); }
-  function plans() { return opts.pricing.groups.reduce(function (all, g) { return all.concat(g.plans.map(function (p) { return Object.assign({ group: g }, p); })); }, []); }
+  function cap(text) { return text.charAt(0).toUpperCase() + text.slice(1); }
+  function plans() { return opts.pricing.groups.reduce(function (all, g) { return all.concat(g.plans); }, []); }
   function addonsFor(plan) { return (opts.pricing.addonItems || []).filter(function (a) { return !(a.singleOnly && plan.films !== 1); }); }
+  function $(id) { return dialog.querySelector("#" + id); }
 
-  // What the package includes, in the buyer's terms.
+  // What the package includes, in the buyer's terms, as a short checklist.
   function included(plan) {
     var monthly = Boolean(plan.unit), films = plan.films;
     var list = [films === 1 ? "One film of one boat, property or room" : films + " films" + (monthly ? " a month" : "") + ", each of one boat, property or room",
-      "15 to 20 seconds from 4 to 6 photos, landscape (16:9) for your website, listings and ads"];
-    if (films >= 3) list.push("Vertical (9:16) and square (1:1) cuts for social");
-    list.push("Your photographer credited");
-    list.push(films > 5 && !monthly ? "The first 5 films within 24 hours of your photos, then 5 a day" : "Back within 24 hours of your photos, Monday to Friday");
+      "15 to 20 seconds each, from 4 to 6 photos",
+      "Landscape (16:9) for your website, listings and ads" + (films >= 3 ? ", plus vertical and square cuts" : ""),
+      "Your photographer credited",
+      films > 5 && !monthly ? "The first 5 films within 24 hours of your photos, then 5 a day" : "Back within 24 hours of your photos, Monday to Friday"];
     return list;
   }
   function terms(plan) {
@@ -1208,114 +1245,125 @@ h1, h2, h3 { text-wrap: balance; }
   function build() {
     dialog = el("dialog", { class: "p2mco", "aria-labelledby": "p2mco-title" });
     dialog.innerHTML = [
-      '<div class="p2mco-head"><div><p class="p2mco-eyebrow" id="p2mco-eyebrow">Review your package</p>',
-      '<h2 class="p2mco-title" id="p2mco-title"></h2><p class="p2mco-sub" id="p2mco-sub"></p></div>',
+      '<div class="p2mco-head"><div><p class="p2mco-eyebrow" id="p2mco-eyebrow"></p>',
+      '<h2 class="p2mco-title" id="p2mco-title" tabindex="-1" autofocus></h2><p class="p2mco-sub" id="p2mco-sub"></p></div>',
       '<button type="button" class="p2mco-close" aria-label="Close">×</button></div>',
+      '<ol class="p2mco-steps"><li id="p2mco-s1"><span>1</span>Package</li><li id="p2mco-s2"><span>2</span>Your details</li></ol>',
       '<form class="p2mco-body" id="p2mco-form" novalidate>',
-      '<section><h3 class="p2mco-h"><span class="p2mco-n">1</span>What’s included</h3><ul class="p2mco-list" id="p2mco-included"></ul></section>',
-      '<section><h3 class="p2mco-h"><span class="p2mco-n">2</span>Add-ons <small>Optional. Added to every film.</small></h3>',
-      '<div class="p2mco-addons" id="p2mco-addons"></div></section>',
-      '<div class="p2mco-sumwrap"><div class="p2mco-sum" id="p2mco-sum" aria-live="polite"></div><p class="p2mco-terms" id="p2mco-terms"></p></div>',
-      '<section><h3 class="p2mco-h"><span class="p2mco-n">3</span>Your details</h3><div class="p2mco-fields">',
-      '<label class="p2mco-field"><span>Email</span><input id="p2mco-email" name="email" type="email" autocomplete="email" required></label>',
-      '<label class="p2mco-field"><span>Your name <em>(optional)</em></span><input id="p2mco-name" name="name" autocomplete="name"></label>',
-      '<label class="p2mco-field"><span>Business <em>(optional)</em></span><input id="p2mco-business" name="business" autocomplete="organization"></label>',
-      '<label class="p2mco-field"><span>Website <em>(optional)</em></span><input id="p2mco-website" name="website" placeholder="yourbusiness.co.uk"></label>',
-      '</div></section>',
-      '<section><h3 class="p2mco-h"><span class="p2mco-n">4</span>Photos <small>Optional. You can send them after paying.</small></h3>',
-      '<div class="p2mco-pickrow"><label class="p2mco-pick">Add photos<input id="p2mco-photos" name="photos" type="file" accept="image/*" multiple></label>',
-      '<span class="p2mco-picked" id="p2mco-picked">None added yet</span><button type="button" class="p2mco-clear" id="p2mco-clear" hidden>Remove</button></div>',
-      '<p class="p2mco-hint">Up to 12. Originals work best.</p>',
-      '<label class="p2mco-field wide" style="margin-top: 14px"><span>What are the films of? <em>(optional)</em></span><textarea id="p2mco-notes" name="notes" rows="2" placeholder="For example: our three yachts, or rooms 1 to 5. We can also pick from your website."></textarea></label>',
+      // Step 1: the package
+      '<div class="p2mco-step" id="p2mco-step1">',
+      '<div class="p2mco-box"><h3 class="p2mco-h">What’s included</h3><ul class="p2mco-ticks" id="p2mco-included"></ul></div>',
+      '<div><h3 class="p2mco-h">Add-ons <small>Optional, added to every film</small></h3><div class="p2mco-addons" id="p2mco-addons"></div></div>',
+      '<p class="p2mco-alt" id="p2mco-alt"></p></div>',
+      // Step 2: details
+      '<div class="p2mco-step" id="p2mco-step2" hidden><button type="button" class="p2mco-back" id="p2mco-back">Back to package</button>',
+      '<label class="p2mco-field"><span>Email</span><input id="p2mco-email" name="email" type="email" autocomplete="email" placeholder="you@yourbusiness.co.uk" required></label>',
+      '<div class="p2mco-pair"><label class="p2mco-field"><span>Your name <em>optional</em></span><input id="p2mco-name" name="name" autocomplete="name"></label>',
+      '<label class="p2mco-field"><span>Business <em>optional</em></span><input id="p2mco-business" name="business" autocomplete="organization"></label></div>',
+      '<label class="p2mco-field"><span>Website <em>optional</em></span><input id="p2mco-website" name="website" placeholder="yourbusiness.co.uk"></label>',
+      '<div class="p2mco-field"><span>Photos <em>optional</em></span><div class="p2mco-pickrow">',
+      '<label class="p2mco-pick">Add photos<input id="p2mco-photos" name="photos" type="file" accept="image/*" multiple></label>',
+      '<span class="p2mco-picked" id="p2mco-picked"></span><button type="button" class="p2mco-clear" id="p2mco-clear" hidden>Remove</button></div>',
+      '<small class="p2mco-hint">Up to 12. Or send them after paying. Originals work best.</small></div>',
+      '<label class="p2mco-field"><span>What are the films of? <em>optional</em></span><textarea id="p2mco-notes" name="notes" rows="2" placeholder="For example: our three yachts, or rooms 1 to 5"></textarea></label>',
       '<input type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px">',
-      '</section><p class="p2mco-alt" id="p2mco-alt"></p>',
-      '<div class="p2mco-fallback" id="p2mco-fallback" hidden></div></form>',
-      '<div class="p2mco-foot"><div class="p2mco-foot-sum"><span>Total</span><b id="p2mco-foot-total"></b><small id="p2mco-foot-note">excluding VAT</small></div>',
-      '<button type="submit" form="p2mco-form" class="p2mco-go" id="p2mco-go">Continue to secure payment</button>',
+      '<p class="p2mco-terms" id="p2mco-terms"></p><div class="p2mco-fallback" id="p2mco-fallback" hidden></div></div>',
+      '</form>',
+      '<div class="p2mco-foot">',
+      '<div class="p2mco-foot-sum"><b id="p2mco-foot-total"></b><small id="p2mco-foot-note"></small></div>',
+      '<button type="submit" form="p2mco-form" class="p2mco-go" id="p2mco-go"></button>',
       '<p class="p2mco-status" id="p2mco-status" role="status"></p></div>',
     ].join("");
     document.body.appendChild(dialog);
     dialog.querySelector(".p2mco-close").addEventListener("click", close);
     dialog.addEventListener("close", function () { document.documentElement.classList.remove("p2mco-lock"); });
     dialog.addEventListener("click", function (e) { if (e.target === dialog) close(); }); // a click on the backdrop
-    dialog.querySelector("#p2mco-addons").addEventListener("change", function (e) {
+    $("p2mco-addons").addEventListener("change", function (e) {
       if (e.target && e.target.name === "addon") ticked[e.target.value] = e.target.checked;
       total();
     });
-    dialog.querySelector("#p2mco-email").addEventListener("input", function (e) { mark(e.target, false); });
+    $("p2mco-email").addEventListener("input", function (e) { mark(e.target, false); if ($("p2mco-status").classList.contains("is-error")) status(""); });
     $("p2mco-photos").addEventListener("change", picked);
     $("p2mco-clear").addEventListener("click", function () { $("p2mco-photos").value = ""; picked(); });
-    dialog.querySelector("#p2mco-form").addEventListener("submit", submit);
+    $("p2mco-back").addEventListener("click", function () { step(1); });
+    $("p2mco-form").addEventListener("submit", submit);
   }
-  function $(id) { return dialog.querySelector("#" + id); }
+
   // Flag (or clear) a field that needs fixing, on the field itself.
   function mark(input, bad) {
     input.closest(".p2mco-field").classList.toggle("is-error", bad);
     if (bad) input.setAttribute("aria-invalid", "true"); else input.removeAttribute("aria-invalid");
   }
-  // "3 photos added" beside the Add photos button (the browser's own file box is hidden).
+  function status(text, error) { var s = $("p2mco-status"); s.textContent = text || ""; s.classList.toggle("is-error", Boolean(error)); }
+  // "3 photos added" beside the Add photos button (the browser's own file box is hidden inside it).
   function picked() {
     var n = ($("p2mco-photos").files || []).length;
-    $("p2mco-picked").textContent = !n ? "None added yet" : n > MAX_PHOTOS ? "The first " + MAX_PHOTOS + " of " + n + " photos will be added"
+    $("p2mco-picked").textContent = !n ? "" : n > MAX_PHOTOS ? "The first " + MAX_PHOTOS + " of " + n + " will be added"
       : n + (n === 1 ? " photo" : " photos") + " added";
     $("p2mco-clear").hidden = !n;
   }
-  function status(text, error) { var s = $("p2mco-status"); s.textContent = text || ""; s.classList.toggle("is-error", Boolean(error)); }
+
+  // Show step 1 (package) or 2 (details); the footer button and progress marker follow.
+  function step(n) {
+    state.step = n;
+    $("p2mco-step1").hidden = n !== 1;
+    $("p2mco-step2").hidden = n !== 2;
+    $("p2mco-s1").className = n === 1 ? "is-on" : "is-done";
+    $("p2mco-s2").className = n === 2 ? "is-on" : "";
+    $("p2mco-go").textContent = n === 1 ? "Next: your details" : "Continue to payment";
+    $("p2mco-go").hidden = false;
+    $("p2mco-fallback").hidden = true;
+    status("");
+    dialog.querySelector(".p2mco-body").scrollTop = 0;
+    if (n === 2 && !matchMedia("(max-width: 600px)").matches) $("p2mco-email").focus();
+  }
 
   function open(name) {
     var plan = plans().filter(function (p) { return p.name === name; })[0];
     if (!plan) return false;
     if (!dialog) build();
-    state = { plan: plan, busy: false };
+    state = { plan: plan, busy: false, step: 1 };
     var monthly = Boolean(plan.unit);
-    $("p2mco-eyebrow").textContent = opts.suggested === plan.name ? (opts.suggestedLabel || "Suggested for you") : "Review your package";
-    $("p2mco-title").textContent = plan.name.charAt(0).toUpperCase() + plan.name.slice(1);
-    $("p2mco-sub").textContent = plan.price + (monthly ? " a month" : "") + ". " + plan.per + (plan.for ? ". " + plan.for + "." : ".");
+    $("p2mco-eyebrow").textContent = opts.suggested === plan.name ? (opts.suggestedLabel || "Suggested for you") : "Your package";
+    $("p2mco-title").textContent = cap(plan.name);
+    $("p2mco-sub").textContent = plan.price + (monthly ? " a month" : "") + " · " + plan.per;
     var inc = $("p2mco-included"); inc.textContent = "";
     included(plan).forEach(function (line) { inc.appendChild(el("li", { text: line })); });
     var box = $("p2mco-addons"); box.textContent = "";
     addonsFor(plan).forEach(function (a) {
       box.appendChild(el("label", { class: "p2mco-addon" }, [
-        el("input", { type: "checkbox", name: "addon", value: a.id, checked: Boolean(ticked[a.id]) }),
-        el("b", { text: a.name }),
-        el("span", { class: "p2mco-each", text: "+£" + a.price + (plan.films > 1 ? " a film" : "") }),
-        el("small", { text: a.note || "" }),
+        el("span", { class: "p2mco-addon-text" }, [el("b", { text: a.name }), el("small", { text: a.note || "" })]),
+        el("span", { class: "p2mco-price", text: "+£" + a.price + (plan.films > 1 ? " a film" : "") }),
+        el("input", { type: "checkbox", role: "switch", class: "p2mco-switch", name: "addon", value: a.id, checked: Boolean(ticked[a.id]) }),
       ]));
     });
     $("p2mco-terms").textContent = terms(plan);
-    $("p2mco-fallback").hidden = true;
-    $("p2mco-go").disabled = false;
-    $("p2mco-go").hidden = false;
     var alt = $("p2mco-alt"); alt.textContent = "";
     if (opts.freeClipUrl) {
       var clip = el("a", { href: opts.freeClipUrl, text: "Get a free clip first" });
       clip.addEventListener("click", close);  // the panel closes so the page can scroll to the form
       alt.append("Not sure yet? ", clip);
     }
-    status("");
+    $("p2mco-go").disabled = false;
     picked();
     total();
     document.documentElement.classList.add("p2mco-lock");
     dialog.showModal();
-    dialog.querySelector(".p2mco-body").scrollTop = 0;  // always open at the top, with the add-ons in view
+    step(1);
     return true;
   }
   function close() { if (dialog && dialog.open) dialog.close(); }
 
   function chosen() { return Array.prototype.map.call(dialog.querySelectorAll('input[name="addon"]:checked'), function (i) { return i.value; }); }
+  // The footer total, and a one-line breakdown under it.
   function total() {
-    var plan = state.plan, monthly = Boolean(plan.unit), per = monthly ? " a month" : "", sum = $("p2mco-sum");
-    var lines = [[plan.name.charAt(0).toUpperCase() + plan.name.slice(1), pence(plan.price)]];
+    var plan = state.plan, per = plan.unit ? " a month" : "", base = pence(plan.price), extra = 0;
     chosen().forEach(function (id) {
       var a = (opts.pricing.addonItems || []).filter(function (x) { return x.id === id; })[0];
-      if (a) lines.push([a.name + (plan.films > 1 ? " × " + plan.films : ""), a.price * 100 * plan.films]);
+      if (a) extra += a.price * 100 * plan.films;
     });
-    var all = lines.reduce(function (s, l) { return s + l[1]; }, 0);
-    sum.textContent = "";
-    lines.forEach(function (l) { sum.appendChild(el("div", {}, [el("span", { text: l[0] }), el("span", { text: money(l[1]) + per })])); });
-    sum.appendChild(el("div", { class: "p2mco-total" }, [el("span", { text: "Total" }), el("span", { text: money(all) + per })]));
-    sum.appendChild(el("div", { class: "p2mco-vat" }, [el("span", { text: "Excluding VAT where it applies" })]));
-    $("p2mco-foot-total").textContent = money(all) + per;
+    $("p2mco-foot-total").textContent = money(base + extra) + per;
+    $("p2mco-foot-note").textContent = (extra ? money(base) + " package + " + money(extra) + " add-ons, " : "") + "excl. VAT";
   }
 
   // Shrink a photo to at most EDGE px on its long side, as a JPEG; originals smaller than that keep their size.
@@ -1341,10 +1389,11 @@ h1, h2, h3 { text-wrap: balance; }
     return h.slice(0, 8) + "-" + h.slice(8, 12) + "-" + h.slice(12, 16) + "-" + h.slice(16, 20) + "-" + h.slice(20);
   }
 
+  // When online payment for add-ons isn't available: keep the order, offer the plan's ordinary payment link.
   function fallback(payUrl, withAddons) {
     var box = $("p2mco-fallback"); box.textContent = "";
     box.appendChild(el("p", { style: "margin: 0", text: withAddons
-      ? "We’ve got your order. Paying for add-ons online isn’t switched on yet, so we’ll email an invoice for them. You can pay for the package now:"
+      ? "We’ve got your order. Paying for add-ons online isn’t available right now, so we’ll email an invoice for them. You can pay for the package now:"
       : "We’ve got your order. You can pay for the package now:" }));
     if (payUrl) box.appendChild(el("a", { class: "p2mco-go", href: payUrl, target: "_blank", rel: "noopener", text: "Pay for the package" }));
     box.hidden = false;
@@ -1356,7 +1405,8 @@ h1, h2, h3 { text-wrap: balance; }
   async function submit(e) {
     e.preventDefault();
     if (state.busy) return;
-    var form = $("p2mco-form"), email = $("p2mco-email"), business = $("p2mco-business");
+    if (state.step === 1) { step(2); return; }
+    var form = $("p2mco-form"), email = $("p2mco-email");
     if (!/.+@.+\..+/.test(email.value.trim())) {
       mark(email, true);
       status("Add an email we can reach you on.", true);
@@ -1380,7 +1430,7 @@ h1, h2, h3 { text-wrap: balance; }
       status("Opening secure checkout…");
       var res = await fetch(opts.api, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({
         order: order, plan: state.plan.name, addons: chosen(), photos: sent, source: opts.source || "",
-        name: $("p2mco-name").value, email: email.value, business: business.value, website: $("p2mco-website").value,
+        name: $("p2mco-name").value, email: email.value, business: $("p2mco-business").value, website: $("p2mco-website").value,
         notes: $("p2mco-notes").value, back: location.href.split("#")[0] + "#pricing", "bot-field": form.elements["bot-field"].value,
       }) });
       var data = await res.json().catch(function () { return {}; });
