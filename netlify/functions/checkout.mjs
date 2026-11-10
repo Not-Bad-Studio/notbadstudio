@@ -882,7 +882,7 @@ var pricing_default = {
   groups: [
     {
       name: "Packs",
-      note: "Pay once now, then use your films any time in the next 12 months.",
+      note: "",
       plans: [
         {
           name: "Single film",
@@ -932,14 +932,14 @@ var pricing_default = {
     },
     {
       name: "Monthly",
-      note: "For a steady flow of new listings. Unused films carry over to the next month, and the minimum term is three months.",
+      note: "For charter fleets and hotel groups with new boats, rooms or offers every month. Unused films carry over to the next month, and the minimum term is three months.",
       plans: [
         {
           name: "4 films a month",
           price: "\xA3395",
           unit: "a month",
           per: "About \xA399 a film",
-          for: "Letting and holiday-let agencies",
+          for: "Charter brokers with new boats each month",
           payUrl: "https://buy.stripe.com/dRm8wQ1e53WQ9QY7XP1VK06",
           extra: "Includes vertical and square social cuts",
           films: 4,
@@ -950,7 +950,7 @@ var pricing_default = {
           price: "\xA3850",
           unit: "a month",
           per: "\xA385 a film",
-          for: "Larger agencies",
+          for: "Hotel groups and larger charter fleets",
           payUrl: "https://buy.stripe.com/14AeVe3md8d65AI1zr1VK07",
           extra: "Includes vertical and square social cuts",
           films: 10,
@@ -968,7 +968,7 @@ var pricing_default = {
     "Social cuts (9:16 and 1:1) for a single film: +\xA325"
   ],
   terms: "Prices exclude VAT where it applies. Packs arrive in daily batches: the first 5 films within 24 hours, then 5 a day.",
-  packNote: "Pay once for a pack, then use the films any time in the next 12 months. Packs of 3 or more also include vertical and square cuts for social.",
+  packNote: "Packs of 3 or more also include vertical and square cuts for social.",
   addonItems: [
     {
       id: "music",
@@ -1010,7 +1010,7 @@ var pricing_default = {
   ],
   editOffers: {
     "hospitality-signature": {
-      name: "Signature edit",
+      name: "Narrated film",
       plan: "Single film",
       addons: [
         "long",
@@ -1030,7 +1030,7 @@ var pricing_default = {
       ]
     },
     "hospitality-story": {
-      name: "Story edit",
+      name: "Full film",
       plan: "Single film",
       addons: [
         "long"
