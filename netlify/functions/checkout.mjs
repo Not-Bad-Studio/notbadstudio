@@ -1007,7 +1007,44 @@ var pricing_default = {
       singleOnly: true,
       note: "Vertical and square versions. Included with packs of 3 or more."
     }
-  ]
+  ],
+  editOffers: {
+    "hospitality-signature": {
+      name: "Signature edit",
+      plan: "Single film",
+      addons: [
+        "long",
+        "music",
+        "captions",
+        "logo"
+      ],
+      price: 190,
+      was: 250,
+      about: "One narrated film of the whole place",
+      includes: [
+        "One film of the whole place, about 40 seconds",
+        "A spoken line on each scene, with subtitles",
+        "Music under the voice, and your logo on the end frame",
+        "Your photographer credited",
+        "Back within 24 hours of your photos, Monday to Friday"
+      ]
+    },
+    "hospitality-story": {
+      name: "Story edit",
+      plan: "Single film",
+      addons: [
+        "long"
+      ],
+      price: 150,
+      about: "One film of the whole place",
+      includes: [
+        "One film of the whole place, about 34 seconds",
+        "Ends on your name and web address",
+        "Your photographer credited",
+        "Back within 24 hours of your photos, Monday to Friday"
+      ]
+    }
+  }
 };
 
 // functions/lib/jobs.mjs
@@ -1057,9 +1094,11 @@ function cors(req) {
 var json = (req, body, status = 200) => new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json", ...cors(req) } });
 var pence = (price) => Math.round(Number(String(price).replace(/[£,\s]/g, "")) * 100);
 var pounds = (p) => `\xA3${(p / 100).toLocaleString("en-GB", { minimumFractionDigits: p % 100 ? 2 : 0 })}`;
-function priced(planName, addonIds) {
+function priced(planName, addonIds, offerId) {
   const plan = pricing_default.groups.flatMap((g) => g.plans).find((p) => p.name === planName);
   if (!plan) return { reason: "unknown-plan" };
+  const offer = offerId ? (pricing_default.editOffers || {})[offerId] : null;
+  if (offerId && (!offer || offer.plan !== planName)) return { reason: "unknown-offer" };
   const ids = [...new Set(Array.isArray(addonIds) ? addonIds : [])];
   const addons = [];
   for (const id of ids) {
@@ -1067,6 +1106,11 @@ function priced(planName, addonIds) {
     if (!item) return { reason: "unknown-addon" };
     if (item.singleOnly && plan.films !== 1) continue;
     addons.push(item);
+  }
+  if (offer) {
+    const extras = addons.filter((a) => !offer.addons.includes(a.id));
+    const total2 = offer.price * 100 + extras.reduce((sum, a) => sum + a.price * 100 * plan.films, 0);
+    return { plan, monthly: false, addons, extras, offer: { ...offer, id: offerId }, total: total2 };
   }
   const total = pence(plan.price) + addons.reduce((sum, a) => sum + a.price * 100 * plan.films, 0);
   return { plan, monthly: Boolean(plan.unit), addons, total };
@@ -1105,15 +1149,17 @@ async function stripeSession({ order, price, email, business, source, back }) {
     if (monthly) form.set(`line_items[${i}][price_data][recurring][interval]`, "month");
     form.set(`line_items[${i}][quantity]`, String(quantity));
   };
-  item(0, `Photo2Motion \xB7 ${plan.name}`, `${plan.per}. ${pricing_default.includesList.join(". ")}.`, pence(plan.price), 1, plan.stripeProduct);
-  addons.forEach((a, i) => item(i + 1, a.name, `${a.note} \xA3${a.price} a film, for ${plan.films} film${plan.films > 1 ? "s" : ""}${monthly ? " a month" : ""}.`, a.price * 100, plan.films));
+  const extras = price.offer ? price.extras : addons;
+  if (price.offer) item(0, `Photo2Motion \xB7 ${price.offer.name}`, `${(price.offer.includes || [price.offer.about]).join(". ")}.`, price.offer.price * 100, 1);
+  else item(0, `Photo2Motion \xB7 ${plan.name}`, `${plan.per}. ${pricing_default.includesList.join(". ")}.`, pence(plan.price), 1, plan.stripeProduct);
+  extras.forEach((a, i) => item(i + 1, a.name, `${a.note} \xA3${a.price} a film, for ${plan.films} film${plan.films > 1 ? "s" : ""}${monthly ? " a month" : ""}.`, a.price * 100, plan.films));
   form.set("mode", monthly ? "subscription" : "payment");
   form.set("success_url", `${P2M}/thanks?order=${order}`);
   form.set("cancel_url", back);
   form.set("client_reference_id", order);
   form.set("customer_email", email);
   form.set("allow_promotion_codes", "true");
-  const meta = { order, plan: plan.name, addons: addons.map((a) => a.id).join(",") || "none", business: business.slice(0, 450), source: source.slice(0, 450) };
+  const meta = { order, plan: plan.name, offer: price.offer ? price.offer.id : "none", addons: addons.map((a) => a.id).join(",") || "none", business: business.slice(0, 450), source: source.slice(0, 450) };
   for (const [key, value] of Object.entries(meta)) form.set(`metadata[${key}]`, value);
   if (monthly) for (const [key, value] of Object.entries(meta)) form.set(`subscription_data[metadata][${key}]`, value);
   const base = process.env.STRIPE_API_BASE || "https://api.stripe.com";
@@ -1159,7 +1205,7 @@ async function takeOrder(req) {
   const text = (key, max = 300) => String(body[key] || "").trim().slice(0, max);
   const email = text("email", 200), business = text("business", 200);
   if (!UUID.test(order) || !email.includes("@")) return json(req, { ok: false, reason: "missing" }, 400);
-  const price = priced(text("plan"), body.addons);
+  const price = priced(text("plan"), body.addons, text("offer", 60));
   if (price.reason) return json(req, { ok: false, reason: price.reason }, 400);
   const photos = Math.max(0, Math.min(MAX_PHOTOS, Number(body.photos) || 0));
   let back = `${P2M}/#pricing`;
@@ -1175,7 +1221,7 @@ async function takeOrder(req) {
   const fields = {
     order,
     status: configured ? 'Sent to Stripe checkout, not paid yet. A "Paid" email follows when Stripe confirms the payment.' : "Stripe checkout isn't set up yet: offered the plan's payment link, so add-ons need an invoice.",
-    plan: `${plan.name} (${plan.price}${monthly ? " a month" : ""})`,
+    plan: price.offer ? `${price.offer.name} offer: ${pounds(price.offer.price * 100)}${price.offer.was ? `, was ${pounds(price.offer.was * 100)}` : ""} (${plan.name} + ${price.offer.addons.join(", ")})` : `${plan.name} (${plan.price}${monthly ? " a month" : ""})`,
     addons: addons.length ? addons.map((a) => `${a.name} (\xA3${a.price} x ${plan.films})`).join("; ") : "None",
     total: `${pounds(total)}${monthly ? " a month" : ""}, excluding VAT`,
     name: text("name", 200),
@@ -1203,7 +1249,8 @@ async function takeOrder(req) {
   await saveJob(order, {
     kind: "order",
     status: "awaiting-payment",
-    plan: plan.name,
+    plan: price.offer ? `${plan.name} \xB7 ${price.offer.name}` : plan.name,
+    offer: price.offer ? price.offer.id : "",
     films: plan.films,
     monthly,
     addons: addons.map((a) => a.id),
