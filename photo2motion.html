@@ -589,17 +589,46 @@ h1, h2, h3 { text-wrap: balance; }
 @media (max-width: 349px) { header .nav-logo span { display: none; } }   /* 320px: the mark alone */
 @media (prefers-reduced-motion: reduce) { .p2m-burger span { transition: none; } .p2m-menu:not([hidden]) { animation: none; } }
 
+
+/* Round 6: the nav on navy, like the company pages; the dropdown panels stay white. */
+header.p2m-navy .nav-l > a, header.p2m-navy .nav-l summary, header.p2m-navy .nav-r > a:not([style*="#E4572E"]),
+header.p2m-navy .nav-logo, header.p2m-navy .p2m-burger { color: #F3F1EC !important; }
+header.p2m-navy .nav-l summary svg path { stroke: #F3F1EC; }
+header.p2m-navy .nav-logo svg [stroke="#16263F"] { stroke: #F3F1EC; }
+header.p2m-navy .nav-logo svg [fill="#16263F"] { fill: #F3F1EC; }
+header.p2m-navy .p2m-burger span, header.p2m-navy .p2m-burger i { background: #F3F1EC !important; }
+header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572E"]):hover, header.p2m-navy .nav-l summary:hover { color: #FF8A63 !important; }
+/* The hero: one main film, the three sector stills beside it; click a still to show that film. */
+.p2m-reel-wrap { width: 100%; max-width: 1100px; margin-top: 32px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: 12px; align-items: stretch; text-align: left; }
+.p2m-picks { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 12px; min-height: 0; }
+.p2m-pick { position: relative; display: block; min-height: 0; padding: 0; border: 0; border-radius: 10px; overflow: hidden; cursor: pointer; background: #16263F; }
+.p2m-pick img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: .62; transition: opacity .2s ease; }
+.p2m-pick span { position: absolute; left: 12px; bottom: 10px; color: #F3F1EC; font: 600 12px/1.2 Inter, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; text-shadow: 0 1px 8px rgba(0, 0, 0, .55); }
+.p2m-pick.is-on img, .p2m-pick:hover img { opacity: 1; }
+.p2m-pick.is-on { box-shadow: 0 0 0 3px #E4572E; }
+.p2m-pick:focus-visible { outline: 2px solid #E4572E; outline-offset: 3px; }
+@media (max-width: 760px) {
+  .p2m-reel-wrap { grid-template-columns: 1fr; }
+  .p2m-picks { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: none; }
+  .p2m-pick { aspect-ratio: 16 / 9; }
+  .p2m-pick span { left: 8px; bottom: 6px; font-size: 10px; letter-spacing: .08em; }
+}
+.p2m-ai-link { color: #16263F; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.p2m-ai-link:hover { color: #E4572E; }
+#faq-ai { scroll-margin-top: 96px; }
+@media (prefers-reduced-motion: reduce) { .p2m-pick img { transition: none; } }
+
 </style>
 </head>
 <body>
 <div style="background: #F3F1EC; color: #16263F; font-family: Inter, system-ui, sans-serif">
 
-<header style="position: sticky; top: 0; z-index: 20; background: #F3F1EC; border-bottom: 1px solid rgba(22,38,63,0.1)">
+<header class="p2m-navy" style="position: sticky; top: 0; z-index: 20; background: #16263F; border-bottom: 1px solid rgba(243,241,236,0.12)">
 <nav aria-label="Photo2Motion" class="nav" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; max-width: 1280px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding-top: 14px; padding-bottom: 14px">
 <div class="nav-l" style="display: flex; align-items: center; gap: 20px">
 <details class="dd" style="position: relative">
 <summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">Sectors<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
-<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="#why-now" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Why now</a><a href="#property" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Property</a><a href="#charters" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Marine</a><a href="#stays" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Hospitality</a></div>
+<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="#why-now" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Why now</a><a href="#stays" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Hospitality</a><a href="#property" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Property</a><a href="#charters" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Marine</a></div>
 </details>
 <details class="dd" style="position: relative">
 <summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">How it works<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
@@ -627,23 +656,23 @@ h1, h2, h3 { text-wrap: balance; }
 </div>
 <button type="button" class="p2m-burger" aria-label="Menu" aria-expanded="false" aria-controls="p2m-menu"><span></span><span></span><span></span></button>
 </nav>
-<div class="p2m-menu" id="p2m-menu" hidden><div class="p2m-menu-in"><div class="p2m-menu-group"><span class="p2m-menu-head">Sectors</span><a href="#why-now">Why now</a><a href="#property">Property</a><a href="#charters">Marine</a><a href="#stays">Hospitality</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">How it works</span><a href="#how">Three steps</a><a href="#when">When it’s right</a><a href="#why">Why motion</a><a href="#questions">Questions</a><a href="#what-works">What works best</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">Pricing</span><a href="#pricing">Packs</a><a href="#monthly">Monthly</a><a href="#addons">Add-ons</a></div><div class="p2m-menu-group"><a href="#developed">About</a></div></div></div>
+<div class="p2m-menu" id="p2m-menu" hidden><div class="p2m-menu-in"><div class="p2m-menu-group"><span class="p2m-menu-head">Sectors</span><a href="#why-now">Why now</a><a href="#stays">Hospitality</a><a href="#property">Property</a><a href="#charters">Marine</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">How it works</span><a href="#how">Three steps</a><a href="#when">When it’s right</a><a href="#why">Why motion</a><a href="#questions">Questions</a><a href="#what-works">What works best</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">Pricing</span><a href="#pricing">Packs</a><a href="#monthly">Monthly</a><a href="#addons">Add-ons</a></div><div class="p2m-menu-group"><a href="#developed">About</a></div></div></div>
 </header>
 
 <main>
 <section id="top" class="hero" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; padding-top: 96px; padding-bottom: 96px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center">
-<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">Property · Marine · Hospitality</p>
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">Hospitality · Property · Marine</p>
 <h1 style="margin: 0; max-width: 900px; font-family: 'Space Grotesk', sans-serif; font-size: 76px; font-weight: 600; letter-spacing: -0.035em; line-height: 1.02">Your professional<br class="bd"> photos,<br class="bm"> in motion.</h1>
 <p style="margin: 0; max-width: 640px; font-size: 20px; line-height: 1.55; color: #4F5A6B">Cinematic short films made from the photography you already have, for when filming isn’t practical. Directed and checked by people, delivered in 24 hours.</p>
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px">
 <a href="#free-clip" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 26px; background: #E4572E; color: #FFFFFF; font-weight: 600; text-decoration: none">Get a free clip</a>
 <a href="#pricing" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 26px; border: 1.5px solid #16263F; color: #16263F; font-weight: 600; text-decoration: none">See prices</a>
 </div>
-<div style="width: 100%; max-width: 728px; margin-top: 32px"><div class="p2m-film" data-films="/videos/motion-real-estate.mp4~/images/motion-real-estate.jpg~Property|/videos/motion-marine.mp4~/images/motion-marine.jpg~Marine|/videos/motion-hospitality.mp4~/images/motion-hospitality.jpg~Hospitality" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-real-estate.mp4" poster="/images/motion-real-estate.jpg" muted playsinline preload="none" aria-label="Salterns Lane, a Manns &amp; Manns listing in Bursledon: a film made from the photos below it"></video>
-<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Property</span>
+<div class="p2m-reel-wrap"><div id="p2m-reel" class="p2m-film" data-films="/videos/motion-hospitality.mp4~/images/motion-hospitality.jpg~Hospitality|/videos/motion-real-estate.mp4~/images/motion-real-estate.jpg~Property|/videos/motion-marine.mp4~/images/motion-marine.jpg~Marine" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-hospitality.mp4" poster="/images/motion-hospitality.jpg" muted playsinline preload="none" aria-label="Rêve Retreat, a woodland retreat for groups: a film made from the photos below it"></video>
+<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Hospitality</span>
 <button type="button" aria-label="Play Showreel film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
 <div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 40%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>
-</div></div>
+</div><div class="p2m-picks" role="group" aria-label="Choose a sector"><button type="button" class="p2m-pick is-on" aria-pressed="true" aria-label="Show the Hospitality film"><img src="/images/motion-hospitality.jpg" alt="" loading="lazy"><span>Hospitality</span></button><button type="button" class="p2m-pick" aria-pressed="false" aria-label="Show the Property film"><img src="/images/motion-real-estate.jpg" alt="" loading="lazy"><span>Property</span></button><button type="button" class="p2m-pick" aria-pressed="false" aria-label="Show the Marine film"><img src="/images/motion-marine.jpg" alt="" loading="lazy"><span>Marine</span></button></div></div>
 </section>
 
 <section id="why-now" style="background: #FFFFFF; padding: 112px 0; margin-bottom: 120px">
@@ -687,40 +716,6 @@ h1, h2, h3 { text-wrap: balance; }
 </section>
 
 <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 120px; padding-bottom: 120px">
-<section id="property" class="two p2m-sector" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
-<div class="p2m-film" data-films="/videos/motion-real-estate.mp4~/images/motion-real-estate.jpg~Property" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-real-estate.mp4" poster="/images/motion-real-estate.jpg" muted playsinline preload="none" loop aria-label="Salterns Lane, a Manns &amp; Manns listing in Bursledon: a film made from the photos below it"></video>
-<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Property</span>
-<button type="button" aria-label="Play Property film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
-<div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 33%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 20px">
-<p style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Property</p>
-<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">More views,<br class="bm"> more confident vendors.</h3>
-<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">Your listing photos are already paid for. We turn them into a short film for your listing, website and social channels,<br class="bd"> so the property gets noticed first.</p>
-<div style="display: flex; flex-direction: column; gap: 10px">
-<span style="font-size: 13px; color: #4F5A6B">Made from these 4 photos. Salterns Lane, a Manns &amp; Manns listing in Bursledon. Photos: Manns &amp; Manns.</span>
-<div class="p2m-photos" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px"><img src="/images/motion-real-estate-1.jpg" alt="The back of the house: a white gable with tall glass doors, a stone terrace and a wide lawn" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-real-estate-2.jpg" alt="The vaulted living room with roof windows, grey sofas and blue armchairs" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-real-estate-3.jpg" alt="The kitchen and dining area, with glass doors onto the garden" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-real-estate-4.jpg" alt="The stone terrace with outdoor sofas, the house and tall trees beyond" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
-</div>
-<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos <span class="p2m-arrow" aria-hidden="true">→</span></a>
-</div>
-</section>
-<section id="charters" class="two p2m-sector" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
-<div style="display: flex; flex-direction: column; gap: 20px">
-<p style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Marine</p>
-<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Your boat in motion,<br class="bd"> without a film shoot.</h3>
-<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">Boats are rarely in one place long enough to film. Send the photos you have and we’ll make a film of the boat, inside and out,<br class="bd"> ready for your listings and ads.</p>
-<div style="display: flex; flex-direction: column; gap: 10px">
-<span style="font-size: 13px; color: #4F5A6B">Made from these 4 photos, from deck to cabin. Mon Ami, a Fairview Sailing yacht. Photos: PKC Media and fairviewsailing.co.uk.</span>
-<div class="p2m-photos" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px"><img src="/images/motion-marine-1.jpg" alt="Drone photo of Mon Ami at anchor off a wooded shore, a paddleboard tied alongside" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-2.jpg" alt="Mon Ami&#x27;s saloon, laid for breakfast, looking forward to the cabin" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-3.jpg" alt="Mon Ami&#x27;s galley with a jug of orange juice, fruit bowl and champagne" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-4.jpg" alt="The forward cabin of an Oceanis 37, with an open book on the bed under the hatch" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
-</div>
-<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos <span class="p2m-arrow" aria-hidden="true">→</span></a>
-</div>
-<div class="p2m-film" data-films="/videos/motion-marine.mp4~/images/motion-marine.jpg~Marine" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-marine.mp4" poster="/images/motion-marine.jpg" muted playsinline preload="none" loop aria-label="Mon Ami, a Fairview Sailing yacht: a film made from the photos below it"></video>
-<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Marine</span>
-<button type="button" aria-label="Play Marine film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
-<div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 66%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>
-</div>
-</section>
 <section id="stays" class="two p2m-sector" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
 <div class="p2m-film" data-films="/videos/motion-hospitality.mp4~/images/motion-hospitality.jpg~Hospitality" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-hospitality.mp4" poster="/images/motion-hospitality.jpg" muted playsinline preload="none" loop aria-label="Rêve Retreat, a woodland retreat for groups: a film made from the photos below it"></video>
 <span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Hospitality</span>
@@ -732,12 +727,47 @@ h1, h2, h3 { text-wrap: balance; }
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Show how a room feels, not just how it looks.</h3>
 <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">For hotels, holiday lets and glamping sites. One room or one property per film, made from the photography<br class="bd"> on your website.</p>
 <div style="display: flex; flex-direction: column; gap: 10px">
-<span style="font-size: 13px; color: #4F5A6B">Made from these 4 photos, across the whole retreat. Rêve Retreat, a woodland retreat for groups. Photos: Rêve Retreat.</span>
+<span style="font-size: 13px; color: #4F5A6B">Made from these 4 photos, across the whole retreat. Rêve Retreat, a woodland retreat for groups. Photos: Rêve Retreat. <a class="p2m-ai-link" href="#faq-ai">Why not use AI?</a></span>
 <div class="p2m-photos" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px"><img src="/images/motion-hospitality-1.jpg" alt="The hay meadow at sunset, round bales and the sun low behind the trees" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-hospitality-2.jpg" alt="A cabin bedroom: mustard duvet, fresh towels, lamps and an open stable door" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-hospitality-3.jpg" alt="Red wine, saucisson, baguette and cheese on a table outside the barn" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-hospitality-4.jpg" alt="Drone view of the pool, the courtyard, the farmhouse and the barn roofs" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
 </div>
 <a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos <span class="p2m-arrow" aria-hidden="true">→</span></a>
 </div>
 </section>
+<section id="property" class="two p2m-sector" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
+<div class="p2m-film" data-films="/videos/motion-real-estate.mp4~/images/motion-real-estate.jpg~Property" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-real-estate.mp4" poster="/images/motion-real-estate.jpg" muted playsinline preload="none" loop aria-label="Salterns Lane, a Manns &amp; Manns listing in Bursledon: a film made from the photos below it"></video>
+<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Property</span>
+<button type="button" aria-label="Play Property film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
+<div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 33%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Property</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">More views,<br class="bm"> more confident vendors.</h3>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">Your listing photos are already paid for. We turn them into a short film for your listing, website and social channels,<br class="bd"> so the property gets noticed first.</p>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #4F5A6B">Made from these 4 photos. Salterns Lane, a Manns &amp; Manns listing in Bursledon. Photos: Manns &amp; Manns. <a class="p2m-ai-link" href="#faq-ai">Why not use AI?</a></span>
+<div class="p2m-photos" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px"><img src="/images/motion-real-estate-1.jpg" alt="The back of the house: a white gable with tall glass doors, a stone terrace and a wide lawn" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-real-estate-2.jpg" alt="The vaulted living room with roof windows, grey sofas and blue armchairs" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-real-estate-3.jpg" alt="The kitchen and dining area, with glass doors onto the garden" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-real-estate-4.jpg" alt="The stone terrace with outdoor sofas, the house and tall trees beyond" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
+</div>
+<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos <span class="p2m-arrow" aria-hidden="true">→</span></a>
+</div>
+</section>
+<section id="charters" class="two p2m-sector" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Marine</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Your boat in motion,<br class="bd"> without a film shoot.</h3>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">Boats are rarely in one place long enough to film. Send the photos you have and we’ll make a film of the boat, inside and out,<br class="bd"> ready for your listings and ads.</p>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #4F5A6B">Made from these 4 photos, from deck to cabin. Mon Ami, a Fairview Sailing yacht. Photos: PKC Media and fairviewsailing.co.uk. <a class="p2m-ai-link" href="#faq-ai">Why not use AI?</a></span>
+<div class="p2m-photos" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px"><img src="/images/motion-marine-1.jpg" alt="Drone photo of Mon Ami at anchor off a wooded shore, a paddleboard tied alongside" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-2.jpg" alt="Mon Ami&#x27;s saloon, laid for breakfast, looking forward to the cabin" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-3.jpg" alt="Mon Ami&#x27;s galley with a jug of orange juice, fruit bowl and champagne" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-4.jpg" alt="The forward cabin of an Oceanis 37, with an open book on the bed under the hatch" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
+</div>
+<a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos <span class="p2m-arrow" aria-hidden="true">→</span></a>
+</div>
+<div class="p2m-film" data-films="/videos/motion-marine.mp4~/images/motion-marine.jpg~Marine" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-marine.mp4" poster="/images/motion-marine.jpg" muted playsinline preload="none" loop aria-label="Mon Ami, a Fairview Sailing yacht: a film made from the photos below it"></video>
+<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Marine</span>
+<button type="button" aria-label="Play Marine film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
+<div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 66%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>
+</div>
+</section>
+
 </div>
 
 <section id="when" style="max-width: 1200px; margin: 0 auto; padding: 0 32px 120px; box-sizing: border-box; display: flex; flex-direction: column; gap: 56px">
@@ -880,7 +910,7 @@ h1, h2, h3 { text-wrap: balance; }
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Why not just use an app?</h2>
 <p style="margin: -8px 0 0; font-size: 18px; line-height: 1.6; color: #4F5A6B; max-width: 680px">There are plenty of apps that will animate a photo. Here’s what you get from us that you don’t get from them.</p>
 <div>
-<details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0"><summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">Can’t I do this myself with an AI app?</summary><p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">You can, and for a quick post it might do. An app turns one photo into one clip and gives you whatever comes out. We pick the right photos, direct each shot, check every frame and cut it all into one film of one boat, property or room, with your brand on it.</p></details>
+<details id="faq-ai" style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0"><summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">Can’t I do this myself with an AI app?</summary><p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">You can, and for a quick post it might do. An app turns one photo into one clip and gives you whatever comes out. We pick the right photos, direct each shot, check every frame and cut it all into one film of one boat, property or room, with your brand on it.</p></details>
 <details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0"><summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">What goes wrong when you do it yourself?</summary><p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">The tools add things. In our own testing, raw output switched on lights that weren’t in the room, put a pen on a bed, invented scenery beyond the edge of the photo, blurred sail numbers and had a guest lift her magazine. One of those in front of a customer undoes the trust your photos built. We catch them before you see anything.</p></details>
 <details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0"><summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">How do you make sure nothing is added?</summary><p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">We check every shot frame by frame against the original photo. If anything appears, changes or moves that shouldn’t, we redo the shot or hold that part of the frame to the photo. Names, numbers and logos stay sharp because we end each shot before they start to drift.</p></details>
 <details style="border-top: 1px solid rgba(22,38,63,0.15); padding: 20px 0"><summary style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; cursor: pointer">What about people in my photos?</summary><p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #4F5A6B; max-width: 760px">We never animate people. We choose photos without them, and if someone is in frame we hold them still, so they only move with the boat or the camera. Silhouettes are fine.</p></details>
@@ -982,9 +1012,8 @@ h1, h2, h3 { text-wrap: balance; }
 <div style="display: flex; flex-wrap: wrap; gap: 56px">
 <div style="display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7">Service</span>
-<a href="#property" style="color: #F3F1EC; text-decoration: none">Property</a>
+<a href="#stays" style="color: #F3F1EC; text-decoration: none">Hospitality</a><a href="#property" style="color: #F3F1EC; text-decoration: none">Property</a>
 <a href="#charters" style="color: #F3F1EC; text-decoration: none">Marine</a>
-<a href="#stays" style="color: #F3F1EC; text-decoration: none">Hospitality</a>
 <a href="#pricing" style="color: #F3F1EC; text-decoration: none">Pricing</a>
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px">
@@ -1047,13 +1076,20 @@ h1, h2, h3 { text-wrap: balance; }
     video.addEventListener("play", sync);
     video.addEventListener("pause", sync);
     video.addEventListener("timeupdate", function () { if (bar && video.duration) bar.style.width = (100 * video.currentTime / video.duration) + "%"; });
+    // The hero's sector stills (round 6): clicking one shows that sector's film; the reel moves on by itself at the end.
+    var picks = box.id === "p2m-reel" ? Array.prototype.slice.call(document.querySelectorAll(".p2m-pick")) : [];
+    function show(i, start) {
+      index = i;
+      video.src = films[i].src; video.poster = films[i].poster;
+      if (tag) tag.textContent = films[i].title;
+      picks.forEach(function (p, n) { p.classList.toggle("is-on", n === i); p.setAttribute("aria-pressed", String(n === i)); });
+      if (start) play();
+    }
+    picks.forEach(function (p, n) {
+      p.addEventListener("click", function () { userPaused = false; video.preload = "auto"; show(n, true); });
+    });
     if (films.length > 1) {
-      video.addEventListener("ended", function () {
-        index = (index + 1) % films.length;
-        video.src = films[index].src; video.poster = films[index].poster;
-        if (tag) tag.textContent = films[index].title;
-        play();
-      });
+      video.addEventListener("ended", function () { show((index + 1) % films.length, true); });
     }
     button.addEventListener("click", function () {
       if (video.paused) { userPaused = false; video.preload = "auto"; play(); } else { userPaused = true; video.pause(); }
@@ -1067,6 +1103,11 @@ h1, h2, h3 { text-wrap: balance; }
     sync();
   });
 })();
+
+// "Why not use AI?" links open that answer in the questions section.
+document.querySelectorAll('a[href="#faq-ai"]').forEach(function (a) {
+  a.addEventListener("click", function () { var d = document.getElementById("faq-ai"); if (d) d.open = true; });
+});
 
 // Nav dropdowns: one open at a time, and they close after a choice or a click elsewhere.
 (function () {

@@ -588,16 +588,45 @@ h1, h2, h3 { text-wrap: balance; }
 @media (max-width: 349px) { header .nav-logo span { display: none; } }   /* 320px: the mark alone */
 @media (prefers-reduced-motion: reduce) { .p2m-burger span { transition: none; } .p2m-menu:not([hidden]) { animation: none; } }
 
+
+/* Round 6: the nav on navy, like the company pages; the dropdown panels stay white. */
+header.p2m-navy .nav-l > a, header.p2m-navy .nav-l summary, header.p2m-navy .nav-r > a:not([style*="#E4572E"]),
+header.p2m-navy .nav-logo, header.p2m-navy .p2m-burger { color: #F3F1EC !important; }
+header.p2m-navy .nav-l summary svg path { stroke: #F3F1EC; }
+header.p2m-navy .nav-logo svg [stroke="#16263F"] { stroke: #F3F1EC; }
+header.p2m-navy .nav-logo svg [fill="#16263F"] { fill: #F3F1EC; }
+header.p2m-navy .p2m-burger span, header.p2m-navy .p2m-burger i { background: #F3F1EC !important; }
+header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572E"]):hover, header.p2m-navy .nav-l summary:hover { color: #FF8A63 !important; }
+/* The hero: one main film, the three sector stills beside it; click a still to show that film. */
+.p2m-reel-wrap { width: 100%; max-width: 1100px; margin-top: 32px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: 12px; align-items: stretch; text-align: left; }
+.p2m-picks { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 12px; min-height: 0; }
+.p2m-pick { position: relative; display: block; min-height: 0; padding: 0; border: 0; border-radius: 10px; overflow: hidden; cursor: pointer; background: #16263F; }
+.p2m-pick img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: .62; transition: opacity .2s ease; }
+.p2m-pick span { position: absolute; left: 12px; bottom: 10px; color: #F3F1EC; font: 600 12px/1.2 Inter, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; text-shadow: 0 1px 8px rgba(0, 0, 0, .55); }
+.p2m-pick.is-on img, .p2m-pick:hover img { opacity: 1; }
+.p2m-pick.is-on { box-shadow: 0 0 0 3px #E4572E; }
+.p2m-pick:focus-visible { outline: 2px solid #E4572E; outline-offset: 3px; }
+@media (max-width: 760px) {
+  .p2m-reel-wrap { grid-template-columns: 1fr; }
+  .p2m-picks { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: none; }
+  .p2m-pick { aspect-ratio: 16 / 9; }
+  .p2m-pick span { left: 8px; bottom: 6px; font-size: 10px; letter-spacing: .08em; }
+}
+.p2m-ai-link { color: #16263F; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.p2m-ai-link:hover { color: #E4572E; }
+#faq-ai { scroll-margin-top: 96px; }
+@media (prefers-reduced-motion: reduce) { .p2m-pick img { transition: none; } }
+
 </style>
 </head>
 <body>
 <div style="background: #F3F1EC; color: #16263F; font-family: Inter, system-ui, sans-serif">
-<header style="position: sticky; top: 0; z-index: 20; background: #F3F1EC; border-bottom: 1px solid rgba(22,38,63,0.1)">
+<header class="p2m-navy" style="position: sticky; top: 0; z-index: 20; background: #16263F; border-bottom: 1px solid rgba(243,241,236,0.12)">
 <nav aria-label="Photo2Motion" class="nav" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; max-width: 1280px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding-top: 14px; padding-bottom: 14px">
 <div class="nav-l" style="display: flex; align-items: center; gap: 20px">
 <details class="dd" style="position: relative">
 <summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">Sectors<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
-<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="/#why-now" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Why now</a><a href="/#property" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Property</a><a href="/#charters" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Marine</a><a href="/#stays" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Hospitality</a></div>
+<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="/#why-now" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Why now</a><a href="/#stays" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Hospitality</a><a href="/#property" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Property</a><a href="/#charters" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Marine</a></div>
 </details>
 <details class="dd" style="position: relative">
 <summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">How it works<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
@@ -625,7 +654,7 @@ h1, h2, h3 { text-wrap: balance; }
 </div>
 <button type="button" class="p2m-burger" aria-label="Menu" aria-expanded="false" aria-controls="p2m-menu"><span></span><span></span><span></span></button>
 </nav>
-<div class="p2m-menu" id="p2m-menu" hidden><div class="p2m-menu-in"><div class="p2m-menu-group"><span class="p2m-menu-head">Sectors</span><a href="/#why-now">Why now</a><a href="/#property">Property</a><a href="/#charters">Marine</a><a href="/#stays">Hospitality</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">How it works</span><a href="/#how">Three steps</a><a href="/#when">When it’s right</a><a href="/#why">Why motion</a><a href="/#questions">Questions</a><a href="/#what-works">What works best</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">Pricing</span><a href="/#pricing">Packs</a><a href="/#monthly">Monthly</a><a href="/#addons">Add-ons</a></div><div class="p2m-menu-group"><a href="/#developed">About</a></div></div></div>
+<div class="p2m-menu" id="p2m-menu" hidden><div class="p2m-menu-in"><div class="p2m-menu-group"><span class="p2m-menu-head">Sectors</span><a href="/#why-now">Why now</a><a href="/#stays">Hospitality</a><a href="/#property">Property</a><a href="/#charters">Marine</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">How it works</span><a href="/#how">Three steps</a><a href="/#when">When it’s right</a><a href="/#why">Why motion</a><a href="/#questions">Questions</a><a href="/#what-works">What works best</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">Pricing</span><a href="/#pricing">Packs</a><a href="/#monthly">Monthly</a><a href="/#addons">Add-ons</a></div><div class="p2m-menu-group"><a href="/#developed">About</a></div></div></div>
 </header>
 <main>
 <section id="thanks" style="max-width: 1200px; margin: 0 auto; padding: 112px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
@@ -678,9 +707,8 @@ h1, h2, h3 { text-wrap: balance; }
 <div style="display: flex; flex-wrap: wrap; gap: 56px">
 <div style="display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7">Service</span>
-<a href="/#property" style="color: #F3F1EC; text-decoration: none">Property</a>
+<a href="/#stays" style="color: #F3F1EC; text-decoration: none">Hospitality</a><a href="/#property" style="color: #F3F1EC; text-decoration: none">Property</a>
 <a href="/#charters" style="color: #F3F1EC; text-decoration: none">Marine</a>
-<a href="/#stays" style="color: #F3F1EC; text-decoration: none">Hospitality</a>
 <a href="/#pricing" style="color: #F3F1EC; text-decoration: none">Pricing</a>
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px">
