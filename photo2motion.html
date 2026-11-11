@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F3F1EC">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 104'><rect x='4' y='4' width='132' height='96' rx='8' fill='%23F3F1EC' stroke='%2316263F' stroke-width='8'/><circle cx='104' cy='32' r='11' fill='%23E4572E'/><path d='M14 72 L44 46 L66 64 L80 54 L126 82' fill='none' stroke='%2316263F' stroke-width='8' stroke-linejoin='round' stroke-linecap='round'/></svg>">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 104'%3E%3Cg transform='translate%280,0%29 scale%281.000000%29'%3E%3Crect x='4' y='4' width='132' height='96' rx='8' fill='%23F3F1EC' stroke='%2316263F' stroke-width='5'/%3E%3Cline x1='18' y1='88' x2='122' y2='88' stroke='%2316263F' stroke-opacity='0.25' stroke-width='4.5' stroke-linecap='round'/%3E%3Cline x1='18' y1='88' x2='70.000' y2='88' stroke='%23E4572E' stroke-width='4.5' stroke-linecap='round'/%3E%3Ccircle cx='70.000' cy='88' r='6.5' fill='%23E4572E'/%3E%3Ccircle cx='104' cy='32' r='11' fill='%23E4572E'%3E%3C/circle%3E%3Cpath d='M16.06 76.03 L44 46 L66 64 L80 54 L125.08 78.38' fill='none' stroke='%2316263F' stroke-width='5' stroke-linejoin='round' stroke-linecap='round'%3E%3C/path%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Built by ~/Sites/motion-demos/tools/build_p2m_home.py from design/p2m-home; edit there, not here. -->
 <style>
@@ -547,7 +547,7 @@ h1, h2, h3 { text-wrap: balance; }
   header .nav-l { display: none !important; }
   header .nav-logo { order: -1; margin-right: auto; gap: 10px !important; }
   header .nav-logo span { font-size: 20px !important; }
-  header .nav-logo svg { width: 36px; height: auto; }
+  header .nav-logo .p2m-lockup img { width: auto; height: 31px; }  /* the animated logo, as wide as the old logo (brand_round) */
   header .nav-r { gap: 0 !important; }
   header .nav-r > :not(a[style*="#E4572E"]) { display: none !important; }
   header .nav-r > a[style*="#E4572E"] { height: 40px !important; padding: 0 16px !important; font-size: 14px; white-space: nowrap; }
@@ -582,7 +582,7 @@ h1, h2, h3 { text-wrap: balance; }
   header nav.nav { gap: 6px !important; padding: 10px 12px !important; }
   header .nav-logo { gap: 8px !important; }
   header .nav-logo span { font-size: 17px !important; }
-  header .nav-logo svg { width: 30px; }
+  header .nav-logo .p2m-lockup img { width: auto; height: 26px; }
   header .nav-r > a[style*="#E4572E"] { height: 36px !important; padding: 0 12px !important; font-size: 13px; }
   .p2m-burger { width: 40px; padding: 0 9px; margin-right: -8px; }
 }
@@ -663,6 +663,23 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 /* A call to action under How it works. */
 .p2m-how-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
 
+
+@media (min-width: 861px) {
+  .p2m-sector > .p2m-film { align-self: center; }
+  .p2m-sector > div:not(.p2m-film) { position: relative; gap: 14px !important; }
+  .p2m-sector > div:not(.p2m-film) > p:first-child { position: absolute; bottom: 100%; margin-bottom: 12px !important; }
+  .p2m-sector h3 { font-size: clamp(26px, 2.35vw, 34px) !important; text-wrap: balance; }
+  .p2m-sector > div:not(.p2m-film) > p:not(:first-child) { font-size: clamp(15px, 1.2vw, 17px) !important; text-wrap: pretty; }
+  .p2m-sector > div:not(.p2m-film) > p br.bd { display: none; }
+  .p2m-sector > div:not(.p2m-film) > div { margin-top: auto; flex-direction: column-reverse !important; gap: 8px !important; }
+  .p2m-sector > div:not(.p2m-film) > div > span { text-wrap: pretty; }
+}
+
+
+.p2m-lockup, .p2m-lockup img { display: block; }
+.p2m-lockup-stacked img { width: auto; height: 120px; }
+@media (max-width: 860px) { .p2m-lockup-stacked img { height: 104px; } }
+
 </style>
 </head>
 <body>
@@ -681,15 +698,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 </details>
 </div>
 <a href="#top" class="nav-logo" aria-label="Photo2Motion home" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #16263F">
-<svg width="44" height="33" viewBox="0 0 140 104" aria-hidden="true">
-<rect x="4" y="4" width="132" height="96" rx="8" fill="none" stroke="#16263F" stroke-width="8"></rect>
-<circle cx="104" cy="32" r="11" fill="#E4572E"></circle>
-<path d="M14 72 L44 46 L66 64 L80 54 L126 82" fill="none" stroke="#16263F" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"></path>
-<line x1="18" y1="88" x2="122" y2="88" stroke="#16263F" stroke-opacity="0.25" stroke-width="7" stroke-linecap="round"></line>
-<line x1="18" y1="88" x2="72" y2="88" stroke="#E4572E" stroke-width="7" stroke-linecap="round"></line>
-<circle cx="72" cy="88" r="9" fill="#E4572E"></circle>
-</svg>
-<span style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: -0.03em">Photo2Motion</span>
+<picture class="p2m-lockup"><source media="(prefers-reduced-motion: reduce)" srcset="/images/brand/p2m-logo.svg"><img src="/images/brand/p2m-logo-animated.gif" width="211" height="37" alt="" decoding="async"></picture>
 </a>
 <div class="nav-r" style="display: flex; align-items: center; justify-content: flex-end; gap: 20px">
 <details class="dd" style="position: relative">
@@ -762,7 +771,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 </section>
 
 <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 120px; padding-bottom: 120px">
-<section id="stays" class="two p2m-sector" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
+<section id="stays" class="two p2m-sector" style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: stretch">
 <div class="p2m-film" data-films="/videos/motion-hospitality.mp4~/images/motion-hospitality.jpg~Hospitality" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-hospitality.mp4" poster="/images/motion-hospitality.jpg" muted playsinline preload="none" loop aria-label="Rêve Retreat, a woodland retreat for groups: a film made from the photos below it"></video>
 <span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Hospitality</span>
 <button type="button" aria-label="Play Hospitality film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
@@ -779,7 +788,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 <a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos <span class="p2m-arrow" aria-hidden="true">→</span></a>
 </div>
 </section>
-<section id="property" class="two p2m-sector" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
+<section id="property" class="two p2m-sector" style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: stretch">
 <div class="p2m-film" data-films="/videos/motion-real-estate.mp4~/images/motion-real-estate.jpg~Property" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-real-estate.mp4" poster="/images/motion-real-estate.jpg" muted playsinline preload="none" loop aria-label="Salterns Lane, a Manns &amp; Manns listing in Bursledon: a film made from the photos below it"></video>
 <span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Property</span>
 <button type="button" aria-label="Play Property film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
@@ -796,7 +805,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 <a href="#free-clip" style="align-self: flex-start; font-weight: 600; color: #16263F">Try it with your photos <span class="p2m-arrow" aria-hidden="true">→</span></a>
 </div>
 </section>
-<section id="charters" class="two p2m-sector" style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center">
+<section id="charters" class="two p2m-sector" style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: stretch">
 <div style="display: flex; flex-direction: column; gap: 20px">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E4572E; font-weight: 600">Marine</p>
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Your boat in motion,<br class="bd"> without a film shoot.</h3>
@@ -1064,15 +1073,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px">
 <div style="display: flex; flex-direction: column; gap: 14px">
 <div style="display: flex; align-items: center; gap: 12px">
-<svg width="44" height="33" viewBox="0 0 140 104" aria-hidden="true">
-<rect x="4" y="4" width="132" height="96" rx="8" fill="none" stroke="#F3F1EC" stroke-width="8"></rect>
-<circle cx="104" cy="32" r="11" fill="#E4572E"></circle>
-<path d="M14 72 L44 46 L66 64 L80 54 L126 82" fill="none" stroke="#F3F1EC" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"></path>
-<line x1="18" y1="88" x2="122" y2="88" stroke="#F3F1EC" stroke-opacity="0.25" stroke-width="7" stroke-linecap="round"></line>
-<line x1="18" y1="88" x2="72" y2="88" stroke="#E4572E" stroke-width="7" stroke-linecap="round"></line>
-<circle cx="72" cy="88" r="9" fill="#E4572E"></circle>
-</svg>
-<span style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.03em">Photo2Motion</span>
+<picture class="p2m-lockup p2m-lockup-stacked"><source media="(prefers-reduced-motion: reduce)" srcset="/images/brand/p2m-logo-stacked.svg"><img src="/images/brand/p2m-logo-stacked-sectors.gif" width="168" height="120" alt="" loading="lazy" decoding="async"></picture>
 </div>
 <span style="font-size: 14px; color: #AEB8C7">Your photos. moving.</span>
 </div>
