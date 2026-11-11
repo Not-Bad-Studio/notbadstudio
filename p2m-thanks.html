@@ -665,6 +665,8 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 
 @media (min-width: 861px) {
   .p2m-sector > .p2m-film { align-self: center; }
+  #property > .p2m-film { order: 2; }   /* copy left, film right */
+  #charters > .p2m-film { order: -1; }  /* film left, copy right */
   .p2m-sector > div:not(.p2m-film) { position: relative; gap: 14px !important; }
   .p2m-sector > div:not(.p2m-film) > p:first-child { position: absolute; bottom: 100%; margin-bottom: 12px !important; }
   .p2m-sector h3 { font-size: clamp(26px, 2.35vw, 34px) !important; text-wrap: balance; }
@@ -695,6 +697,15 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
   box-shadow: inset 0 0 0 1.5px #E4572E; color: #E4572E; font-weight: 600; font-size: 15px; text-decoration: none; }
 .p2m-custom-btn:hover { background: #E4572E; color: #FFFFFF; }
 @media (max-width: 520px) { .p2m-custom { padding: 24px; } }
+
+
+@media (max-width: 860px) {  /* phones only ("only center on phones") */
+  footer > div > div:first-child { flex-direction: column !important; align-items: center !important; text-align: center; }
+  footer > div > div:first-child > div { align-items: center !important; justify-content: center !important; }
+  footer > div > div:first-child > div > div { align-items: center !important; }
+  footer > div > div:last-child { flex-direction: column !important; justify-content: center !important; text-align: center; }
+  footer > div > div:last-child > div { justify-content: center !important; }
+}
 
 </style>
 </head>

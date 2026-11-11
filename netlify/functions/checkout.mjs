@@ -872,7 +872,7 @@ var getStore = (input, options) => {
 // pricing.json
 var pricing_default = {
   heading: "Simple prices, 24-hour delivery",
-  includes: "Every film covers one boat, property or room: 15 to 20 seconds from 4 to 6 photos, in landscape (16:9) for your website, listings and ads. Packs of 3 or more also include vertical (9:16) and square (1:1) cuts for social. Your photographer is credited, and films arrive within 24 hours of your order and photos, Monday to Friday. Premium adds background music, a line on each scene and your logo, at \xA3195 a film. Voice-over and a round of tweaks are add-ons.",
+  includes: "Each film is one boat, property or room: 15 to 20 seconds from 4 to 6 of your photos, with your photographer credited.",
   includesList: [
     "A 15 to 20 second film from 4 to 6 photos",
     "Landscape (16:9) for your website, listings and ads",
@@ -904,7 +904,8 @@ var pricing_default = {
           payUrl: "https://buy.stripe.com/eVq3cw2i9dxq5AI5PH1VK03",
           extra: "Includes vertical and square social cuts",
           films: 3,
-          stripeProduct: "prod_Vb0L0R8RAXFETJ"
+          stripeProduct: "prod_Vb0L0R8RAXFETJ",
+          was: "\xA3525"
         },
         {
           name: "5 films",
@@ -915,7 +916,8 @@ var pricing_default = {
           payUrl: "https://buy.stripe.com/5kQ3cwg8Z2SMd3ace51VK04",
           extra: "Includes vertical and square social cuts",
           films: 5,
-          stripeProduct: "prod_Vb0M217JfWYeEg"
+          stripeProduct: "prod_Vb0M217JfWYeEg",
+          was: "\xA3875"
         },
         {
           name: "10 films",
@@ -926,7 +928,8 @@ var pricing_default = {
           payUrl: "https://buy.stripe.com/4gM9AU6ypbpi2owdi91VK05",
           extra: "Includes vertical and square social cuts",
           films: 10,
-          stripeProduct: "prod_Vb0NsrnyT3wKtN"
+          stripeProduct: "prod_Vb0NsrnyT3wKtN",
+          was: "\xA31,750"
         }
       ]
     },
@@ -1118,6 +1121,58 @@ var pricing_default = {
         "Delivered within 24 hours of your order, Monday to Friday"
       ],
       ends: "2026-11-24"
+    },
+    "social-4x5": {
+      name: "4:5 social film",
+      plan: "Single film",
+      addons: [],
+      price: 65,
+      was: 175,
+      about: "The 4:5 film we made for social",
+      includes: [
+        "The 4:5 film we made, about 17 seconds",
+        "Full-quality 1080 x 1350 file for Instagram, Facebook and LinkedIn",
+        "Your photographer credited",
+        "Delivered within 24 hours of your order, Monday to Friday"
+      ],
+      ends: "2026-11-24",
+      _note: "User, 12 Nov 2026: 'add download video now, with payment process' on the 4:5 phone section. Priced as the ready-made Full film offer (\xA365, usually \xA3175) until the user sets a price."
+    },
+    "kitchens-signature": {
+      name: "Premium film",
+      plan: "Single film",
+      addons: [
+        "premium"
+      ],
+      price: 95,
+      was: 195,
+      about: "The film we made, with a line on each scene and background music",
+      includes: [
+        "The film we made, with a line on each scene in subtitles",
+        "Background music, added when you order",
+        "Your logo on the end frame",
+        "Full-quality file for your website, social and ads",
+        "Your photographer credited",
+        "Delivered within 24 hours of your order, Monday to Friday"
+      ],
+      ends: "2026-11-24",
+      _note: "12 Nov 2026, 'all sectors': the ready-made offer for kitchen pages too, as property's."
+    },
+    "kitchens-story": {
+      name: "Full film",
+      plan: "Single film",
+      addons: [],
+      price: 65,
+      was: 175,
+      about: "The film we made, without subtitles, ending on your name",
+      includes: [
+        "The film we made, ending on your name and web address",
+        "Full-quality file for your website, social and ads",
+        "Your photographer credited",
+        "Delivered within 24 hours of your order, Monday to Friday"
+      ],
+      ends: "2026-11-24",
+      _note: "12 Nov 2026, 'all sectors': the ready-made offer for kitchen pages too, as property's."
     }
   },
   editOffersNote: 'User, 11 Nov 2026 ("the pre built film price seems expensive for an offer ... premium should have background music but not vo", then "Yes, apply it"): a film we have already made sells at a deep cut, below a new film. Premium = subtitles + background music + logo (voice-over stays an add-on), usually \xA3195 (user, 11 Nov 2026: "maybe 199", then "or 195": single \xA3175 + the Premium add-on at \xA320, which replaced the separate music, captions and logo add-ons at \xA325 each). "ends" is shown on the page only; the checkout keeps honouring the price after it.',
@@ -1127,7 +1182,8 @@ var pricing_default = {
     seconds: 10,
     about: "3 photos in, a 10-second film back within 24 hours, Monday to Friday, with our end card. One per business."
   },
-  deliveryNote: 'User, 11 Nov 2026 ("should there be a caveate around 24 hr delivery", then "ok to delivery caveat"): the clock starts once we have the order and photos we can use; ready-made films count from the order. The full wording is the terms line and the shared FAQ "When will it arrive?" (faq.json).'
+  deliveryNote: 'User, 11 Nov 2026 ("should there be a caveate around 24 hr delivery", then "ok to delivery caveat"): the clock starts once we have the order and photos we can use; ready-made films count from the order. The full wording is the terms line and the shared FAQ "When will it arrive?" (faq.json).',
+  _wasNote: "User, 11 Nov 2026: 'on pricing show the price of 1x film x3, x5 slashed vs the package deal price', then 'the price update should be for the 10 films too'. 'was' is the Single film price times the pack size, shown struck before the pack price (custom pages and the home page). Change the Single film price and re-run this sum."
 };
 
 // functions/lib/jobs.mjs
