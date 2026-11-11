@@ -622,6 +622,39 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 .hero h1 { font-size: 61px !important; }
 @media (max-width: 860px) { .hero h1 { font-size: 35px !important; } }
 
+
+/* Round 7: "Not a replacement for filming" sits in one white container; the photographers card inside it turns cream
+   so it still reads as its own card. Edges line up with the other sections' content (1136px). */
+#when { width: calc(100% - 64px) !important; max-width: 1136px !important; margin: 0 auto 120px !important;
+  padding: 64px 56px !important; background: #FFFFFF; border-radius: 20px; }
+#when .two[style*="auto 1fr auto"] { background: #F3F1EC !important; }
+#when br.bd { display: none; }  /* the forced breaks suited the wider columns; inside the box they leave short lines */
+@media (max-width: 860px) { #when { width: calc(100% - 32px) !important; padding: 40px 24px !important; margin-bottom: 72px !important; } }
+/* Bigger sector labels on the hero's three stills, on a soft shade so they read on any photo. */
+.p2m-pick::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 60%; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(10, 18, 32, 0), rgba(10, 18, 32, .55)); }
+.p2m-pick span { z-index: 1; left: 16px !important; bottom: 14px !important; font-size: 18px !important; letter-spacing: .1em !important; }
+@media (max-width: 760px) { .p2m-pick span { left: 8px !important; bottom: 6px !important; font-size: 12px !important; letter-spacing: .06em !important; } }
+/* The sector label on each film (the hero's main film and each sector's film) to match. */
+.p2m-film .p2m-tag { position: relative; z-index: 1; font-size: 16px !important; font-weight: 600; letter-spacing: .12em !important; color: #F3F1EC !important; text-shadow: 0 1px 8px rgba(0, 0, 0, .55); }
+@media (max-width: 760px) { .p2m-film .p2m-tag { font-size: 12px !important; } }
+/* The small print under the prices: two white cards like the price cards, Good to know and Add-ons. */
+.p2m-notes { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 20px; align-items: stretch; }
+.p2m-note-card { background: #FFFFFF; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+.p2m-note-title { font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #4F5A6B; }
+.p2m-note-card dl, .p2m-note-card ul { margin: 0; padding: 0; list-style: none; display: grid; }
+.p2m-note-card dl > div { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid rgba(22,38,63,0.1); }
+.p2m-note-card li { padding: 12px 0; border-top: 1px solid rgba(22,38,63,0.1); font-size: 15px; line-height: 1.5; color: #4F5A6B; }
+.p2m-note-card dl > div:first-child, .p2m-note-card li:first-child { border-top: 0; padding-top: 0; }
+.p2m-note-card dl > div:last-child, .p2m-note-card li:last-child { padding-bottom: 0; }
+.p2m-note-card dt { font-size: 15px; font-weight: 600; color: #16263F; }
+.p2m-note-card dd { margin: 0; font-size: 15px; line-height: 1.6; color: #4F5A6B; }
+.p2m-note-card li strong { color: #16263F; font-weight: 600; }
+@media (max-width: 860px) { .p2m-notes { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .p2m-note-card dl > div { grid-template-columns: 1fr; gap: 4px; } .p2m-note-card { padding: 24px; } }
+/* A call to action under How it works. */
+.p2m-how-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+
 </style>
 </head>
 <body>
