@@ -599,10 +599,12 @@ header.p2m-navy .nav-logo svg [fill="#16263F"] { fill: #F3F1EC; }
 header.p2m-navy .p2m-burger span, header.p2m-navy .p2m-burger i { background: #F3F1EC !important; }
 header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572E"]):hover, header.p2m-navy .nav-l summary:hover { color: #FF8A63 !important; }
 /* The hero: one main film, the three sector stills beside it; click a still to show that film. */
-.p2m-reel-wrap { width: 100%; max-width: 1100px; margin-top: 32px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: 12px; align-items: stretch; text-align: left; }
-.p2m-picks { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 12px; min-height: 0; }
+/* The main film (16:9) sets the row's height and the stills fill it. Stretching the film to the stills' height made
+   it wider than its column, so it ran under them (user, 11 Nov 2026: "also fix this layout on the homepage"). */
+.p2m-reel-wrap { width: 100%; max-width: 1100px; margin-top: 32px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: 12px; align-items: start; text-align: left; }
+.p2m-picks { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 12px; min-height: 0; align-self: stretch; }
 .p2m-pick { position: relative; display: block; min-height: 0; padding: 0; border: 0; border-radius: 10px; overflow: hidden; cursor: pointer; background: #16263F; }
-.p2m-pick img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: .62; transition: opacity .2s ease; }
+.p2m-pick img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; opacity: .62; transition: opacity .2s ease; }
 .p2m-pick span { position: absolute; left: 12px; bottom: 10px; color: #F3F1EC; font: 600 12px/1.2 Inter, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; text-shadow: 0 1px 8px rgba(0, 0, 0, .55); }
 .p2m-pick.is-on img, .p2m-pick:hover img { opacity: 1; }
 .p2m-pick.is-on { box-shadow: 0 0 0 3px #E4572E; }
