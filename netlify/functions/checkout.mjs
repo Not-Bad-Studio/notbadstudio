@@ -872,7 +872,7 @@ var getStore = (input, options) => {
 // pricing.json
 var pricing_default = {
   heading: "Simple prices, 24-hour delivery",
-  includes: "Every film covers one boat, property or room: 15 to 20 seconds from 4 to 6 photos, in landscape (16:9) for your website, listings and ads. Packs of 3 or more also include vertical (9:16) and square (1:1) cuts for social. Your photographer is credited, and films arrive within 24 hours of your photos, Monday to Friday. Premium adds background music, a line on each scene and your logo, at \xA3250 a film. Voice-over and a round of tweaks are add-ons.",
+  includes: "Every film covers one boat, property or room: 15 to 20 seconds from 4 to 6 photos, in landscape (16:9) for your website, listings and ads. Packs of 3 or more also include vertical (9:16) and square (1:1) cuts for social. Your photographer is credited, and films arrive within 24 hours of your photos, Monday to Friday. Premium adds background music, a line on each scene and your logo, at \xA3195 a film. Voice-over and a round of tweaks are add-ons.",
   includesList: [
     "A 15 to 20 second film from 4 to 6 photos",
     "Landscape (16:9) for your website, listings and ads",
@@ -960,11 +960,9 @@ var pricing_default = {
     }
   ],
   addons: [
-    "Licensed music: +\xA325",
+    "Premium (music, a line on each scene, your logo): +\xA320",
     "Voice-over: +\xA335",
-    "Your logo: +\xA325",
     "A round of tweaks: +\xA335",
-    "On-screen text or captions: +\xA325",
     "30-second cut from 6 to 8 photos: +\xA360",
     "Social cuts (9:16 and 1:1) for a single film: +\xA325"
   ],
@@ -972,10 +970,10 @@ var pricing_default = {
   packNote: "Packs of 3 or more also include vertical and square cuts for social.",
   addonItems: [
     {
-      id: "music",
-      name: "Licensed music",
-      price: 25,
-      note: "A licensed track under the film."
+      id: "premium",
+      name: "Premium: music, a line on each scene and your logo",
+      price: 20,
+      note: "Background music, a line of text on each scene and your logo on the end frame. Voice-over is separate."
     },
     {
       id: "voice",
@@ -984,22 +982,10 @@ var pricing_default = {
       note: "A voice reading a short line over each scene."
     },
     {
-      id: "logo",
-      name: "Your logo",
-      price: 25,
-      note: "Your logo on the closing frame."
-    },
-    {
       id: "tweaks",
       name: "A round of tweaks",
       price: 35,
       note: "One round of changes once you've seen it."
-    },
-    {
-      id: "captions",
-      name: "On-screen text or captions",
-      price: 25,
-      note: "A line of text, a name or a price on screen."
     },
     {
       id: "long",
@@ -1020,12 +1006,10 @@ var pricing_default = {
       name: "Premium film",
       plan: "Single film",
       addons: [
-        "music",
-        "captions",
-        "logo"
+        "premium"
       ],
       price: 95,
-      was: 250,
+      was: 195,
       about: "The film we made, with a line on each scene and background music",
       includes: [
         "The film we made, with a line on each scene in subtitles",
@@ -1071,12 +1055,10 @@ var pricing_default = {
       name: "Premium film",
       plan: "Single film",
       addons: [
-        "music",
-        "captions",
-        "logo"
+        "premium"
       ],
       price: 95,
-      was: 250,
+      was: 195,
       about: "The film we made, with a line on each scene and background music",
       includes: [
         "The film we made, with a line on each scene in subtitles",
@@ -1107,12 +1089,10 @@ var pricing_default = {
       name: "Premium film",
       plan: "Single film",
       addons: [
-        "music",
-        "captions",
-        "logo"
+        "premium"
       ],
       price: 95,
-      was: 250,
+      was: 195,
       about: "The film we made, with a line on each scene and background music",
       includes: [
         "The film we made, with a line on each scene in subtitles",
@@ -1140,7 +1120,7 @@ var pricing_default = {
       ends: "2026-11-24"
     }
   },
-  editOffersNote: 'User, 11 Nov 2026 ("the pre built film price seems expensive for an offer ... premium should have background music but not vo", then "Yes, apply it"): a film we have already made sells at a deep cut, below a new film. Premium = subtitles + background music + logo (voice-over stays an add-on), usually \xA3250 (single \xA3175 + music, captions, logo at \xA325 each). "ends" is shown on the page only; the checkout keeps honouring the price after it.',
+  editOffersNote: 'User, 11 Nov 2026 ("the pre built film price seems expensive for an offer ... premium should have background music but not vo", then "Yes, apply it"): a film we have already made sells at a deep cut, below a new film. Premium = subtitles + background music + logo (voice-over stays an add-on), usually \xA3195 (user, 11 Nov 2026: "maybe 199", then "or 195": single \xA3175 + the Premium add-on at \xA320, which replaced the separate music, captions and logo add-ons at \xA325 each). "ends" is shown on the page only; the checkout keeps honouring the price after it.',
   freeClip: {
     name: "Free clip",
     photos: 3,
