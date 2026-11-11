@@ -1048,7 +1048,8 @@ var pricing_default = {
         "Ends on your name and web address",
         "Your photographer credited",
         "Back within 24 hours of your photos, Monday to Friday"
-      ]
+      ],
+      was: 235
     },
     "film-now": {
       name: "Your own film",
@@ -1061,6 +1062,41 @@ var pricing_default = {
       includes: [
         "One 15 to 20 second film from 4 to 6 of your photos",
         "Landscape (16:9) for your website and ads",
+        "Your photographer credited",
+        "Back within 24 hours of your photos, Monday to Friday"
+      ]
+    },
+    "marine-signature": {
+      name: "Subtitled film",
+      plan: "Single film",
+      addons: [
+        "long",
+        "captions",
+        "logo"
+      ],
+      price: 230,
+      was: 285,
+      about: "A film with a line on each scene",
+      includes: [
+        "One film with a line on each scene in subtitles",
+        "Your logo, colours and tagline on the end frame",
+        "Full-quality file for your website, charter listings and ads",
+        "Your photographer credited",
+        "Back within 24 hours of your photos, Monday to Friday"
+      ]
+    },
+    "marine-story": {
+      name: "Full film",
+      plan: "Single film",
+      addons: [
+        "long"
+      ],
+      price: 190,
+      was: 235,
+      about: "A longer film, ending on your name",
+      includes: [
+        "One longer film of your boat",
+        "Ends on your name and web address",
         "Your photographer credited",
         "Back within 24 hours of your photos, Monday to Friday"
       ]
