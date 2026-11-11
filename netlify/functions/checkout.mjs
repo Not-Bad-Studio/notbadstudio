@@ -872,7 +872,7 @@ var getStore = (input, options) => {
 // pricing.json
 var pricing_default = {
   heading: "Simple prices, 24-hour delivery",
-  includes: "Every film covers one boat, property or room: 15 to 20 seconds from 4 to 6 photos, in landscape (16:9) for your website, listings and ads. Packs of 3 or more also include vertical (9:16) and square (1:1) cuts for social. Your photographer is credited, and films arrive within 24 hours of your photos, Monday to Friday. Music, your logo and a round of tweaks are add-ons.",
+  includes: "Every film covers one boat, property or room: 15 to 20 seconds from 4 to 6 photos, in landscape (16:9) for your website, listings and ads. Packs of 3 or more also include vertical (9:16) and square (1:1) cuts for social. Your photographer is credited, and films arrive within 24 hours of your photos, Monday to Friday. Premium adds background music, a line on each scene and your logo, at \xA3250 a film. Voice-over and a round of tweaks are add-ons.",
   includesList: [
     "A 15 to 20 second film from 4 to 6 photos",
     "Landscape (16:9) for your website, listings and ads",
@@ -1017,39 +1017,40 @@ var pricing_default = {
   ],
   editOffers: {
     "hospitality-signature": {
-      name: "Subtitled film",
+      name: "Premium film",
       plan: "Single film",
       addons: [
-        "long",
+        "music",
         "captions",
         "logo"
       ],
-      price: 190,
+      price: 95,
       was: 250,
-      about: "A film with a line on each scene",
+      about: "The film we made, with a line on each scene and background music",
       includes: [
-        "One film with a line on each scene in subtitles",
-        "Your logo, colours and tagline on the end frame",
+        "The film we made, with a line on each scene in subtitles",
+        "Background music, added when you order",
+        "Your logo on the end frame",
         "Full-quality file for your website, booking pages and ads",
         "Your photographer credited",
-        "Back within 24 hours of your photos, Monday to Friday"
-      ]
+        "Delivered within 24 hours, Monday to Friday"
+      ],
+      ends: "2026-11-24"
     },
     "hospitality-story": {
       name: "Full film",
       plan: "Single film",
-      addons: [
-        "long"
-      ],
-      price: 149,
-      about: "A longer film, ending on your name",
+      addons: [],
+      price: 65,
+      about: "The film we made, without subtitles, ending on your name",
       includes: [
-        "One longer film of your place",
-        "Ends on your name and web address",
+        "The film we made, ending on your name and web address",
+        "Full-quality file for your website, booking pages and ads",
         "Your photographer credited",
-        "Back within 24 hours of your photos, Monday to Friday"
+        "Delivered within 24 hours, Monday to Friday"
       ],
-      was: 235
+      was: 175,
+      ends: "2026-11-24"
     },
     "film-now": {
       name: "Your own film",
@@ -1067,75 +1068,84 @@ var pricing_default = {
       ]
     },
     "marine-signature": {
-      name: "Subtitled film",
+      name: "Premium film",
       plan: "Single film",
       addons: [
-        "long",
+        "music",
         "captions",
         "logo"
       ],
-      price: 230,
-      was: 285,
-      about: "A film with a line on each scene",
+      price: 95,
+      was: 250,
+      about: "The film we made, with a line on each scene and background music",
       includes: [
-        "One film with a line on each scene in subtitles",
-        "Your logo, colours and tagline on the end frame",
+        "The film we made, with a line on each scene in subtitles",
+        "Background music, added when you order",
+        "Your logo on the end frame",
         "Full-quality file for your website, charter listings and ads",
         "Your photographer credited",
-        "Back within 24 hours of your photos, Monday to Friday"
-      ]
+        "Delivered within 24 hours, Monday to Friday"
+      ],
+      ends: "2026-11-24"
     },
     "marine-story": {
       name: "Full film",
       plan: "Single film",
-      addons: [
-        "long"
-      ],
-      price: 190,
-      was: 235,
-      about: "A longer film, ending on your name",
+      addons: [],
+      price: 65,
+      was: 175,
+      about: "The film we made, without subtitles, ending on your name",
       includes: [
-        "One longer film of your boat",
-        "Ends on your name and web address",
+        "The film we made, ending on your name and web address",
+        "Full-quality file for your website, charter listings and ads",
         "Your photographer credited",
-        "Back within 24 hours of your photos, Monday to Friday"
-      ]
+        "Delivered within 24 hours, Monday to Friday"
+      ],
+      ends: "2026-11-24"
     },
     "property-signature": {
-      name: "Subtitled film",
+      name: "Premium film",
       plan: "Single film",
       addons: [
-        "long",
+        "music",
         "captions",
         "logo"
       ],
-      price: 230,
-      was: 285,
-      about: "A film with a line on each scene",
+      price: 95,
+      was: 250,
+      about: "The film we made, with a line on each scene and background music",
       includes: [
-        "One film with a line on each scene in subtitles",
-        "Your logo, colours and tagline on the end frame",
-        "Full-quality file for your website, portal listings and social",
+        "The film we made, with a line on each scene in subtitles",
+        "Background music, added when you order",
+        "Your logo on the end frame",
+        "Full-quality file for your website, portal listings and ads",
         "Your photographer credited",
-        "Back within 24 hours of your photos, Monday to Friday"
-      ]
+        "Delivered within 24 hours, Monday to Friday"
+      ],
+      ends: "2026-11-24"
     },
     "property-story": {
       name: "Full film",
       plan: "Single film",
-      addons: [
-        "long"
-      ],
-      price: 190,
-      was: 235,
-      about: "A longer film, ending on your name",
+      addons: [],
+      price: 65,
+      was: 175,
+      about: "The film we made, without subtitles, ending on your name",
       includes: [
-        "One longer film of the property",
-        "Ends on your name and web address",
+        "The film we made, ending on your name and web address",
+        "Full-quality file for your website, portal listings and ads",
         "Your photographer credited",
-        "Back within 24 hours of your photos, Monday to Friday"
-      ]
+        "Delivered within 24 hours, Monday to Friday"
+      ],
+      ends: "2026-11-24"
     }
+  },
+  editOffersNote: 'User, 11 Nov 2026 ("the pre built film price seems expensive for an offer ... premium should have background music but not vo", then "Yes, apply it"): a film we have already made sells at a deep cut, below a new film. Premium = subtitles + background music + logo (voice-over stays an add-on), usually \xA3250 (single \xA3175 + music, captions, logo at \xA325 each). "ends" is shown on the page only; the checkout keeps honouring the price after it.',
+  freeClip: {
+    name: "Free clip",
+    photos: 3,
+    seconds: 10,
+    about: "3 photos in, a 10-second film back within 24 hours, with our end card. One per business."
   }
 };
 
