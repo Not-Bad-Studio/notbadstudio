@@ -872,12 +872,12 @@ var getStore = (input, options) => {
 // pricing.json
 var pricing_default = {
   heading: "Simple prices, 24-hour delivery",
-  includes: "Every film covers one boat, property or room: 15 to 20 seconds from 4 to 6 photos, in landscape (16:9) for your website, listings and ads. Packs of 3 or more also include vertical (9:16) and square (1:1) cuts for social. Your photographer is credited, and films arrive within 24 hours of your photos, Monday to Friday. Premium adds background music, a line on each scene and your logo, at \xA3195 a film. Voice-over and a round of tweaks are add-ons.",
+  includes: "Every film covers one boat, property or room: 15 to 20 seconds from 4 to 6 photos, in landscape (16:9) for your website, listings and ads. Packs of 3 or more also include vertical (9:16) and square (1:1) cuts for social. Your photographer is credited, and films arrive within 24 hours of your order and photos, Monday to Friday. Premium adds background music, a line on each scene and your logo, at \xA3195 a film. Voice-over and a round of tweaks are add-ons.",
   includesList: [
     "A 15 to 20 second film from 4 to 6 photos",
     "Landscape (16:9) for your website, listings and ads",
     "Your photographer credited",
-    "Back within 24 hours, Monday to Friday"
+    "Back within 24 hours of your order and photos, Monday to Friday"
   ],
   groups: [
     {
@@ -966,7 +966,7 @@ var pricing_default = {
     "30-second cut from 6 to 8 photos: +\xA360",
     "Social cuts (9:16 and 1:1) for a single film: +\xA325"
   ],
-  terms: "Prices exclude VAT where it applies. Packs arrive in daily batches: the first 5 films within 24 hours, then 5 a day.",
+  terms: "Prices exclude VAT where it applies. The 24 hours start once we have your order and photos we can use. Order on a Friday afternoon or at the weekend and we start Monday at 9am, UK time. If a photo won't work, say someone's in shot or it's too dark, we'll tell you within a few hours and start again when the new one arrives. Packs come in daily batches: the first 5 films within 24 hours, then 5 a day. If anything will take longer, we'll tell you straight away.",
   packNote: "Packs of 3 or more also include vertical and square cuts for social.",
   addonItems: [
     {
@@ -1017,7 +1017,7 @@ var pricing_default = {
         "Your logo on the end frame",
         "Full-quality file for your website, booking pages and ads",
         "Your photographer credited",
-        "Delivered within 24 hours, Monday to Friday"
+        "Delivered within 24 hours of your order, Monday to Friday"
       ],
       ends: "2026-11-24"
     },
@@ -1031,7 +1031,7 @@ var pricing_default = {
         "The film we made, ending on your name and web address",
         "Full-quality file for your website, booking pages and ads",
         "Your photographer credited",
-        "Delivered within 24 hours, Monday to Friday"
+        "Delivered within 24 hours of your order, Monday to Friday"
       ],
       was: 175,
       ends: "2026-11-24"
@@ -1043,12 +1043,12 @@ var pricing_default = {
       price: 140,
       was: 175,
       until: "2026-11-24",
-      about: "One film from your own photos, back within 24 hours",
+      about: "One film from your own photos, back within 24 hours of your order and photos",
       includes: [
         "One 15 to 20 second film from 4 to 6 of your photos",
         "Landscape (16:9) for your website and ads",
         "Your photographer credited",
-        "Back within 24 hours of your photos, Monday to Friday"
+        "Back within 24 hours of your order and photos, Monday to Friday"
       ]
     },
     "marine-signature": {
@@ -1066,7 +1066,7 @@ var pricing_default = {
         "Your logo on the end frame",
         "Full-quality file for your website, charter listings and ads",
         "Your photographer credited",
-        "Delivered within 24 hours, Monday to Friday"
+        "Delivered within 24 hours of your order, Monday to Friday"
       ],
       ends: "2026-11-24"
     },
@@ -1081,7 +1081,7 @@ var pricing_default = {
         "The film we made, ending on your name and web address",
         "Full-quality file for your website, charter listings and ads",
         "Your photographer credited",
-        "Delivered within 24 hours, Monday to Friday"
+        "Delivered within 24 hours of your order, Monday to Friday"
       ],
       ends: "2026-11-24"
     },
@@ -1100,7 +1100,7 @@ var pricing_default = {
         "Your logo on the end frame",
         "Full-quality file for your website, portal listings and ads",
         "Your photographer credited",
-        "Delivered within 24 hours, Monday to Friday"
+        "Delivered within 24 hours of your order, Monday to Friday"
       ],
       ends: "2026-11-24"
     },
@@ -1115,7 +1115,7 @@ var pricing_default = {
         "The film we made, ending on your name and web address",
         "Full-quality file for your website, portal listings and ads",
         "Your photographer credited",
-        "Delivered within 24 hours, Monday to Friday"
+        "Delivered within 24 hours of your order, Monday to Friday"
       ],
       ends: "2026-11-24"
     }
@@ -1125,8 +1125,9 @@ var pricing_default = {
     name: "Free clip",
     photos: 3,
     seconds: 10,
-    about: "3 photos in, a 10-second film back within 24 hours, with our end card. One per business."
-  }
+    about: "3 photos in, a 10-second film back within 24 hours, Monday to Friday, with our end card. One per business."
+  },
+  deliveryNote: 'User, 11 Nov 2026 ("should there be a caveate around 24 hr delivery", then "ok to delivery caveat"): the clock starts once we have the order and photos we can use; ready-made films count from the order. The full wording is the terms line and the shared FAQ "When will it arrive?" (faq.json).'
 };
 
 // functions/lib/jobs.mjs
