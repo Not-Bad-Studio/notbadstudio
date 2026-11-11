@@ -1100,6 +1100,41 @@ var pricing_default = {
         "Your photographer credited",
         "Back within 24 hours of your photos, Monday to Friday"
       ]
+    },
+    "property-signature": {
+      name: "Subtitled film",
+      plan: "Single film",
+      addons: [
+        "long",
+        "captions",
+        "logo"
+      ],
+      price: 230,
+      was: 285,
+      about: "A film with a line on each scene",
+      includes: [
+        "One film with a line on each scene in subtitles",
+        "Your logo, colours and tagline on the end frame",
+        "Full-quality file for your website, portal listings and social",
+        "Your photographer credited",
+        "Back within 24 hours of your photos, Monday to Friday"
+      ]
+    },
+    "property-story": {
+      name: "Full film",
+      plan: "Single film",
+      addons: [
+        "long"
+      ],
+      price: 190,
+      was: 235,
+      about: "A longer film, ending on your name",
+      includes: [
+        "One longer film of the property",
+        "Ends on your name and web address",
+        "Your photographer credited",
+        "Back within 24 hours of your photos, Monday to Friday"
+      ]
     }
   }
 };
