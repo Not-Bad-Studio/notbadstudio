@@ -16,6 +16,12 @@ https://photo2motion.studio/api/*        /api/:splat                            
 https://photo2motion.studio/thanks       /p2m-thanks.html                       200!
 # The studio's job board (private: it asks for the JOBS_BOARD_KEY passphrase; noindex, kept out of robots).
 https://photo2motion.studio/jobs         /p2m-jobs.html                         200!
+# The private custom pages (12 Nov 2026: "should the custom page urls not be photo2motion.studio/", "Yes, move them"):
+# photo2motion.studio/for/<page>/ is served from the demos site (nbs-motion-demos, built and deployed from
+# ~/Sites/motion-demos as before). Kept out of search by its X-Robots-Tag headers and p2m-robots.txt. The pages post
+# their forms to /for/, which lands on the demos site, where those forms live.
+https://photo2motion.studio/for          https://photo2motion.studio/for/       301!
+https://photo2motion.studio/for/*        https://nbs-motion-demos.netlify.app/:splat  200!
 https://photo2motion.studio/*            https://www.notbadstudio.com/:splat    301!
 https://www.notbadstudio.com/photo2motion       https://photo2motion.studio/    301!
 https://www.notbadstudio.com/photo2motion.html  https://photo2motion.studio/    301!
