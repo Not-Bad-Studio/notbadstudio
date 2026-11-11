@@ -631,11 +631,18 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 #when .two[style*="auto 1fr auto"] { background: #F3F1EC !important; }
 #when br.bd { display: none; }  /* the forced breaks suited the wider columns; inside the box they leave short lines */
 @media (max-width: 860px) { #when { width: calc(100% - 32px) !important; padding: 40px 24px !important; margin-bottom: 72px !important; } }
-/* Bigger sector labels on the hero's three stills, on a soft shade so they read on any photo. */
-.p2m-pick::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 60%; pointer-events: none;
-  background: linear-gradient(to bottom, rgba(10, 18, 32, 0), rgba(10, 18, 32, .55)); }
-.p2m-pick span { z-index: 1; left: 16px !important; bottom: 14px !important; font-size: 18px !important; letter-spacing: .1em !important; }
-@media (max-width: 760px) { .p2m-pick span { left: 8px !important; bottom: 6px !important; font-size: 12px !important; letter-spacing: .06em !important; } }
+/* The hero's three stills are labelled with a chip: the name in a navy pill with a play mark, orange on the one
+   playing (11 Nov 2026, from the label options page: "go with chip for homepage"). */
+.p2m-pick span { z-index: 1; left: 12px !important; bottom: 12px !important; display: inline-flex; align-items: center; gap: 8px;
+  height: 34px; padding: 0 14px 0 10px; border-radius: 17px; background: rgba(22, 38, 63, .82); color: #FFFFFF !important;
+  font: 600 15px/1 Inter, system-ui, sans-serif !important; letter-spacing: 0 !important; text-transform: none !important;
+  text-shadow: none !important; transition: background-color .2s ease; }
+.p2m-pick span svg { width: 16px; height: 16px; flex: none; }
+.p2m-pick.is-on { box-shadow: none; }
+.p2m-pick.is-on span { background: #E4572E; }
+@media (max-width: 760px) { .p2m-pick span { left: 6px !important; bottom: 6px !important; height: 24px; padding: 0 9px; font-size: 12px !important; }
+  .p2m-pick span svg { display: none; } }
+@media (prefers-reduced-motion: reduce) { .p2m-pick span { transition: none; } }
 /* The sector label on each film (the hero's main film and each sector's film) to match. */
 .p2m-film .p2m-tag { position: relative; z-index: 1; font-size: 16px !important; font-weight: 600; letter-spacing: .12em !important; color: #F3F1EC !important; text-shadow: 0 1px 8px rgba(0, 0, 0, .55); }
 @media (max-width: 760px) { .p2m-film .p2m-tag { font-size: 12px !important; } }
@@ -711,7 +718,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 <span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Hospitality</span>
 <button type="button" aria-label="Play Showreel film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
 <div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 40%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>
-</div><div class="p2m-picks" role="group" aria-label="Choose a sector"><button type="button" class="p2m-pick is-on" aria-pressed="true" aria-label="Show the Hospitality film"><img src="/images/motion-hospitality.jpg" alt="" loading="lazy"><span>Hospitality</span></button><button type="button" class="p2m-pick" aria-pressed="false" aria-label="Show the Property film"><img src="/images/motion-real-estate.jpg" alt="" loading="lazy"><span>Property</span></button><button type="button" class="p2m-pick" aria-pressed="false" aria-label="Show the Marine film"><img src="/images/motion-marine.jpg" alt="" loading="lazy"><span>Marine</span></button></div></div>
+</div><div class="p2m-picks" role="group" aria-label="Choose a sector"><button type="button" class="p2m-pick is-on" aria-pressed="true" aria-label="Show the Hospitality film"><img src="/images/motion-hospitality.jpg" alt="" loading="lazy"><span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"></circle><path d="M6.5 5 L11 8 L6.5 11 Z" fill="currentColor"></path></svg>Hospitality</span></button><button type="button" class="p2m-pick" aria-pressed="false" aria-label="Show the Property film"><img src="/images/motion-real-estate.jpg" alt="" loading="lazy"><span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"></circle><path d="M6.5 5 L11 8 L6.5 11 Z" fill="currentColor"></path></svg>Property</span></button><button type="button" class="p2m-pick" aria-pressed="false" aria-label="Show the Marine film"><img src="/images/motion-marine.jpg" alt="" loading="lazy"><span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"></circle><path d="M6.5 5 L11 8 L6.5 11 Z" fill="currentColor"></path></svg>Marine</span></button></div></div>
 </section>
 
 <section id="why-now" style="background: #FFFFFF; padding: 112px 0; margin-bottom: 120px">
