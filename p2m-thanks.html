@@ -707,6 +707,26 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
   footer > div > div:last-child > div { justify-content: center !important; }
 }
 
+
+#pricing .p2m-gets { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 8px; font-size: 14px; line-height: 1.4; }
+#pricing .p2m-gets li, #pricing .p2m-gets-add { position: relative; padding-left: 24px; }
+#pricing .p2m-gets li::before { content: ""; position: absolute; left: 3px; top: .32em; width: 10px; height: 5px;
+  border-left: 2px solid #E4572E; border-bottom: 2px solid #E4572E; transform: rotate(-45deg); }
+#pricing .p2m-gets-total { margin: 0; padding-left: 24px; font-size: 14px; font-weight: 600; }
+#pricing .p2m-gets-add { margin: 0; font-size: 13px; color: #4F5A6B; }
+#pricing .p2m-gets-add::before { content: "+"; position: absolute; left: 4px; top: -.05em; font-weight: 600; }
+#monthly .p2m-gets li::before { border-color: #FF8A63; }
+
+
+.p2m-hero-price { margin: -4px 0 0; font-size: 16px; line-height: 1.5; color: #16263F; text-align: center; }
+.p2m-hero-price a { color: inherit; font-weight: 600; text-decoration: underline; text-decoration-color: rgba(228,87,46,0.55);
+  text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.p2m-hero-price a:hover { text-decoration-color: #E4572E; }
+.p2m-hero-price b { color: #E4572E; font-weight: 600; }
+.p2m-hero-price s { color: #8B95A5; font-weight: 400; text-decoration-thickness: 2px; }
+.p2m-hero-price .p2m-nowrap { white-space: nowrap; }  /* the struck and offer prices stay together */
+@media (max-width: 640px) { .p2m-hero-price { font-size: 15px; } }
+
 </style>
 </head>
 <body>
