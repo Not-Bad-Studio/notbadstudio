@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Holding page for photo2motion.studio (user, 12 Nov 2026: "put a holding page up on the homepage till i get approval on
+     the current videos"). _redirects serves it at / in place of photo2motion.html; point / back at /photo2motion.html to
+     bring the full page back. Hand-written, not built by build_p2m_home.py. -->
+<title>Photo2Motion · Your photos. Moving.</title>
+<meta name="description" content="Cinematic short films made from the photography you already have, for property, interiors, marine and hospitality. Delivered in 24 hours.">
+<link rel="canonical" href="https://photo2motion.studio/">
+<meta name="theme-color" content="#F3F1EC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 104'%3E%3Cg transform='translate%280,0%29 scale%281.000000%29'%3E%3Crect x='4' y='4' width='132' height='96' rx='8' fill='%23F3F1EC' stroke='%2316263F' stroke-width='5'/%3E%3Cline x1='18' y1='88' x2='122' y2='88' stroke='%2316263F' stroke-opacity='0.25' stroke-width='4.5' stroke-linecap='round'/%3E%3Cline x1='18' y1='88' x2='70.000' y2='88' stroke='%23E4572E' stroke-width='4.5' stroke-linecap='round'/%3E%3Ccircle cx='70.000' cy='88' r='6.5' fill='%23E4572E'/%3E%3Ccircle cx='104' cy='32' r='11' fill='%23E4572E'%3E%3C/circle%3E%3Cpath d='M16.06 76.03 L44 46 L66 64 L80 54 L125.08 78.38' fill='none' stroke='%2316263F' stroke-width='5' stroke-linejoin='round' stroke-linecap='round'%3E%3C/path%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root { --navy: #16263F; --paper: #F3F1EC; --orange: #E4572E; --muted: #4F5A6B; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body { background: var(--paper); color: var(--navy); font: 400 18px/1.6 'Inter', system-ui, sans-serif;
+    display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 64px 24px; }
+  .hold { max-width: 640px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; }
+  .logo { width: 300px; max-width: 80vw; height: auto; display: block; }
+  h1 { margin: 0; font: 600 44px/1.08 'Space Grotesk', sans-serif; letter-spacing: -0.03em; }
+  p { margin: 0; color: var(--muted); }
+  .free { font-size: 16px; }
+  .btn { display: inline-flex; align-items: center; height: 52px; padding: 0 28px; border-radius: 26px; background: var(--orange);
+    color: #FFFFFF; font-weight: 600; text-decoration: none; }
+  .btn:hover { filter: brightness(1.05); }
+  .btn:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
+  .mail { font-size: 15px; color: var(--muted); }
+  .mail a { color: var(--navy); font-weight: 600; text-underline-offset: 3px; }
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    h1 { font-size: 34px; }
+    .hold { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="hold">
+    <img class="logo" src="/images/brand/p2m-logo-strapline.svg" width="300" height="55" alt="Photo2Motion: Your photos. Moving">
+    <h1>We're putting the finishing touches to our new site.</h1>
+    <p>Photo2Motion turns the photos you already have into short films for your website, listings and social, back within 24 hours.</p>
+    <p class="free">Want to see your own photos moving in the meantime? Send us three and we'll make you a free 10-second clip.</p>
+    <a class="btn" href="mailto:team@photo2motion.studio?subject=Free%20clip">Email us</a>
+    <p class="mail"><a href="mailto:team@photo2motion.studio">team@photo2motion.studio</a></p>
+  </div>
+</main>
+</body>
+</html>
