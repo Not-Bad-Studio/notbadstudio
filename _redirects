@@ -6,9 +6,9 @@
 # same path on notbadstudio.com. The old address forwards to the domain. Host rules first: the first match wins.
 https://www.photo2motion.studio/*        https://photo2motion.studio/:splat     301!
 http://www.photo2motion.studio/*         https://photo2motion.studio/:splat     301!
-# Holding page while the home page's films wait for approval (user, 12 Nov 2026: "put a holding page up on the homepage
-# till i get approval on the current videos"). Swap /p2m-holding.html back to /photo2motion.html to restore the page.
-https://photo2motion.studio/             /p2m-holding.html                      200!
+# The full Photo2Motion page, back from the holding page on 13 Nov 2026 (user: "push it live") with Rêve, Osborne Heath
+# and the stock catamaran. /p2m-holding.html stays in the site: swap it in here to put the holding page back up.
+https://photo2motion.studio/             /photo2motion.html                     200!
 https://photo2motion.studio/robots.txt   /p2m-robots.txt                        200!
 https://photo2motion.studio/sitemap.xml  /p2m-sitemap.xml                       200!
 https://photo2motion.studio/fonts/*      /fonts/:splat                          200!

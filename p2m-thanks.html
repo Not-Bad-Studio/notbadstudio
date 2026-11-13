@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Payment received · Photo2Motion</title>
-<meta name="description" content="Cinematic short films made from the photography you already have, for property, marine and hospitality. Directed and checked by people, delivered in 24 hours. Your first clip is free.">
+<meta name="description" content="Cinematic short films made from the photography you already have, for property, interiors, marine and hospitality. Directed and checked by people, delivered in 24 hours. Your first clip is free.">
 <meta property="og:title" content="Photo2Motion · Your photos. moving.">
-<meta property="og:description" content="Cinematic short films made from the photography you already have, for property, marine and hospitality. Directed and checked by people, delivered in 24 hours. Your first clip is free.">
+<meta property="og:description" content="Cinematic short films made from the photography you already have, for property, interiors, marine and hospitality. Directed and checked by people, delivered in 24 hours. Your first clip is free.">
 <meta property="og:image" content="https://www.notbadstudio.com/images/motion-real-estate.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -727,6 +727,56 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 .p2m-hero-price .p2m-nowrap { white-space: nowrap; }  /* the struck and offer prices stay together */
 @media (max-width: 640px) { .p2m-hero-price { font-size: 15px; } }
 
+
+/* Sector sections (user, 12 Nov 2026, after mock rounds: "move the quote under the video with logo, and the images
+   back under the text", "for desktop the images need to be directly under the text, for mobile - headline, copy,
+   video, 4 images in a row, quote, the rest", "only have why not ai at the end of the section, reduce the gap between
+   sectors on mobile", "fit the quote under the content on the side of video, try to balance the height", "put try it
+   last"): copy, then the 4 photos straight under it with a one-line credit, then the client's quote card, then "Try it
+   with your photos"; one "Why don't I just use AI?" closes all the sectors. Quote cards marked data-placeholder still
+   need the client's own words. */
+.p2m-quote { margin: 0; border-radius: 12px; background: #FFFFFF; display: flex; align-items: center; gap: 16px; padding: 18px 20px; }
+.p2m-quote-logo { flex: none; width: 52px; height: 52px; border-radius: 50%; object-fit: contain; display: grid; place-items: center; }
+.p2m-quote-logo.is-tall { width: 30px; height: 64px; border-radius: 3px; }  /* a tall logo kept to its own shape (Osborne Heath) */
+.p2m-quote-logo.stand-in { background: #16263F; color: #F3F1EC; font: 600 15px/1 'Space Grotesk', sans-serif; letter-spacing: 0.06em; }
+.p2m-quote blockquote { margin: 0 0 8px; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; line-height: 1.4; letter-spacing: -0.01em; color: #16263F; }
+.p2m-quote figcaption { font-size: 14px; color: #4F5A6B; }
+.p2m-quote figcaption b { color: #16263F; font-weight: 600; }
+.p2m-cta { align-self: flex-start; font-weight: 600; color: #16263F; }
+.p2m-ai-end { margin: -64px 0 0; font-size: 15px; }
+.p2m-ai-end a { color: #16263F; font-weight: 600; }
+@media (min-width: 861px) {
+  /* The copy, quote and link sit in the middle rows; the outer 1fr rows centre them against the film when the film
+     is taller, and the film centres itself when the copy is taller (measured at 1280px: films 362px, copy 397, 363
+     and 284px). The film column is 1.45fr and the photos a little flatter, so the two sides come out alike. */
+  .p2m-sector { row-gap: 0 !important; align-items: start !important; grid-template-rows: 1fr auto auto auto 1fr; }
+  #stays, #charters { grid-template-columns: 1.45fr 1fr !important; }
+  #property { grid-template-columns: 1fr 1.45fr !important; }
+  #stays > .p2m-film, #charters > .p2m-film { grid-column: 1; grid-row: 1 / -1; }
+  #property > .p2m-film { grid-column: 2; grid-row: 1 / -1; }
+  #stays > :not(.p2m-film), #charters > :not(.p2m-film) { grid-column: 2; }
+  #property > :not(.p2m-film) { grid-column: 1; }
+  .p2m-sector > div:not(.p2m-film) { grid-row: 2; gap: 12px !important; }
+  .p2m-sector > .p2m-quote { grid-row: 3; margin-top: 14px; padding: 16px 20px; }
+  .p2m-sector > .p2m-cta { grid-row: 4; margin-top: 14px; justify-self: start; }
+  .p2m-sector .p2m-quote-logo { width: 48px; height: 48px; }
+  .p2m-sector .p2m-quote-logo.is-tall { width: 26px; height: 56px; }
+  .p2m-sector .p2m-quote blockquote { font-size: 16px; margin-bottom: 6px; }
+  .p2m-sector .p2m-quote figcaption { font-size: 13px; }
+  .p2m-sector > div:not(.p2m-film) > div { margin-top: 0 !important; }
+  .p2m-sector .p2m-photos img { aspect-ratio: 16 / 10 !important; }
+}
+@media (max-width: 860px) {
+  .p2m-sector > div > p:not(:first-child) { order: 3 !important; }
+  .p2m-sector > .p2m-film { order: 4 !important; }
+  .p2m-sector .p2m-photos { order: 5 !important; grid-template-columns: repeat(4, 1fr) !important; gap: 6px !important; }
+  .p2m-sector > div > div > span { order: 6 !important; margin-top: -6px; }
+  .p2m-sector > .p2m-quote { order: 7; margin: 4px 0; }
+  .p2m-sector > .p2m-cta { order: 8 !important; }
+  .p2m-sectors { gap: 64px !important; }
+  .p2m-ai-end { margin-top: -24px; }
+}
+
 </style>
 </head>
 <body>
@@ -736,7 +786,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 <div class="nav-l" style="display: flex; align-items: center; gap: 20px">
 <details class="dd" style="position: relative">
 <summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">Sectors<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
-<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="/#why-now" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Why now</a><a href="/#stays" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Hospitality</a><a href="/#property" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Property</a><a href="/#charters" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Marine</a></div>
+<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="/#why-now" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Why now</a><a href="/#stays" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Hospitality</a><a href="/#property" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Property &amp; interiors</a><a href="/#charters" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Marine</a></div>
 </details>
 <details class="dd" style="position: relative">
 <summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">How it works<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
@@ -756,7 +806,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 </div>
 <button type="button" class="p2m-burger" aria-label="Menu" aria-expanded="false" aria-controls="p2m-menu"><span></span><span></span><span></span></button>
 </nav>
-<div class="p2m-menu" id="p2m-menu" hidden><div class="p2m-menu-in"><div class="p2m-menu-group"><span class="p2m-menu-head">Sectors</span><a href="/#why-now">Why now</a><a href="/#stays">Hospitality</a><a href="/#property">Property</a><a href="/#charters">Marine</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">How it works</span><a href="/#how">Three steps</a><a href="/#when">When it’s right</a><a href="/#why">Why motion</a><a href="/#questions">Questions</a><a href="/#what-works">What works best</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">Pricing</span><a href="/#pricing">Packs</a><a href="/#monthly">Monthly</a><a href="/#addons">Add-ons</a></div><div class="p2m-menu-group"><a href="/#developed">About</a></div></div></div>
+<div class="p2m-menu" id="p2m-menu" hidden><div class="p2m-menu-in"><div class="p2m-menu-group"><span class="p2m-menu-head">Sectors</span><a href="/#why-now">Why now</a><a href="/#stays">Hospitality</a><a href="/#property">Property &amp; interiors</a><a href="/#charters">Marine</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">How it works</span><a href="/#how">Three steps</a><a href="/#when">When it’s right</a><a href="/#why">Why motion</a><a href="/#questions">Questions</a><a href="/#what-works">What works best</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">Pricing</span><a href="/#pricing">Packs</a><a href="/#monthly">Monthly</a><a href="/#addons">Add-ons</a></div><div class="p2m-menu-group"><a href="/#developed">About</a></div></div></div>
 </header>
 <main>
 <section id="thanks" style="max-width: 1200px; margin: 0 auto; padding: 112px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
@@ -800,7 +850,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 <div style="display: flex; flex-wrap: wrap; gap: 56px">
 <div style="display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7">Service</span>
-<a href="/#stays" style="color: #F3F1EC; text-decoration: none">Hospitality</a><a href="/#property" style="color: #F3F1EC; text-decoration: none">Property</a>
+<a href="/#stays" style="color: #F3F1EC; text-decoration: none">Hospitality</a><a href="/#property" style="color: #F3F1EC; text-decoration: none">Property &amp; interiors</a>
 <a href="/#charters" style="color: #F3F1EC; text-decoration: none">Marine</a>
 <a href="/#pricing" style="color: #F3F1EC; text-decoration: none">Pricing</a>
 </div>
