@@ -740,7 +740,9 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 .p2m-quote-logo { flex: none; width: 52px; height: 52px; border-radius: 50%; object-fit: contain; display: grid; place-items: center; }
 .p2m-quote-logo.is-tall { width: 30px; height: 64px; border-radius: 3px; }  /* a tall logo kept to its own shape (Osborne Heath) */
 .p2m-quote-logo.stand-in { background: #16263F; color: #F3F1EC; font: 600 15px/1 'Space Grotesk', sans-serif; letter-spacing: 0.06em; }
-.p2m-quote blockquote { margin: 0 0 8px; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; line-height: 1.4; letter-spacing: -0.01em; color: #16263F; }
+/* Quote words smaller (user, 13 Nov 2026: "reduce the sixe of the quote font by 5 pts", then "Try 14px desktop" once 11px
+   read smaller than the name line under it): 18 -> 16 on phones, 16 -> 14 on desktop. */
+.p2m-quote blockquote { margin: 0 0 8px; font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.4; letter-spacing: -0.01em; color: #16263F; }
 .p2m-quote figcaption { font-size: 14px; color: #4F5A6B; }
 .p2m-quote figcaption b { color: #16263F; font-weight: 600; }
 .p2m-cta { align-self: flex-start; font-weight: 600; color: #16263F; }
@@ -762,7 +764,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
   .p2m-sector > .p2m-cta { grid-row: 4; margin-top: 14px; justify-self: start; }
   .p2m-sector .p2m-quote-logo { width: 48px; height: 48px; }
   .p2m-sector .p2m-quote-logo.is-tall { width: 26px; height: 56px; }
-  .p2m-sector .p2m-quote blockquote { font-size: 16px; margin-bottom: 6px; }
+  .p2m-sector .p2m-quote blockquote { font-size: 14px; margin-bottom: 6px; }
   .p2m-sector .p2m-quote figcaption { font-size: 13px; }
   .p2m-sector > div:not(.p2m-film) > div { margin-top: 0 !important; }
   .p2m-sector .p2m-photos img { aspect-ratio: 16 / 10 !important; }
