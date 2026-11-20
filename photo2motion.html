@@ -622,6 +622,9 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 /* The landing headline, 20% smaller (user, 11 Nov 2026: "reduce the landing headline by 20% on all pages"). */
 .hero h1 { font-size: 61px !important; }
 @media (max-width: 860px) { .hero h1 { font-size: 35px !important; } }
+/* The space above the landing headline on phones and tablets: 30% under the desktop's 86px (user, 20 Nov 2026: "reduce
+   padding by 30% on mobile and tablet", right after the 10% cut on all widths). 1024px takes in tablets held upright. */
+@media (max-width: 1024px) { #top.hero { padding-top: 60px !important; } }
 
 
 /* Round 7: "Not a replacement for filming" sits in one white container; the photographers card inside it turns cream
@@ -814,8 +817,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 </header>
 
 <main>
-<section id="top" class="hero" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; padding-top: 96px; padding-bottom: 96px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center">
-<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #4F5A6B">Hospitality · <br class="bm">Property&nbsp;&amp;&nbsp;interiors · Marine</p>
+<section id="top" class="hero" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; padding-top: 86px; padding-bottom: 96px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center">
 <h1 style="margin: 0; max-width: 900px; font-family: 'Space Grotesk', sans-serif; font-size: 76px; font-weight: 600; letter-spacing: -0.035em; line-height: 1.02">Your professional<br class="bd"> photos,<br class="bm"> in motion.</h1>
 <p style="margin: 0; max-width: 640px; font-size: 20px; line-height: 1.55; color: #4F5A6B">Cinematic short films made from the photography you already have, for when filming isn’t practical. Directed and checked by people, delivered in 24 hours.</p>
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px">
@@ -915,11 +917,11 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Your boat in motion,<br class="bd"> without a film shoot.</h3>
 <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4F5A6B">Boats are rarely in one place long enough to film. Send the photos you have and we’ll make a film of the boat, inside and out,<br class="bd"> ready for your listings and ads.</p>
 <div style="display: flex; flex-direction: column; gap: 10px">
-<span style="font-size: 13px; color: #4F5A6B">Made from these 4 photos · Photos: Perfect Charter</span>
-<div class="p2m-photos" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px"><img src="/images/motion-marine-1.jpg" alt="Eliseaum at anchor in clear turquoise water, seen from above the stern" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-2.jpg" alt="The stern sun pads looking forward to the cockpit, under tall limestone cliffs" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-3.jpg" alt="The cockpit seating and table at golden hour, a red ensign and a rocky headland beyond" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-4.jpg" alt="The saloon: a dining table with an ice bucket and olives, cream seating and a long window onto the sea" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
+<span style="font-size: 13px; color: #4F5A6B">Made from these 4 photos · A power catamaran at anchor</span>
+<div class="p2m-photos" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px"><img src="/images/motion-marine-1.jpg" alt="The catamaran at anchor in a bay with wooded hills behind" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-2.jpg" alt="The shaded aft deck with a table and two teak chairs, looking out to the islands" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-3.jpg" alt="The saloon: leather sofas, a coffee table and windows all round" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"><img src="/images/motion-marine-4.jpg" alt="A cabin with a made bed, folded towels and a hull window" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #E3E0D9"></div>
 </div>
 </div>
-<div class="p2m-film" data-films="/videos/motion-marine.mp4~/images/motion-marine.jpg~Marine" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-marine.mp4" poster="/images/motion-marine.jpg" muted playsinline preload="none" loop aria-label="Eliseaum, a Sunseeker Superhawk 55 chartered by Perfect Charter in Mallorca: a film made from the photos below it"></video>
+<div class="p2m-film" data-films="/videos/motion-marine.mp4~/images/motion-marine.jpg~Marine" style="aspect-ratio: 16 / 9; border-radius: 12px; background: #16263F; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; box-sizing: border-box"><video class="p2m-video" src="/videos/motion-marine.mp4" poster="/images/motion-marine.jpg" muted playsinline preload="none" loop aria-label="A power catamaran at anchor: a film made from the photos below it"></video>
 <span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7" class="p2m-tag">Marine</span>
 <button type="button" aria-label="Play Marine film" style="align-self: center; width: 72px; height: 72px; border-radius: 36px; border: 0; background: #E4572E; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#F3F1EC"></path></svg></button>
 <div style="height: 4px; border-radius: 2px; background: rgba(243,241,236,0.25)"><div style="width: 66%; height: 4px; border-radius: 2px; background: #E4572E"></div></div>

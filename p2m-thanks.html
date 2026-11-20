@@ -621,6 +621,9 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 /* The landing headline, 20% smaller (user, 11 Nov 2026: "reduce the landing headline by 20% on all pages"). */
 .hero h1 { font-size: 61px !important; }
 @media (max-width: 860px) { .hero h1 { font-size: 35px !important; } }
+/* The space above the landing headline on phones and tablets: 30% under the desktop's 86px (user, 20 Nov 2026: "reduce
+   padding by 30% on mobile and tablet", right after the 10% cut on all widths). 1024px takes in tablets held upright. */
+@media (max-width: 1024px) { #top.hero { padding-top: 60px !important; } }
 
 
 /* Round 7: "Not a replacement for filming" sits in one white container; the photographers card inside it turns cream
