@@ -782,6 +782,44 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
   .p2m-ai-end { margin-top: -24px; }
 }
 
+
+/* Phones (user, 20 Nov 2026: "on mobile, move the video examples above the copy under the headline, put the sector
+   titles under the thumbnails, remove the orange play stop buttons so you can tap without obscuring the video, put the
+   3 photos etc copy into a more info dropdown"). Wider screens are unchanged. */
+.p2m-more { display: none; }
+@media (max-width: 760px) {
+  /* The showreel and its stills come straight after the headline, then the copy and buttons. */
+  #top > h1 { order: -2; }
+  #top > .p2m-reel-wrap { order: -1; margin-top: 0; --p2m-i: 1 !important; }
+  /* Each still's sector title sits under it as plain text, orange on the film playing. */
+  .p2m-pick { aspect-ratio: auto !important; display: flex; flex-direction: column; align-items: center; gap: 6px;
+    background: none; border-radius: 0; overflow: visible; }
+  .p2m-pick img { position: static; height: auto; aspect-ratio: 16 / 9; border-radius: 8px; opacity: 1; }
+  .p2m-pick span { position: static !important; height: auto !important; padding: 0 !important; background: none !important;
+    color: #16263F !important; font-size: 12px !important; line-height: 1.25 !important; text-align: center; justify-content: center; }
+  .p2m-pick.is-on span { color: #E4572E !important; }
+  .p2m-pick.is-on img { box-shadow: 0 0 0 2px #E4572E; }
+  /* No orange play button over the films. The button stays (screen readers and keyboards still use it), unseen and
+     stretched over the whole film, so a tap anywhere on it plays or pauses. */
+  .p2m-film > button { position: absolute !important; inset: 0; z-index: 2; width: 100% !important; height: 100% !important;
+    border-radius: 12px !important; background: transparent !important; opacity: 0 !important; transform: none !important; }
+  .p2m-film > button:focus-visible { opacity: 1 !important; }
+  /* The free-clip line folds into "More info" under the price line. */
+  .p2m-free-line { display: none !important; }
+  .p2m-more { display: block; margin: -18px 0 0; font-size: 15px; line-height: 1.5; color: #4F5A6B; text-align: center; }
+  .p2m-more summary { display: inline-flex; align-items: center; gap: 8px; padding: 6px 4px; cursor: pointer; list-style: none;
+    font-weight: 600; color: #16263F; }
+  .p2m-more summary::-webkit-details-marker { display: none; }
+  .p2m-more summary::after { content: ""; width: 7px; height: 7px; border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform .2s ease; }
+  .p2m-more[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+  .p2m-more p { margin: 2px 0 0; }
+  /* Less space under "More info" before the next section (20 Nov 2026: "reduce the padding under more info"): the
+     hero's 96px bottom padding halves. */
+  #top.hero { padding-bottom: 48px !important; }
+}
+@media (prefers-reduced-motion: reduce) { .p2m-more summary::after { transition: none; } }
+
 </style>
 </head>
 <body>
@@ -791,7 +829,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 <div class="nav-l" style="display: flex; align-items: center; gap: 20px">
 <details class="dd" style="position: relative">
 <summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">Sectors<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
-<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="/#why-now" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Why now</a><a href="/#stays" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Hospitality</a><a href="/#property" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Property &amp; interiors</a><a href="/#charters" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Marine</a></div>
+<div class="dd-panel" style="position: absolute; top: 100%; left: 0; z-index: 10; min-width: 200px; margin-top: 6px; padding: 6px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(22,38,63,0.14)"><a href="/#why-now" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Why now</a><a href="/#stays" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Hospitality</a><a href="/#property" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Property</a><a href="/#charters" style="display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: #16263F; font-size: 15px">Marine</a></div>
 </details>
 <details class="dd" style="position: relative">
 <summary style="display: flex; align-items: center; gap: 6px; padding: 12px 8px; font-size: 15px; font-weight: 500; cursor: pointer; list-style: none">How it works<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" fill="none" stroke="#16263F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
@@ -811,7 +849,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 </div>
 <button type="button" class="p2m-burger" aria-label="Menu" aria-expanded="false" aria-controls="p2m-menu"><span></span><span></span><span></span></button>
 </nav>
-<div class="p2m-menu" id="p2m-menu" hidden><div class="p2m-menu-in"><div class="p2m-menu-group"><span class="p2m-menu-head">Sectors</span><a href="/#why-now">Why now</a><a href="/#stays">Hospitality</a><a href="/#property">Property &amp; interiors</a><a href="/#charters">Marine</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">How it works</span><a href="/#how">Three steps</a><a href="/#when">When it’s right</a><a href="/#why">Why motion</a><a href="/#questions">Questions</a><a href="/#what-works">What works best</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">Pricing</span><a href="/#pricing">Packs</a><a href="/#monthly">Monthly</a><a href="/#addons">Add-ons</a></div><div class="p2m-menu-group"><a href="/#developed">About</a></div></div></div>
+<div class="p2m-menu" id="p2m-menu" hidden><div class="p2m-menu-in"><div class="p2m-menu-group"><span class="p2m-menu-head">Sectors</span><a href="/#why-now">Why now</a><a href="/#stays">Hospitality</a><a href="/#property">Property</a><a href="/#charters">Marine</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">How it works</span><a href="/#how">Three steps</a><a href="/#when">When it’s right</a><a href="/#why">Why motion</a><a href="/#questions">Questions</a><a href="/#what-works">What works best</a></div><div class="p2m-menu-group"><span class="p2m-menu-head">Pricing</span><a href="/#pricing">Packs</a><a href="/#monthly">Monthly</a><a href="/#addons">Add-ons</a></div><div class="p2m-menu-group"><a href="/#developed">About</a></div></div></div>
 </header>
 <main>
 <section id="thanks" style="max-width: 1200px; margin: 0 auto; padding: 112px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
@@ -855,7 +893,7 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
 <div style="display: flex; flex-wrap: wrap; gap: 56px">
 <div style="display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB8C7">Service</span>
-<a href="/#stays" style="color: #F3F1EC; text-decoration: none">Hospitality</a><a href="/#property" style="color: #F3F1EC; text-decoration: none">Property &amp; interiors</a>
+<a href="/#stays" style="color: #F3F1EC; text-decoration: none">Hospitality</a><a href="/#property" style="color: #F3F1EC; text-decoration: none">Property</a>
 <a href="/#charters" style="color: #F3F1EC; text-decoration: none">Marine</a>
 <a href="/#pricing" style="color: #F3F1EC; text-decoration: none">Pricing</a>
 </div>
