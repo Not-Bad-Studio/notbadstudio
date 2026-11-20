@@ -787,6 +787,15 @@ header.p2m-navy .nav-l > a:hover, header.p2m-navy .nav-r > a:not([style*="#E4572
    titles under the thumbnails, remove the orange play stop buttons so you can tap without obscuring the video, put the
    3 photos etc copy into a more info dropdown"). Wider screens are unchanged. */
 .p2m-more { display: none; }
+/* No progress line over the films (user, 20 Nov 2026: "remove the loading line over the film"). Hidden, not removed,
+   so the film's tag and button keep their places. */
+.p2m-film > div:last-child { visibility: hidden; }
+/* The headline on two lines on phones, "Your professional / photos, in motion." (user, 20 Nov 2026: "make sure the
+   headline looks like this on mobile"); it broke after "photos," as well. */
+@media (max-width: 860px) {
+  #top h1 br.bm { display: none; }
+  #top h1 br.bd { display: inline; }
+}
 @media (max-width: 760px) {
   /* The showreel and its stills come straight after the headline, then the copy and buttons. */
   #top > h1 { order: -2; }
