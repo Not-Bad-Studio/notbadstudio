@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Served as sitemap.xml on photo2motion.studio (see _redirects). Written by motion-demos/tools/p2m_seo.py at each
-     home page or sector page build; lastmod is the build date. -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://photo2motion.studio/</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://photo2motion.studio/hospitality</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://photo2motion.studio/property</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://photo2motion.studio/marine</loc><lastmod>2026-11-21</lastmod></url>
-</urlset>

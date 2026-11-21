@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Photo2Motion forms</title>
+<!-- Not a page anyone visits. Netlify only accepts submissions for forms it finds in this project's HTML at deploy time,
+     and the checkout, free-clip and Stripe functions on this project post every free clip (motion-clip), order
+     (p2m-order) and payment (p2m-paid) to these forms, which email them on. Photo2Motion's pages moved to their own
+     repo and project on 21 Nov 2026, so these copies keep the forms registered here. Fields must match FIELDS in
+     each function (motion-demos/functions/*.src.mjs). Remove them only once the functions move to the photo2motion
+     project and the forms are registered there. -->
+</head>
+<body>
+<form name="motion-clip" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+  <input type="hidden" name="form-name" value="motion-clip"><input name="bot-field"><input name="name">
+  <input name="email"><input name="business"><input name="business-type"><input name="website"><input name="source">
+  <textarea name="photos"></textarea>
+</form>
+<form name="p2m-order" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+  <input type="hidden" name="form-name" value="p2m-order"><input name="bot-field"><input name="order"><input name="status">
+  <input name="plan"><input name="addons"><input name="total"><input name="name"><input name="email"><input name="business">
+  <input name="website"><textarea name="notes"></textarea><textarea name="photos"></textarea><input name="source">
+</form>
+<form name="p2m-paid" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+  <input type="hidden" name="form-name" value="p2m-paid"><input name="bot-field"><input name="order"><input name="kind">
+  <input name="plan"><input name="addons"><input name="total"><input name="customer"><input name="email"><input name="business">
+  <input name="website"><textarea name="notes"></textarea><textarea name="photos"></textarea><input name="source"><input name="stripe">
+</form>
+</body>
+</html>
