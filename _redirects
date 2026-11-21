@@ -22,6 +22,9 @@ https://www.notbadstudio.com/p2m-property          https://photo2motion.studio/p
 https://www.notbadstudio.com/p2m-property.html     https://photo2motion.studio/property      301!
 https://www.notbadstudio.com/p2m-marine            https://photo2motion.studio/marine        301!
 https://www.notbadstudio.com/p2m-marine.html       https://photo2motion.studio/marine        301!
+# The branding package page's address had a typo until 21 Nov 2026 (SEO round).
+/packages/brading-design        /packages/branding-design        301!
+/packages/brading-design.html   /packages/branding-design        301!
 # /motion, the first Photo to Motion page, was retired on 9 November 2026; photo2motion.studio replaced it.
 # The NBS end card on downloaded films still reads notbadstudio.com/motion, so this must stay.
 /motion                                         https://photo2motion.studio/    301!
