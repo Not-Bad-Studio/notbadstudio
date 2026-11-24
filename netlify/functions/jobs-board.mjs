@@ -890,6 +890,21 @@ async function saveJob(id, fields, note) {
   return job;
 }
 
+// functions/lib/delivery.mjs
+var MAX_EXTEND_DAYS = 90;
+var DAY_MS = 24 * 60 * 60 * 1e3;
+function endOfDay(ms) {
+  const d = new Date(ms);
+  return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), 23, 59, 59, 999)).toISOString();
+}
+var longDate = (iso) => new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+async function extendDelivery(job, days) {
+  const from = Math.max(Date.now(), Date.parse(job.delivery.endsAt) || 0);
+  const endsAt = endOfDay(from + days * DAY_MS);
+  const delivery = { ...job.delivery, endsAt };
+  return saveJob(job.id, { delivery }, `Link extended by ${days} days, now works until ${longDate(endsAt)}`);
+}
+
 // functions/jobs-board.src.mjs
 var STATUSES = {
   order: ["awaiting-payment", "paid", "making", "ready-to-check", "delivered", "cancelled"],
@@ -913,7 +928,13 @@ async function allJobs() {
   const jobs2 = await Promise.all(blobs.map((b) => store.get(b.key, { type: "json" }).catch(() => null)));
   return jobs2.filter(Boolean).sort((a, b) => String(b.updatedAt || "").localeCompare(String(a.updatedAt || "")));
 }
-async function change(job, { status, note, test }) {
+async function change(job, { status, note, test, extend }) {
+  if (extend !== void 0) {
+    const days = Number(extend);
+    if (!job.delivery || !job.delivery.endsAt) return json({ ok: false, reason: "no-link" }, 400);
+    if (!Number.isInteger(days) || days < 1 || days > MAX_EXTEND_DAYS) return json({ ok: false, reason: "bad-days", max: MAX_EXTEND_DAYS }, 400);
+    return json({ ok: true, job: await extendDelivery(job, days) });
+  }
   const fields = {};
   const allowed = STATUSES[job.kind] || STATUSES.order;
   if (status !== void 0) {

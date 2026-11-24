@@ -6,7 +6,8 @@
 <title>Photo2Motion forms</title>
 <!-- Not a page anyone visits. Netlify only accepts submissions for forms it finds in this project's HTML at deploy time,
      and the checkout, free-clip and Stripe functions on this project post every free clip (motion-clip), order
-     (p2m-order) and payment (p2m-paid) to these forms, which email them on. Photo2Motion's pages moved to their own
+     (p2m-order) and payment (p2m-paid) to these forms, which email them on, and the delivery function posts each
+     download from a delivery page (order-download). Photo2Motion's pages moved to their own
      repo and project on 21 Nov 2026, so these copies keep the forms registered here. Fields must match FIELDS in
      each function (motion-demos/functions/*.src.mjs). Remove them only once the functions move to the photo2motion
      project and the forms are registered there. -->
@@ -26,6 +27,10 @@
   <input type="hidden" name="form-name" value="p2m-paid"><input name="bot-field"><input name="order"><input name="kind">
   <input name="plan"><input name="addons"><input name="total"><input name="customer"><input name="email"><input name="business">
   <input name="website"><textarea name="notes"></textarea><textarea name="photos"></textarea><input name="source"><input name="stripe">
+</form>
+<form name="order-download" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+  <input type="hidden" name="form-name" value="order-download"><input name="bot-field"><input name="order"><input name="kind">
+  <input name="business"><input name="email"><input name="file"><input name="downloads"><input name="link"><input name="ends">
 </form>
 </body>
 </html>
