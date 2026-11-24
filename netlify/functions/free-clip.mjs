@@ -915,7 +915,8 @@ var WEBMAIL = /* @__PURE__ */ new Set([
 var LEGAL_WORDS = /\b(ltd|limited|llp|plc|inc|co|company|the|sl|s\.l\.|sa|gmbh)\b/g;
 var MAX_PHOTOS = 4;
 var MAX_PHOTO_BYTES = 3 * 1024 * 1024;
-var FIELDS = ["name", "email", "business", "business-type", "website", "source"];
+var FIELDS = ["name", "email", "business", "business-type", "website", "source", "photographer"];
+var SHARE_LINE = "yes";
 var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 var json = (body, status = 200) => new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
 function siteDomain(value) {
@@ -971,6 +972,8 @@ async function takeRequest(req) {
   const website = String(form.get("website") || "").trim();
   const email = String(form.get("email") || "").trim();
   if (!business || !website || !email) return json({ ok: false, reason: "missing" }, 400);
+  const photographer = String(form.get("photographer") || "").trim().slice(0, 200);
+  const share = String(form.get("share") || "") === SHARE_LINE ? true : void 0;
   const read = readPhotos(form);
   if (read.reason) return json({ ok: false, reason: read.reason }, 400);
   const keys = [
@@ -995,6 +998,8 @@ async function takeRequest(req) {
   if (process.env.CONTEXT !== "dev") {
     const out = new URLSearchParams({ "form-name": "motion-clip" });
     for (const name of FIELDS) out.set(name, String(form.get(name) || ""));
+    out.set("photographer", photographer || "Not given");
+    out.set("share", share ? "Yes: the form said we may share free clips, credited, unless they tell us not to." : "Not asked (the page had no share line).");
     out.set("photos", links.length ? links.join("\n") : "None uploaded. Use the website.");
     const res = await fetch(new URL("/", home), {
       method: "POST",
@@ -1014,7 +1019,9 @@ async function takeRequest(req) {
     customer: { name: String(form.get("name") || ""), email, business, website },
     businessType: String(form.get("business-type") || ""),
     photos: links,
-    source: String(form.get("source") || "")
+    source: String(form.get("source") || ""),
+    ...share ? { share } : {},
+    ...photographer ? { photographer } : {}
   }, "Free clip requested").catch((err) => console.error("free-clip: saving the job failed: %s", err && err.message));
   const record = JSON.stringify({ business, website: siteDomain(website), photos: links.length, id, at: (/* @__PURE__ */ new Date()).toISOString() });
   await Promise.all(keys.map((key) => clips.set(key, record)));

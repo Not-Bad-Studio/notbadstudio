@@ -1217,7 +1217,27 @@ var ORIGINS = [
   /^https:\/\/[a-z0-9-]+--notbadstudio\.netlify\.app$/
 ];
 var STRIPE_VERSION = "2023-08-16";
-var FIELDS = ["order", "status", "plan", "addons", "total", "name", "email", "business", "website", "notes", "photos", "source"];
+var FIELDS = [
+  "order",
+  "status",
+  "plan",
+  "addons",
+  "total",
+  "name",
+  "email",
+  "business",
+  "website",
+  "notes",
+  "photos",
+  "source",
+  "photographer",
+  "share"
+];
+function shareLine(share) {
+  if (share === true) return "Yes: happy for us to share their films, credited with a link.";
+  if (share === false) return "No: they didn't tick the box. Ask before sharing their films.";
+  return "Not asked (the page had no share box).";
+}
 function cors(req) {
   const origin = req.headers.get("origin") || "";
   const local = process.env.CONTEXT === "dev" && /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
@@ -1348,6 +1368,8 @@ async function takeOrder(req) {
   const price = priced(text("plan"), body.addons, text("offer", 60));
   if (price.reason) return json(req, { ok: false, reason: price.reason }, 400);
   const photos = Math.max(0, Math.min(MAX_PHOTOS, Number(body.photos) || 0));
+  const photographer = text("photographer", 200);
+  const share = typeof body.share === "boolean" ? body.share : void 0;
   let back = `${P2M}/#pricing`;
   try {
     const asked = new URL(text("back", 500));
@@ -1370,7 +1392,9 @@ async function takeOrder(req) {
     website: text("website"),
     notes: text("notes", 2e3),
     photos: links.length ? links.join("\n") : "None yet. They'll send them after paying.",
-    source: text("source")
+    source: text("source"),
+    photographer: photographer || "Not given",
+    share: shareLine(share)
   };
   if (process.env.CONTEXT !== "dev") {
     const out = new URLSearchParams({ "form-name": "p2m-order" });
@@ -1398,7 +1422,9 @@ async function takeOrder(req) {
     customer: { name: fields.name, email, business, website: fields.website },
     notes: fields.notes,
     photos: links,
-    source: fields.source
+    source: fields.source,
+    ...share !== void 0 ? { share } : {},
+    ...photographer ? { photographer } : {}
   }, configured ? "Went to Stripe checkout" : "Offered the plan's payment link (online checkout not set up)").catch((err) => {
     console.error("checkout: saving the job failed: %s", err && err.message);
   });

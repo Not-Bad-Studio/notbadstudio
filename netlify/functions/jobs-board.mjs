@@ -912,6 +912,7 @@ var STATUSES = {
   renewal: ["paid", "making", "ready-to-check", "delivered", "cancelled"]
 };
 var MAX_NOTE = 2e3;
+var MAX_PHOTOGRAPHER = 200;
 var json = (body, status = 200) => new Response(JSON.stringify(body), {
   status,
   headers: { "Content-Type": "application/json", "Cache-Control": "no-store", "X-Robots-Tag": "noindex" }
@@ -928,7 +929,7 @@ async function allJobs() {
   const jobs2 = await Promise.all(blobs.map((b) => store.get(b.key, { type: "json" }).catch(() => null)));
   return jobs2.filter(Boolean).sort((a, b) => String(b.updatedAt || "").localeCompare(String(a.updatedAt || "")));
 }
-async function change(job, { status, note, test, extend }) {
+async function change(job, { status, note, test, share, photographer, extend }) {
   if (extend !== void 0) {
     const days = Number(extend);
     if (!job.delivery || !job.delivery.endsAt) return json({ ok: false, reason: "no-link" }, 400);
@@ -942,9 +943,21 @@ async function change(job, { status, note, test, extend }) {
     fields.status = status;
   }
   if (test !== void 0) fields.test = Boolean(test);
+  const lines = [];
+  if (share !== void 0) {
+    if (typeof share !== "boolean") return json({ ok: false, reason: "bad-share" }, 400);
+    fields.share = share;
+    lines.push(share ? "OK to share" : "Not cleared to share");
+  }
+  if (photographer !== void 0) {
+    if (typeof photographer !== "string") return json({ ok: false, reason: "bad-photographer" }, 400);
+    fields.photographer = photographer.trim().slice(0, MAX_PHOTOGRAPHER);
+    lines.push(fields.photographer ? `Photographer: ${fields.photographer}` : "Photographer removed");
+  }
   const text = typeof note === "string" ? note.trim().slice(0, MAX_NOTE) : "";
   if (!Object.keys(fields).length && !text) return json({ ok: false, reason: "nothing-to-change" }, 400);
-  const line = text || (fields.status ? "Moved on the job board" : fields.test ? "Marked as a test" : "Unmarked as a test");
+  if (text) lines.push(text);
+  const line = lines.join(". ") || (fields.status ? "Moved on the job board" : fields.test ? "Marked as a test" : "Unmarked as a test");
   return json({ ok: true, job: await saveJob(job.id, fields, line) });
 }
 var jobs_board_src_default = async (req, context) => {
