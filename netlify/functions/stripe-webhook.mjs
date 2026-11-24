@@ -891,6 +891,432 @@ async function saveJob(id, fields, note) {
 }
 var pounds = (p) => `\xA3${(Number(p || 0) / 100).toLocaleString("en-GB", { minimumFractionDigits: p % 100 ? 2 : 0 })}`;
 
+// pricing.json
+var pricing_default = {
+  heading: "Simple prices, 24-hour delivery",
+  includes: "Each film is one boat, property or room: 15 to 20 seconds from 4 to 6 of your photos, with your photographer credited.",
+  includesList: [
+    "A 15 to 20 second film from 4 to 6 photos",
+    "Landscape (16:9) for your website, listings and ads",
+    "Your photographer credited",
+    "Back within 24 hours of your order and photos, Monday to Friday"
+  ],
+  groups: [
+    {
+      name: "Packs",
+      note: "",
+      plans: [
+        {
+          name: "Single film",
+          price: "\xA3175",
+          unit: "",
+          per: "\xA3175 a film",
+          for: "One hero boat, villa or room",
+          payUrl: "https://buy.stripe.com/bJe00kbSJ2SM6EMba11VK02",
+          films: 1,
+          stripeProduct: "prod_Vb0JSH30FPgyOW",
+          gets: [
+            "1 \xD7 16:9 film",
+            "Back within 24 hours"
+          ],
+          add: "Add 4:5 Social for \xA325"
+        },
+        {
+          name: "3 films",
+          price: "\xA3450",
+          unit: "",
+          per: "\xA3150 a film",
+          for: "A hotel's best rooms, or a small fleet",
+          payUrl: "https://buy.stripe.com/eVq3cw2i9dxq5AI5PH1VK03",
+          films: 3,
+          stripeProduct: "prod_Vb0L0R8RAXFETJ",
+          was: "\xA3525",
+          gets: [
+            "3 \xD7 16:9 films",
+            "3 \xD7 4:5 Social",
+            "All back within 24 hours"
+          ],
+          total: "6 videos in all"
+        },
+        {
+          name: "5 films",
+          price: "\xA3650",
+          unit: "",
+          per: "\xA3130 a film",
+          for: "Boat fleets and holiday-let portfolios",
+          payUrl: "https://buy.stripe.com/5kQ3cwg8Z2SMd3ace51VK04",
+          films: 5,
+          stripeProduct: "prod_Vb0M217JfWYeEg",
+          was: "\xA3875",
+          gets: [
+            "5 \xD7 16:9 films",
+            "5 \xD7 4:5 Social",
+            "All back within 24 hours"
+          ],
+          total: "10 videos in all"
+        },
+        {
+          name: "10 films",
+          price: "\xA31,100",
+          unit: "",
+          per: "\xA3110 a film",
+          for: "Bigger fleets and agencies",
+          payUrl: "https://buy.stripe.com/4gM9AU6ypbpi2owdi91VK05",
+          films: 10,
+          stripeProduct: "prod_Vb0NsrnyT3wKtN",
+          was: "\xA31,750",
+          gets: [
+            "10 \xD7 16:9 films",
+            "10 \xD7 4:5 Social",
+            "The first 5 within 24 hours, then 5 a day"
+          ],
+          total: "20 videos in all"
+        }
+      ]
+    },
+    {
+      name: "Monthly",
+      note: "For charter fleets and hotel groups with new boats, rooms or offers every month. Unused films carry over to the next month, and the minimum term is three months.",
+      plans: [
+        {
+          name: "4 films a month",
+          price: "\xA3395",
+          unit: "a month",
+          per: "About \xA399 a film",
+          for: "Charter brokers with new boats each month",
+          payUrl: "https://buy.stripe.com/dRm8wQ1e53WQ9QY7XP1VK06",
+          films: 4,
+          stripeProduct: "prod_Vb0OvcbGOGSX4S",
+          gets: [
+            "4 \xD7 16:9 films a month",
+            "4 \xD7 4:5 Social",
+            "Unused films carry over"
+          ],
+          total: "8 videos a month"
+        },
+        {
+          name: "10 films a month",
+          price: "\xA3850",
+          unit: "a month",
+          per: "\xA385 a film",
+          for: "Hotel groups and larger charter fleets",
+          payUrl: "https://buy.stripe.com/14AeVe3md8d65AI1zr1VK07",
+          films: 10,
+          stripeProduct: "prod_Vb0P1TR5Flm0k8",
+          gets: [
+            "10 \xD7 16:9 films a month",
+            "10 \xD7 4:5 Social",
+            "Unused films carry over"
+          ],
+          total: "20 videos a month"
+        }
+      ]
+    }
+  ],
+  addons: [
+    "Premium (music, a line on each scene, your logo): +\xA320",
+    "Voice-over: +\xA335",
+    "A round of tweaks: +\xA335",
+    "30-second cut from 6 to 8 photos: +\xA360",
+    "4:5 Social for a single film: +\xA325"
+  ],
+  terms: "The 24 hours start once we have your order and photos we can use. Order on a Friday afternoon or at the weekend and we start Monday at 9am, UK time. If a photo won't work, say someone's in shot or it's too dark, we'll tell you within a few hours and start again when the new one arrives. Packs come in daily batches: the first 5 films within 24 hours, then 5 a day. If anything will take longer, we'll tell you straight away.",
+  packNote: "Packs of 3 or more also include a 4:5 Social cut of every film.",
+  addonItems: [
+    {
+      id: "premium",
+      name: "Premium: music, a line on each scene and your logo",
+      price: 20,
+      note: "Background music, a line of text on each scene and your logo on the end frame. Voice-over is separate."
+    },
+    {
+      id: "voice",
+      name: "Voice-over",
+      price: 35,
+      note: "A voice reading a short line over each scene."
+    },
+    {
+      id: "tweaks",
+      name: "A round of tweaks",
+      price: 35,
+      note: "One round of changes once you've seen it."
+    },
+    {
+      id: "long",
+      name: "30-second cut from 6 to 8 photos",
+      price: 60,
+      note: "A longer film, for a walk-through."
+    },
+    {
+      id: "social",
+      name: "4:5 Social",
+      price: 25,
+      singleOnly: true,
+      note: "A 4:5 version for the feed. Included with packs of 3 or more."
+    }
+  ],
+  editOffers: {
+    "hospitality-signature": {
+      name: "Premium film",
+      plan: "Single film",
+      addons: [
+        "premium"
+      ],
+      price: 95,
+      was: 195,
+      about: "The film we made, with a line on each scene and background music",
+      includes: [
+        "The film we made, with a line on each scene in subtitles",
+        "Background music, added when you order",
+        "Your logo on the end frame",
+        "Full-quality file for your website, booking pages and ads",
+        "Your photographer credited",
+        "Delivered within 24 hours of your order, Monday to Friday"
+      ],
+      ends: "2026-12-07"
+    },
+    "hospitality-story": {
+      name: "Full film",
+      plan: "Single film",
+      addons: [],
+      price: 65,
+      about: "The film we made, without subtitles, ending on your name",
+      includes: [
+        "The film we made, ending on your name and web address",
+        "Full-quality file for your website, booking pages and ads",
+        "Your photographer credited",
+        "Delivered within 24 hours of your order, Monday to Friday"
+      ],
+      was: 175,
+      ends: "2026-12-07"
+    },
+    "film-now": {
+      name: "Your own film",
+      plan: "Single film",
+      addons: [],
+      price: 140,
+      was: 175,
+      until: "2026-12-07",
+      about: "One film from your own photos, back within 24 hours of your order and photos",
+      includes: [
+        "One 15 to 20 second film from 4 to 6 of your photos",
+        "Landscape (16:9) for websites and ads",
+        "Your photographer credited",
+        "Back within 24 hours"
+      ]
+    },
+    "marine-signature": {
+      name: "Premium film",
+      plan: "Single film",
+      addons: [
+        "premium"
+      ],
+      price: 95,
+      was: 195,
+      about: "The film we made, with a line on each scene and background music",
+      includes: [
+        "The film we made, with a line on each scene in subtitles",
+        "Background music, added when you order",
+        "Your logo on the end frame",
+        "Full-quality file for your website, charter listings and ads",
+        "Your photographer credited",
+        "Delivered within 24 hours of your order, Monday to Friday"
+      ],
+      ends: "2026-12-07"
+    },
+    "marine-story": {
+      name: "Full film",
+      plan: "Single film",
+      addons: [],
+      price: 65,
+      was: 175,
+      about: "The film we made, without subtitles, ending on your name",
+      includes: [
+        "The film we made, ending on your name and web address",
+        "Full-quality file for your website, charter listings and ads",
+        "Your photographer credited",
+        "Delivered within 24 hours of your order, Monday to Friday"
+      ],
+      ends: "2026-12-07"
+    },
+    "property-signature": {
+      name: "Premium film",
+      plan: "Single film",
+      addons: [
+        "premium"
+      ],
+      price: 95,
+      was: 195,
+      about: "The film we made, with a line on each scene and background music",
+      includes: [
+        "The film we made, with a line on each scene in subtitles",
+        "Background music, added when you order",
+        "Your logo on the end frame",
+        "Full-quality file for your website, portal listings and ads",
+        "Your photographer credited",
+        "Delivered within 24 hours of your order, Monday to Friday"
+      ],
+      ends: "2026-12-07"
+    },
+    "property-story": {
+      name: "Full film",
+      plan: "Single film",
+      addons: [],
+      price: 65,
+      was: 175,
+      about: "The film we made, without subtitles, ending on your name",
+      includes: [
+        "The film we made, ending on your name and web address",
+        "Full-quality file for your website, portal listings and ads",
+        "Your photographer credited",
+        "Delivered within 24 hours of your order, Monday to Friday"
+      ],
+      ends: "2026-12-07"
+    },
+    "social-4x5": {
+      name: "4:5 social film",
+      plan: "Single film",
+      addons: [],
+      price: 65,
+      was: 175,
+      about: "The 4:5 film we made for social",
+      includes: [
+        "The 4:5 film we made, about 17 seconds",
+        "Full-quality 1080 x 1350 file for Instagram, Facebook and LinkedIn",
+        "Your photographer credited",
+        "Delivered within 24 hours of your order, Monday to Friday"
+      ],
+      ends: "2026-12-07",
+      _note: "User, 12 Nov 2026: 'add download video now, with payment process' on the 4:5 phone section. Priced as the ready-made Full film offer (\xA365, usually \xA3175) until the user sets a price."
+    },
+    "kitchens-signature": {
+      name: "Premium film",
+      plan: "Single film",
+      addons: [
+        "premium"
+      ],
+      price: 95,
+      was: 195,
+      about: "The film we made, with a line on each scene and background music",
+      includes: [
+        "The film we made, with a line on each scene in subtitles",
+        "Background music, added when you order",
+        "Your logo on the end frame",
+        "Full-quality file for your website, social and ads",
+        "Your photographer credited",
+        "Delivered within 24 hours of your order, Monday to Friday"
+      ],
+      ends: "2026-12-07",
+      _note: "12 Nov 2026, 'all sectors': the ready-made offer for kitchen pages too, as property's."
+    },
+    "kitchens-story": {
+      name: "Full film",
+      plan: "Single film",
+      addons: [],
+      price: 65,
+      was: 175,
+      about: "The film we made, without subtitles, ending on your name",
+      includes: [
+        "The film we made, ending on your name and web address",
+        "Full-quality file for your website, social and ads",
+        "Your photographer credited",
+        "Delivered within 24 hours of your order, Monday to Friday"
+      ],
+      ends: "2026-12-07",
+      _note: "12 Nov 2026, 'all sectors': the ready-made offer for kitchen pages too, as property's."
+    }
+  },
+  editOffersNote: 'User, 11 Nov 2026 ("the pre built film price seems expensive for an offer ... premium should have background music but not vo", then "Yes, apply it"): a film we have already made sells at a deep cut, below a new film. Premium = subtitles + background music + logo (voice-over stays an add-on), usually \xA3195 (user, 11 Nov 2026: "maybe 199", then "or 195": single \xA3175 + the Premium add-on at \xA320, which replaced the separate music, captions and logo add-ons at \xA325 each). "ends" is shown on the page only; the checkout keeps honouring the price after it.',
+  freeClip: {
+    name: "Free clip",
+    photos: 3,
+    seconds: 10,
+    about: "3 photos in, a 10-second film back within 24 hours, Monday to Friday, with our end card. One per business."
+  },
+  deliveryNote: 'User, 11 Nov 2026 ("should there be a caveate around 24 hr delivery", then "ok to delivery caveat"): the clock starts once we have the order and photos we can use; ready-made films count from the order. The full wording is the terms line and the shared FAQ "When will it arrive?" (faq.json).',
+  _wasNote: "User, 11 Nov 2026: 'on pricing show the price of 1x film x3, x5 slashed vs the package deal price', then 'the price update should be for the 10 films too'. 'was' is the Single film price times the pack size, shown struck before the pack price (custom pages and the home page). Change the Single film price and re-run this sum.",
+  _getsNote: "User, 12 Nov 2026: 'in the pricing cards list what you get with ticks. so 1x 16.9 (and res?) then 3x 16.9, 3x4.5 social etc. so it shows they get alot', then 'drop the res, remove 9.16, just have Social after 4.5'. Packs come with a 4:5 Social cut of every film (9:16 and 1:1 are no longer offered). 'gets' is each card's ticked list, 'total' its count of videos, 'add' the single film's social add-on line."
+};
+
+// functions/lib/order-email.mjs
+var FROM = "Photo2Motion <team@photo2motion.studio>";
+var REPLY_TO = "team@photo2motion.studio";
+var TIMEOUT_MS = 1e4;
+function firstName(name) {
+  const first = String(name || "").trim().split(/\s+/)[0] || "";
+  return first.length > 0 && first.length <= 30 ? first[0].toUpperCase() + first.slice(1) : "";
+}
+function orderEmail(job) {
+  const to = job && job.customer && job.customer.email || "";
+  if (!job || job.kind !== "order" || job.source === "stripe-payment-link" || !to.includes("@")) return null;
+  const offer = job.offer && pricing_default.editOffers[job.offer] || null;
+  const ready = Boolean(offer) && /\bwe made\b/i.test(offer.about || "");
+  const what = offer ? offer.name : String(job.plan || "Your films");
+  const films = Number(job.films) || 1;
+  const addonNames = (job.addons || []).map((id) => (pricing_default.addonItems.find((a) => a.id === id) || {}).name).filter(Boolean);
+  const business = job.customer && job.customer.business || "";
+  const amount = job.stripe && job.stripe.amount != null ? pounds(job.stripe.amount) : "";
+  const ref = String(job.id).slice(0, 8);
+  const photos = (job.photos || []).length;
+  const order = [
+    `${what}${business ? ` for ${business}` : ""}`,
+    ...addonNames.map((name2) => `+ ${name2}`),
+    [amount && `${amount} paid${job.monthly ? " for your first month" : ""}`, `Order ${ref}`].filter(Boolean).join(" \xB7 ")
+  ];
+  const them = films === 1 ? "Your film arrives" : job.monthly ? "This month's films arrive" : films > 5 ? "Your first 5 films arrive" : "Your films arrive";
+  const pace = films > 5 && !job.monthly ? ", then 5 a day" : "";
+  const next = ready ? "Your film is already made, so there's nothing to send. It arrives within 24 hours, Monday to Friday." : photos >= films * 4 ? `We've got your ${photos} photos. ${them} within 24 hours, Monday to Friday${pace}.` : photos ? `We've got your ${photos === 1 ? "photo" : `${photos} photos`}. Send the rest by replying to this email. ${them} within 24 hours of your photos, Monday to Friday${pace}.` : `Next, send us your photos: reply to this email with them, or a link. ${them} within 24 hours of your photos, Monday to Friday${pace}.`;
+  const name = firstName(job.customer && job.customer.name);
+  const text = [
+    `Hi${name ? ` ${name}` : ""},`,
+    "",
+    `Thanks for your order. ${ready || films === 1 ? "Your film is" : "Your films are"} booked in.`,
+    "",
+    ...order,
+    "",
+    next,
+    "",
+    "Your receipt comes separately from Stripe.",
+    "",
+    "Chris",
+    "Photo2Motion",
+    "photo2motion.studio"
+  ].join("\n");
+  return { to, subject: `Got your order: ${what}`, text };
+}
+function postToResend(key, idempotencyKey, message) {
+  const base = process.env.RESEND_API_BASE || "https://api.resend.com";
+  return fetch(`${base}/emails`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", "Idempotency-Key": idempotencyKey },
+    body: JSON.stringify({ from: FROM, to: [message.to], reply_to: REPLY_TO, subject: message.subject, text: message.text }),
+    signal: AbortSignal.timeout(TIMEOUT_MS)
+  });
+}
+async function sendOrderEmail(job) {
+  const message = orderEmail(job);
+  if (!message) return { sent: false, reason: "not-for-this-job" };
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return { sent: false, to: message.to, reason: "not-configured" };
+  let reason = "";
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      const res = await postToResend(key, `order-email-${job.id}`, message);
+      if (res.ok) {
+        const body = await res.json().catch(() => ({}));
+        return { sent: true, to: message.to, id: body.id || "" };
+      }
+      reason = `Resend answered ${res.status}: ${(await res.text().catch(() => "")).slice(0, 200)}`;
+      if (res.status !== 429 && res.status < 500) break;
+    } catch (err) {
+      reason = `Resend unreachable: ${err && err.message}`;
+    }
+    console.error("order-email: attempt %s for job %s failed: %s", attempt, job.id, reason);
+    if (attempt === 1) await new Promise((r) => setTimeout(r, 1e3));
+  }
+  return { sent: false, to: message.to, reason };
+}
+
 // functions/stripe-webhook.src.mjs
 var TOLERANCE_SECONDS = 300;
 var FIELDS = ["order", "kind", "plan", "addons", "total", "customer", "email", "business", "website", "notes", "photos", "source", "stripe"];
@@ -936,6 +1362,16 @@ async function emailPaid(job, stripeNote) {
   });
   if (res && !res.ok) console.error("stripe-webhook: paid email answered %s", res.status);
 }
+async function customerEmail(job) {
+  if (job.orderEmail && job.orderEmail.sentAt) return ` Order email already sent to ${job.orderEmail.to}.`;
+  const result = await sendOrderEmail(job);
+  if (result.reason === "not-for-this-job") return "";
+  const why = result.reason === "not-configured" ? "RESEND_API_KEY isn't set in Netlify" : result.reason;
+  const note = result.sent ? `Order email sent to ${result.to}` : `Order email not sent: ${why}`;
+  const fields = result.sent ? { orderEmail: { to: result.to, sentAt: (/* @__PURE__ */ new Date()).toISOString(), id: result.id } } : {};
+  await saveJob(job.id, fields, note).catch((err) => console.error("stripe-webhook: noting the order email failed: %s", err && err.message));
+  return result.sent ? ` Order email sent to ${result.to}.` : ` Order email NOT sent to ${result.to} (${why}): email them yourself.`;
+}
 function businessField(session) {
   const field = (session.custom_fields || []).find((f) => /business|company/i.test(`${f.key} ${f.label && f.label.custom}`));
   return field && field.text && field.text.value || "";
@@ -972,7 +1408,8 @@ async function sessionPaid(session) {
     },
     ...existing && !existing.customer?.email && details.email ? { customer: { email: details.email } } : {}
   }, "Paid through Stripe");
-  await emailPaid(job, `Checkout ${session.id}, ${pounds(session.amount_total)} ${session.payment_status}${session.subscription ? `, subscription ${session.subscription}` : ""}`);
+  const emailed = await customerEmail(job);
+  await emailPaid(job, `Checkout ${session.id}, ${pounds(session.amount_total)} ${session.payment_status}${session.subscription ? `, subscription ${session.subscription}` : ""}.${emailed}`);
 }
 async function renewalPaid(invoice) {
   const meta = invoice.subscription_details && invoice.subscription_details.metadata || invoice.parent && invoice.parent.subscription_details && invoice.parent.subscription_details.metadata || {};
