@@ -908,11 +908,11 @@ var pricing_default = {
       plans: [
         {
           name: "Single film",
-          price: "\xA3175",
+          price: "\xA395",
           unit: "",
-          per: "\xA3175 a film",
+          per: "\xA395 a film",
           for: "One hero boat, villa or room",
-          payUrl: "https://buy.stripe.com/bJe00kbSJ2SM6EMba11VK02",
+          payUrl: "https://buy.stripe.com/28E28s4qhdxq5AI3Hz1VK09",
           films: 1,
           stripeProduct: "prod_Vb0JSH30FPgyOW",
           gets: [
@@ -923,14 +923,14 @@ var pricing_default = {
         },
         {
           name: "3 films",
-          price: "\xA3450",
+          price: "\xA3270",
           unit: "",
-          per: "\xA3150 a film",
+          per: "\xA390 a film",
           for: "A hotel's best rooms, or a small fleet",
-          payUrl: "https://buy.stripe.com/eVq3cw2i9dxq5AI5PH1VK03",
+          payUrl: "https://buy.stripe.com/8x2aEY4qh0KEbZ64LD1VK0a",
           films: 3,
           stripeProduct: "prod_Vb0L0R8RAXFETJ",
-          was: "\xA3525",
+          was: "\xA3285",
           gets: [
             "3 \xD7 16:9 films",
             "3 \xD7 4:5 Social",
@@ -940,14 +940,14 @@ var pricing_default = {
         },
         {
           name: "5 films",
-          price: "\xA3650",
+          price: "\xA3400",
           unit: "",
-          per: "\xA3130 a film",
+          per: "\xA380 a film",
           for: "Boat fleets and holiday-let portfolios",
-          payUrl: "https://buy.stripe.com/5kQ3cwg8Z2SMd3ace51VK04",
+          payUrl: "https://buy.stripe.com/14AeVeaOF0KEd3a3Hz1VK0b",
           films: 5,
           stripeProduct: "prod_Vb0M217JfWYeEg",
-          was: "\xA3875",
+          was: "\xA3475",
           gets: [
             "5 \xD7 16:9 films",
             "5 \xD7 4:5 Social",
@@ -957,14 +957,14 @@ var pricing_default = {
         },
         {
           name: "10 films",
-          price: "\xA31,100",
+          price: "\xA3700",
           unit: "",
-          per: "\xA3110 a film",
+          per: "\xA370 a film",
           for: "Bigger fleets and agencies",
-          payUrl: "https://buy.stripe.com/4gM9AU6ypbpi2owdi91VK05",
+          payUrl: "https://buy.stripe.com/eVqfZi0a1ctm6EM3Hz1VK0c",
           films: 10,
           stripeProduct: "prod_Vb0NsrnyT3wKtN",
-          was: "\xA31,750",
+          was: "\xA3950",
           gets: [
             "10 \xD7 16:9 films",
             "10 \xD7 4:5 Social",
@@ -980,11 +980,11 @@ var pricing_default = {
       plans: [
         {
           name: "4 films a month",
-          price: "\xA3395",
+          price: "\xA3280",
           unit: "a month",
-          per: "About \xA399 a film",
+          per: "\xA370 a film",
           for: "Charter brokers with new boats each month",
-          payUrl: "https://buy.stripe.com/dRm8wQ1e53WQ9QY7XP1VK06",
+          payUrl: "https://buy.stripe.com/7sY4gAaOFale7IQ0vn1VK0d",
           films: 4,
           stripeProduct: "prod_Vb0OvcbGOGSX4S",
           gets: [
@@ -996,11 +996,11 @@ var pricing_default = {
         },
         {
           name: "10 films a month",
-          price: "\xA3850",
+          price: "\xA3650",
           unit: "a month",
-          per: "\xA385 a film",
+          per: "\xA365 a film",
           for: "Hotel groups and larger charter fleets",
-          payUrl: "https://buy.stripe.com/14AeVe3md8d65AI1zr1VK07",
+          payUrl: "https://buy.stripe.com/6oUfZi7Ct2SM3sA0vn1VK0e",
           films: 10,
           stripeProduct: "prod_Vb0P1TR5Flm0k8",
           gets: [
@@ -1062,8 +1062,8 @@ var pricing_default = {
       addons: [
         "premium"
       ],
-      price: 95,
-      was: 195,
+      price: 85,
+      was: 115,
       about: "The film we made, with a line on each scene and background music",
       includes: [
         "The film we made, with a line on each scene in subtitles",
@@ -1087,23 +1087,8 @@ var pricing_default = {
         "Your photographer credited",
         "Delivered within 24 hours of your order, Monday to Friday"
       ],
-      was: 175,
+      was: 95,
       ends: "2026-12-07"
-    },
-    "film-now": {
-      name: "Your own film",
-      plan: "Single film",
-      addons: [],
-      price: 140,
-      was: 175,
-      until: "2026-12-07",
-      about: "One film from your own photos, back within 24 hours of your order and photos",
-      includes: [
-        "One 15 to 20 second film from 4 to 6 of your photos",
-        "Landscape (16:9) for websites and ads",
-        "Your photographer credited",
-        "Back within 24 hours"
-      ]
     },
     "marine-signature": {
       name: "Premium film",
@@ -1111,8 +1096,8 @@ var pricing_default = {
       addons: [
         "premium"
       ],
-      price: 95,
-      was: 195,
+      price: 85,
+      was: 115,
       about: "The film we made, with a line on each scene and background music",
       includes: [
         "The film we made, with a line on each scene in subtitles",
@@ -1129,7 +1114,7 @@ var pricing_default = {
       plan: "Single film",
       addons: [],
       price: 65,
-      was: 175,
+      was: 95,
       about: "The film we made, without subtitles, ending on your name",
       includes: [
         "The film we made, ending on your name and web address",
@@ -1145,8 +1130,8 @@ var pricing_default = {
       addons: [
         "premium"
       ],
-      price: 95,
-      was: 195,
+      price: 85,
+      was: 115,
       about: "The film we made, with a line on each scene and background music",
       includes: [
         "The film we made, with a line on each scene in subtitles",
@@ -1163,7 +1148,7 @@ var pricing_default = {
       plan: "Single film",
       addons: [],
       price: 65,
-      was: 175,
+      was: 95,
       about: "The film we made, without subtitles, ending on your name",
       includes: [
         "The film we made, ending on your name and web address",
@@ -1178,7 +1163,7 @@ var pricing_default = {
       plan: "Single film",
       addons: [],
       price: 65,
-      was: 175,
+      was: 95,
       about: "The 4:5 film we made for social",
       includes: [
         "The 4:5 film we made, about 17 seconds",
@@ -1195,8 +1180,8 @@ var pricing_default = {
       addons: [
         "premium"
       ],
-      price: 95,
-      was: 195,
+      price: 85,
+      was: 115,
       about: "The film we made, with a line on each scene and background music",
       includes: [
         "The film we made, with a line on each scene in subtitles",
@@ -1214,7 +1199,7 @@ var pricing_default = {
       plan: "Single film",
       addons: [],
       price: 65,
-      was: 175,
+      was: 95,
       about: "The film we made, without subtitles, ending on your name",
       includes: [
         "The film we made, ending on your name and web address",
@@ -1235,7 +1220,8 @@ var pricing_default = {
   },
   deliveryNote: 'User, 11 Nov 2026 ("should there be a caveate around 24 hr delivery", then "ok to delivery caveat"): the clock starts once we have the order and photos we can use; ready-made films count from the order. The full wording is the terms line and the shared FAQ "When will it arrive?" (faq.json).',
   _wasNote: "User, 11 Nov 2026: 'on pricing show the price of 1x film x3, x5 slashed vs the package deal price', then 'the price update should be for the 10 films too'. 'was' is the Single film price times the pack size, shown struck before the pack price (custom pages and the home page). Change the Single film price and re-run this sum.",
-  _getsNote: "User, 12 Nov 2026: 'in the pricing cards list what you get with ticks. so 1x 16.9 (and res?) then 3x 16.9, 3x4.5 social etc. so it shows they get alot', then 'drop the res, remove 9.16, just have Social after 4.5'. Packs come with a 4:5 Social cut of every film (9:16 and 1:1 are no longer offered). 'gets' is each card's ticked list, 'total' its count of videos, 'add' the single film's social add-on line."
+  _getsNote: "User, 12 Nov 2026: 'in the pricing cards list what you get with ticks. so 1x 16.9 (and res?) then 3x 16.9, 3x4.5 social etc. so it shows they get alot', then 'drop the res, remove 9.16, just have Social after 4.5'. Packs come with a 4:5 Social cut of every film (9:16 and 1:1 are no longer offered). 'gets' is each card's ticked list, 'total' its count of videos, 'add' the single film's social add-on line.",
+  _priceNote: `User, 25 Nov 2026: "new price chat, i think under 100 might be better and still a good profit?" (the single film under \xA3100), then "Yes, use B" and "B with firmer monthly": single \xA395, packs \xA3270 / \xA3400 / \xA3700 (\xA390, \xA380, \xA370 a film), monthly \xA3280 (4 films) and \xA3650 (10 films). Ready-made Premium \xA385 (was \xA395) so a film we've made stays below a new one; Full and 4:5 stay \xA365. The \xA3140 film-now offer (to 7 Dec) was removed, as \xA395 is lower. Add-ons unchanged. New Stripe payment links at these prices made 25 Nov 2026 (same products, a new default price on each, promotion codes on, business name collected, redirect to notbadstudio.com/motion-thanks); the old \xA3175-\xA3850 links are still active in Stripe.`
 };
 
 // functions/lib/order-email.mjs
